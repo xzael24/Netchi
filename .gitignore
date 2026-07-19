@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# codegraph (local index, do not commit)
+.codegraph/
+
+# agent config (do not commit)
+AGENTS.md
+docs/agents/
+.agents/
+.gitignore
