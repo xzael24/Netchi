@@ -11,7 +11,7 @@ export function Hero() {
   const [langOpen, setLangOpen] = useState(false);
   return (
     <section className="bg-white">
-      <div className="bg-[#1A3CDB] text-cream grid grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[44px_300px_150px_100px_260px]">
+      <div className="bg-[#1A3CDB] text-cream grid grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[44px_300px_250px_200px_320px]">
         {/* ── ROW 1: NAV (5 cells) ── */}
         <div className={`border-b-2 border-r-2 ${LINE}`} />
         <div className={`border-b-2 border-r-2 ${LINE}`} />
@@ -85,7 +85,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="font-display font-bold text-lg md:text-3xl lg:text-4xl xl:text-5xl uppercase leading-snug"
+            className="font-display font-bold text-2xl md:text-5xl lg:text-6xl xl:text-7xl uppercase leading-[1.1]"
           >
             Privasi Data & Proteksi Identitas Digital yang Melawan Kompleksitas
           </motion.p>
@@ -103,12 +103,12 @@ export function Hero() {
         {/* ── ROW 4: DESCRIPTION (5 cells) ── */}
         <div className={`border-b-2 border-r-2 ${LINE}`} />
         <div className={`border-b-2 border-r-2 ${LINE}`} />
-        <div className={`border-b-2 border-r-2 ${LINE} px-6 md:px-8 py-1 md:py-1`}>
+        <div className={`border-b-2 border-r-2 ${LINE} px-6 md:px-8 flex items-center`}>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display font-bold text-xs md:text-sm lg:text-base xl:text-lg leading-relaxed text-cream/90 w-full"
+            className="font-display font-bold text-sm md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-cream/90 w-full"
           >
             Data pribadimu adalah aset berharga, namun sering kali rentan.
             Netchi hadir membantumu memahami, memeriksa, dan melindungi
