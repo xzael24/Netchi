@@ -11,7 +11,7 @@ export function Hero() {
   const [langOpen, setLangOpen] = useState(false);
 
   const desktop = (
-    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[44px_300px_250px_200px_320px]">
+    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[44px_300px_250px_200px_320px] w-full min-w-full">
       {/* ── ROW 1: NAV (5 cells) ── */}
       <div className={`border-b-2 border-r-2 ${LINE}`} />
       <div className={`border-b-2 border-r-2 ${LINE}`} />
@@ -58,14 +58,14 @@ export function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* ── ROW 2: HEADLINE (5 cells, garis 2 & 3 hidden) ── */}
+      {/* ── ROW 2: HEADLINE (cols 2-3 span, garis 2 hidden) ── */}
       <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 ${LINE} flex items-stretch container-cell`}>
+      <div className={`col-span-2 border-b-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10`}>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center cq-hero-text w-full ml-[-0.5vw]"
+          className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center cq-hero-text w-full"
         >
           Netchi&nbsp;
           <span className="flex items-center">
@@ -74,7 +74,6 @@ export function Hero() {
           </span>
         </motion.h1>
       </div>
-      <div className={`border-b-2 ${LINE}`} />
       <div className={`border-b-2 border-r-2 ${LINE}`} />
       <div className={`border-b-2 ${LINE}`} />
 
@@ -200,7 +199,7 @@ export function Hero() {
   );
 
   const mobile = (
-    <div className="lg:hidden bg-[#1A3CDB] text-cream flex flex-col">
+    <div className="lg:hidden bg-[#1A3CDB] text-cream flex flex-col w-full">
       {/* NAV */}
       <div className={`flex items-center justify-between border-b-2 ${LINE} px-4 py-3`}>
         <button
@@ -347,7 +346,7 @@ export function Hero() {
   );
 
   return (
-    <section className="bg-white">
+    <section className="bg-white w-full min-w-full">
       {desktop}
       {mobile}
     </section>

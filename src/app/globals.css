@@ -31,13 +31,13 @@
   container-type: inline-size;
 }
 
-/* Fluid typography — scale based on container width (cqw) so content stays within column */
+/* Fluid typography — scale based on container width (cqw) so text always fits its column */
 @container (min-width: 0px) {
   .cq-hero-text {
-    font-size: clamp(2.5rem, 65cqw, 16rem);
+    font-size: clamp(3rem, 20cqw, 15rem);
   }
   .cq-hero-pixel {
-    font-size: clamp(1.5rem, 50cqw, 12rem);
+    font-size: clamp(1.5rem, 17cqw, 13rem);
   }
   .cq-hero-sub {
     font-size: clamp(1.25rem, 7cqw, 4rem);
