@@ -13,19 +13,21 @@ export function Hero() {
   const desktop = (
     <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
       {/* ── ROW 1: NAV (5 cells) ── */}
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 border-r-2 ${LINE} pl-6 md:pl-8 flex items-center justify-end container-cell`}>
+      <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
+      <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
+      <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C3</div>
+      <div className={`border-r-2 ${LINE} pl-6 md:pl-8 flex items-center justify-end container-cell relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C4</span>
         <Link href="#" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
           Menu
         </Link>
       </div>
       <div
-        className={`border-b-2 ${LINE} pr-2 flex items-center justify-end relative container-cell`}
+        className={`pr-2 flex items-center justify-end relative container-cell`}
         onMouseEnter={() => setLangOpen(true)}
         onMouseLeave={() => setLangOpen(false)}
       >
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C5</span>
         <button
           type="button"
           aria-label="Language"
@@ -59,8 +61,9 @@ export function Hero() {
       </div>
 
       {/* ── ROW 2: HEADLINE (cols 2-3 span, garis 2 hidden) ── */}
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`col-span-2 border-b-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
+      <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10 relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,12 +77,12 @@ export function Hero() {
           </span>
         </motion.h1>
       </div>
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 ${LINE}`} />
+      <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C3</div>
 
       {/* ── ROW 3: SUB-HEADLINE (col 2-3) ── */}
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-6 md:px-10 py-2 md:py-3 container-cell overflow-hidden`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
+      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-6 md:px-10 py-2 md:py-3 container-cell overflow-hidden relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,8 +92,9 @@ export function Hero() {
           Privasi Data & Proteksi Identitas Digital yang Melawan Kompleksitas
         </motion.p>
       </div>
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 ${LINE} flex items-start justify-start container-cell`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C4</div>
+      <div className={`border-b-2 ${LINE} flex items-start justify-start container-cell relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C5</span>
         <span
           className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap cq-hero-label"
           style={{ writingMode: "vertical-rl" }}
@@ -100,9 +104,10 @@ export function Hero() {
       </div>
 
       {/* ── ROW 4: DESCRIPTION (5 cells) ── */}
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 border-r-2 ${LINE} px-6 md:px-8 flex items-center container-cell`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C1</div>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C2</div>
+      <div className={`border-b-2 border-r-2 ${LINE} px-6 md:px-8 flex items-center container-cell relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C3</span>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -114,12 +119,13 @@ export function Hero() {
           identitas digital dari ancaman kebocoran data.
         </motion.p>
       </div>
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`border-b-2 ${LINE}`} />
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C4</div>
+      <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C5</div>
 
       {/* ── ROW 5: BARS + CTA (5 cells) ── */}
-      <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[160px] md:min-h-[220px] container-cell`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
+      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[160px] md:min-h-[220px] container-cell relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C2</span>
         <motion.svg
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -156,7 +162,8 @@ export function Hero() {
           ))}
         </motion.svg>
       </div>
-      <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell`}>
+      <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
+        <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
         <div className="flex justify-end border-b-2 border-cream/25">
           <Link
             href="/breach"
@@ -165,7 +172,8 @@ export function Hero() {
             MULAI SEKARANG
           </Link>
         </div>
-        <div className="flex justify-start px-4 md:px-6 pb-5 pt-3">
+        <div className="flex flex-col justify-start pl-1 pr-4 md:pl-2 md:pr-6 pb-5 pt-60 relative">
+          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-2</span>
           <div
             onMouseEnter={() =>
               arrowControls.start({
@@ -194,7 +202,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <div className={`border-b-2 ${LINE}`} />
+      <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C5</div>
     </div>
   );
 
