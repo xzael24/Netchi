@@ -11,7 +11,7 @@ export function Hero() {
   const [langOpen, setLangOpen] = useState(false);
 
   const desktop = (
-    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[44px_300px_250px_200px_320px] w-full min-w-full">
+    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
       {/* ── ROW 1: NAV (5 cells) ── */}
       <div className={`border-b-2 border-r-2 ${LINE}`} />
       <div className={`border-b-2 border-r-2 ${LINE}`} />
@@ -31,7 +31,7 @@ export function Hero() {
           aria-label="Language"
           className="px-3 py-1.5 transition-colors relative z-20"
         >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" className="md:w-5 md:h-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5 md:w-4 md:h-4">
             <circle cx="12" cy="12" r="9" />
             <path d="M3 12h18" />
             <path d="M12 3c2.5 2.7 2.5 15.3 0 18c-2.5-2.7-2.5-15.3 0-18z" />
@@ -47,10 +47,10 @@ export function Hero() {
               className="absolute top-full right-0 z-10 flex flex-col items-stretch origin-top"
               style={{ minWidth: "100%" }}
             >
-              <button className="px-3 py-1.5 bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors w-full whitespace-nowrap cq-hero-icon">
+              <button className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors w-full whitespace-nowrap">
                 ID
               </button>
-              <button className="px-3 py-1.5 bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap cq-hero-icon">
+              <button className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap">
                 EN
               </button>
             </motion.div>
@@ -79,7 +79,7 @@ export function Hero() {
 
       {/* ── ROW 3: SUB-HEADLINE (col 2-3) ── */}
       <div className={`border-b-2 border-r-2 ${LINE}`} />
-      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-6 md:px-10 py-2 md:py-3 container-cell`}>
+      <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-6 md:px-10 py-2 md:py-3 container-cell overflow-hidden`}>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

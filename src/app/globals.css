@@ -37,10 +37,10 @@
     font-size: clamp(3rem, 20cqw, 15rem);
   }
   .cq-hero-pixel {
-    font-size: clamp(1.5rem, 17cqw, 13rem);
+    font-size: clamp(1.5rem, 16cqw, 13rem);
   }
   .cq-hero-sub {
-    font-size: clamp(1.25rem, 7cqw, 4rem);
+    font-size: clamp(1.25rem, 6cqw, 4rem);
   }
   .cq-hero-desc {
     font-size: clamp(0.875rem, 4cqw, 1.5rem);
