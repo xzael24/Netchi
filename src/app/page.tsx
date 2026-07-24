@@ -1,12 +1,19 @@
+"use client";
+
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { Hero } from "@/components/home/Hero";
 import { Section2 } from "@/components/home/Section2";
 import { Navbar } from "@/components/layout/Navbar";
 
 export default function Home() {
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const headlineInView = useInView(headlineRef, { once: false });
+
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Navbar headlineVisible={!headlineInView} />
+      <Hero headlineRef={headlineRef} />
       <Section2 />
     </>
   );

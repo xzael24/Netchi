@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const LINE = "border-cream/25";
 
-export function Hero() {
+export function Hero({ headlineRef }: { headlineRef?: React.RefObject<HTMLDivElement> }) {
   const arrowControls = useAnimation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -62,7 +62,7 @@ export function Hero() {
 
       {/* ── ROW 2: HEADLINE (cols 2-3 span, garis 2 hidden) ── */}
       <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
-      <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10 relative`}>
+      <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10 relative`} ref={headlineRef}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}

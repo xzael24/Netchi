@@ -27,20 +27,88 @@ Membangun web app **Netchi Sentinel** sebagai tools edukasi & perlindungan ident
 | Section | Isi |
 |---|---|
 | Hero | (udah jadi) headline, sub, deskripsi, CTA, waving lines |
-| 1://TOOLS | Grid card 5 fitur inti (link ke masing-masing page) — kaya USPS/Services punya Netcraft |
-| 2://EDUCATION | Artikel edukasi privasi data — kaya BLOG punya Netcraft |
-| 3://FAQ | Accordion FAQ tentang privasi & identitas digital |
+| 1://TOOLS | Grid card 5 fitur (SCAN, SCORE, CRACK, LEARN, MASK) — link ke masing-masing page |
+| 2://FAKTA | Infografis statistik privasi (8 fakta) |
+| 3://EDUCATION | Artikel edukasi privasi data — kaya BLOG punya Netcraft |
+| 4://FAQ | Accordion FAQ tentang privasi & identitas digital |
 | Footer | Nav links, sosial media, credits |
 
 ### Format Halaman Fitur
 Masing-masing halaman fitur pake format header section number (1://BREACH, 2://PRIVACY, dst) — konsisten dengan Netcraft style.
 
-## Fitur Inti
-1. **Breach Checker** — Cek apakah email/data pribadi pernah bocor
-2. **Privacy Score** — Skor privasi digital berdasarkan kebiasaan online
-3. **Password Generator** — Generate password aman
-4. **UU PDP Hub** — Informasi & panduan UU Perlindungan Data Pribadi + artikel
-5. **Dummy Data Generator** — Generate data palsu untuk proteksi privasi
+## Fitur Inti — Detail
+
+### 1. Breach Checker — `1://SCAN`
+**Cek apakah email atau data pribadi pernah bocor.**
+
+- **Input**: Email atau username
+- **Proses**: Validasi format → cari di mock database breach (simulasi, ga pake API eksternal beneran)
+- **Output**:
+  - ✅ **Aman** — tidak ditemukan kebocoran
+  - ⚠️ **Bocor** — detail: sumber kebocoran, tahun, jenis data yang bocor (password, no HP, alamat, dll), saran tindakan
+  - ❌ **Error** — format email tidak valid
+- **Mock Data**: 10-15 dataset breach palsu (nama situs, tahun, data exposed) biar realistis
+- **Nilai Edukasi**: User sadar pentingnya ganti password rutin + beda password tiap akun
+
+### 2. Privacy Score — `2://SCORE`
+**Ukur seberapa aman kebiasaan digitalmu.**
+
+- **Input**: Jawaban kuis/checklist (10-15 pertanyaan)
+- **Pertanyaan mencakup**:
+  - Apakah pakai password berbeda tiap akun?
+  - Apakah 2FA aktif?
+  - Apakah sering klik link sembarangan?
+  - Apakah pernah share data sensitif di publik?
+  - Apakah update software rutin?
+  - dll
+- **Proses**: Hitung skor berdasarkan jawaban → mapping ke kategori
+- **Output**:
+  - 📉 **Rendah (0-40)** — bahaya! tampilin daftar perbaikan prioritas
+  - 📊 **Sedang (41-70)** — lumayan, tapi masih bisa ditingkatkan
+  - 📈 **Tinggi (71-100)** — bagus! tips maintain
+- **Nilai Edukasi**: User tau titik lemah kebiasaan digital mereka
+
+### 3. Password Generator — `3://CRACK`
+**Buat password super kuat anti-crack.**
+
+- **Input/Opsi**:
+  - Panjang password (8-64 karakter)
+  - Include: huruf besar, huruf kecil, angka, simbol
+  - Exclude: ambiguous chars (il1Lo0O)
+  - Jumlah password yang digenerate (1-10)
+- **Proses**: Generate random berdasarkan opsi → hitung kekuatan
+- **Output**:
+  - 🔑 Password result (bisa copy)
+  - 📊 Strength indicator (weak/fair/strong/very strong)
+  - ⏱ Estimasi waktu crack (detik/tahun/abad)
+- **Nilai Edukasi**: User paham bedanya password "kuat" vs "lemah"
+
+### 4. UU PDP Hub — `4://LEARN`
+**Pahami hakmu atas data pribadi — bahasa manusia, bukan pengacara.**
+
+- **Konten**: Artikel pendek yang menjelaskan pasal-pasal UU PDP relevan
+- **Kategori**:
+  - Hak Subjek Data (akses, hapus, portabilitas)
+  - Kewajiban Pengendali Data
+  - Sanksi & Denda
+  - Contoh kasus sehari-hari
+- **Fitur**: Cari artikel, filter kategori
+- **Output**: Artikel lengkap dengan highlight poin penting
+- **Nilai Edukasi**: User tau hak hukum mereka atas data pribadi
+
+### 5. Dummy Data Generator — `5://MASK`
+**Lindungi identitas aslimu — pakai data palsu buat daftar di situs abal-abal.**
+
+- **Input/Opsi**:
+  - Pilih fields: Nama, Email, No. HP, Alamat, Tanggal Lahir, Pekerjaan, Perusahaan, dll
+  - Lokal: 🇮🇩 Indonesia (nama Indo, alamat jalan Indo, kode pos, kota/kabupaten)
+  - Jumlah: 1-20 data sekaligus
+- **Proses**: Generate data random realistis berdasarkan fields + lokal
+- **Output**:
+  - 👤 Data dalam tabel/kartu
+  - 📋 Copy per field atau per baris
+  - ⬇️ Download JSON atau CSV
+- **Nilai Edukasi**: User tau alternatif aman saat diminta data di tempat ga jelas
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router, monolith — API Routes built-in)
@@ -132,11 +200,12 @@ src/
 ## Priority Order
 1. **Homepage section TOOLS** (grid card 5 fitur) + link ke masing-masing page
 2. **Masing-masing halaman fitur** (breach-checker, privacy-score, password, uu-pdp, dummy-data) — konten dulu fungsional
-3. **Homepage section EDUCATION & FAQ**
-4. **Navbar fixed** setelah scroll hero
-5. **Footer**
-6. Refine animasi & interaksi
-7. Testing & optimasi
+3. **Homepage section FAKTA** (8 infografis statistik privasi)
+4. **Homepage section EDUCATION & FAQ**
+5. **Navbar fixed** setelah scroll hero
+6. **Footer**
+7. Refine animasi & interaksi
+8. Testing & optimasi
 
 ---
 *Dibuat untuk FTI FEST 2026 — Web Development Competition*

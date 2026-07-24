@@ -6,14 +6,31 @@ import { useState } from "react";
 
 const LINE = "border-cream/25";
 
-export function Navbar() {
+export function Navbar({ headlineVisible }: { headlineVisible?: boolean }) {
   const [langOpen, setLangOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#1A3CDB] text-cream">
       <div className="hidden lg:grid grid-cols-[2.6%_30%_35%_29.05%_1fr] w-full min-w-full border-b-2 border-cream/25">
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N2</div>
+        <div className={`border-r-2 ${LINE} flex items-center justify-start pl-6 md:pl-8 font-display font-bold tracking-widest cq-hero-nav relative`}>
+          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N2</span>
+          <AnimatePresence>
+            {headlineVisible && (
+              <motion.span
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="flex items-center text-[1.5em]"
+              >
+                Netchi&nbsp;
+                <span className="font-pixel mt-[0.10em] text-[0.80em]" style={{ textRendering: "optimizeSpeed" }}>S</span>
+                entinel
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N3</div>
         <div className={`border-r-2 ${LINE} pl-6 md:pl-8 flex items-center justify-end container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N4</span>
