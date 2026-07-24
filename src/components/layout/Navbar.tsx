@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const LINE = "border-cream/25";
 
-export function Navbar({ headlineVisible }: { headlineVisible?: boolean }) {
+export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
   const [langOpen, setLangOpen] = useState(false);
 
   return (
@@ -32,8 +32,26 @@ export function Navbar({ headlineVisible }: { headlineVisible?: boolean }) {
           </AnimatePresence>
         </div>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N3</div>
-        <div className={`border-r-2 ${LINE} pl-6 md:pl-8 flex items-center justify-end container-cell relative`}>
+        <div className={`border-r-2 ${LINE} flex items-center justify-end container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N4</span>
+          <AnimatePresence>
+            {buttonVisible && (
+              <motion.span
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -6 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="mr-auto"
+              >
+                <Link
+                  href="/breach"
+                  className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[clamp(0.45rem,2.5cqw,0.75rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
+                >
+                  MULAI SEKARANG
+                </Link>
+              </motion.span>
+            )}
+          </AnimatePresence>
           <Link href="#" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
             Menu
           </Link>

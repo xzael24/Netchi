@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const LINE = "border-cream/25";
 
-export function Hero({ headlineRef }: { headlineRef?: React.RefObject<HTMLDivElement> }) {
+export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject<HTMLDivElement>; buttonRef?: React.RefObject<HTMLDivElement> }) {
   const arrowControls = useAnimation();
   const [langOpen, setLangOpen] = useState(false);
 
@@ -164,7 +164,7 @@ export function Hero({ headlineRef }: { headlineRef?: React.RefObject<HTMLDivEle
       </div>
       <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
-        <div className="flex justify-end border-b-2 border-cream/25">
+        <div className="flex justify-end border-b-2 border-cream/25" ref={buttonRef}>
           <Link
             href="/breach"
             className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-4 md:px-5 py-2.5 md:py-3 hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors font-bold cq-hero-cta"

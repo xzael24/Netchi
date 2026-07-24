@@ -10,10 +10,13 @@ export default function Home() {
   const headlineRef = useRef<HTMLDivElement>(null);
   const headlineInView = useInView(headlineRef, { once: false });
 
+  const btnRef = useRef<HTMLDivElement>(null);
+  const btnInView = useInView(btnRef, { once: false });
+
   return (
     <>
-      <Navbar headlineVisible={!headlineInView} />
-      <Hero headlineRef={headlineRef} />
+      <Navbar headlineVisible={!headlineInView} buttonVisible={!btnInView} />
+      <Hero headlineRef={headlineRef} buttonRef={btnRef} />
       <Section2 />
     </>
   );

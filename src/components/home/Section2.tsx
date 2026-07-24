@@ -1,6 +1,189 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
 const LINE = "border-[#1A3CDB]";
+
+function AnimatedFact() {
+  const [phase, setPhase] = useState(0);
+  // 0: sweeping up, 1: at top (text1), 2: sweeping down, 3: at bottom (text2)
+
+  useEffect(() => {
+    const t = (delay: number) => new Promise((r) => setTimeout(r, delay));
+
+    const loop = async () => {
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        setPhase(0); await t(1200);
+        setPhase(1); await t(1500);
+        setPhase(2); await t(1200);
+        setPhase(3); await t(1500);
+      }
+    };
+    const c = loop();
+    return () => { c.then(() => {}); };
+  }, []);
+
+  const isSweeping = phase === 0 || phase === 2;
+  const showFirst = phase === 0 || phase === 1;
+
+  return (
+    <div className="flex flex-col items-center justify-center w-full h-full p-2 relative overflow-hidden">
+      <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono z-10">R4C3</span>
+
+      {/* Wiper line */}
+      <motion.div
+        className="absolute left-0 w-full h-[2px] bg-[#1A3CDB] z-20"
+        animate={{
+          top: phase === 0 ? ["100%", "-5%"] : phase === 2 ? ["-5%", "105%"] : phase === 1 ? "-5%" : "105%",
+        }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      {/* Text */}
+      <AnimatePresence mode="popLayout">
+        {showFirst ? (
+          <motion.span
+            key="phish"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            exit={{ y: 200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+          >
+            1 dari 4 orang
+          </motion.span>
+        ) : (
+          <motion.span
+            key="bocor"
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            exit={{ y: -200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+          >
+            1,2 MILIAR
+          </motion.span>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence mode="popLayout">
+        {showFirst ? (
+          <motion.span
+            key="phish-sub"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            exit={{ y: 200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+          >
+            pernah klik link phising
+          </motion.span>
+        ) : (
+          <motion.span
+            key="bocor-sub"
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            exit={{ y: -200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+          >
+            akun bocor dalam 5 tahun
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function AnimatedDash({ label }: { label: string }) {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const t = (delay: number) => new Promise((r) => setTimeout(r, delay));
+    const loop = async () => {
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        setPhase(0); await t(1200);
+        setPhase(1); await t(1500);
+        setPhase(2); await t(1200);
+        setPhase(3); await t(1500);
+      }
+    };
+    const c = loop();
+    return () => { c.then(() => {}); };
+  }, []);
+
+  const isSweeping = phase === 0 || phase === 2;
+  const showFirst = phase === 0 || phase === 1;
+
+  return (
+    <div className="flex flex-col items-center justify-center w-full h-full p-2 relative overflow-hidden">
+      <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono z-10">{label}</span>
+
+      <motion.div
+        className="absolute left-0 w-full h-[2px] bg-[#1A3CDB] z-20"
+        animate={{
+          top: phase === 0 ? ["100%", "-5%"] : phase === 2 ? ["-5%", "105%"] : phase === 1 ? "-5%" : "105%",
+        }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      <AnimatePresence mode="popLayout">
+        {showFirst ? (
+          <motion.span
+            key="a"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            exit={{ y: 200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+          >
+            -
+          </motion.span>
+        ) : (
+          <motion.span
+            key="b"
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            exit={{ y: -200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+          >
+            -
+          </motion.span>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence mode="popLayout">
+        {showFirst ? (
+          <motion.span
+            key="a-sub"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            exit={{ y: 200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+          >
+            -
+          </motion.span>
+        ) : (
+          <motion.span
+            key="b-sub"
+            initial={{ y: -200 }}
+            animate={{ y: 0 }}
+            exit={{ y: -200 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+          >
+            -
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Section2() {
   return (
@@ -75,17 +258,9 @@ export function Section2() {
                 </h2>
               </div>
             ) : i === 1 ? (
-              <div className="flex flex-col items-center justify-center w-full h-full p-2 relative">
-                <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R4C3</span>
-                <span className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em]">
-                  1,2 MILIAR
-                </span>
-                <span className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em]">
-                  akun bocor dalam 5 tahun
-                </span>
-              </div>
+              <AnimatedFact />
             ) : (
-              `R4C${i + 2}`
+              <AnimatedDash label={`R4C${i + 2}`} />
             )}
           </div>
         ))}
