@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - button "Language" [ref=e4]
+      - link "Menu" [ref=e8] [cursor=pointer]:
+        - /url: "#"
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button "Language" [ref=e12]
+      - link "Menu" [ref=e16] [cursor=pointer]:
+        - /url: "#"
+    - heading "Netchi S entinel" [level=1] [ref=e18]:
+      - text: Netchi
+      - generic [ref=e19]:
+        - generic [ref=e20]: S
+        - generic [ref=e21]: entinel
+    - paragraph [ref=e23]: Privasi Data & Proteksi Identitas Digital yang Melawan Kompleksitas
+    - paragraph [ref=e25]: Data pribadimu adalah aset berharga, namun sering kali rentan. Netchi hadir membantumu memahami, memeriksa, dan melindungi identitas digital dari ancaman kebocoran data.
+    - generic [ref=e26]:
+      - link "MULAI SEKARANG" [ref=e27] [cursor=pointer]:
+        - /url: /breach
+      - link "Jelajahi ↓" [ref=e29] [cursor=pointer]:
+        - /url: /privacy-score
+        - text: Jelajahi
+        - generic [ref=e30]: ↓

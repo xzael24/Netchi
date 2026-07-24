@@ -11,7 +11,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
   const [langOpen, setLangOpen] = useState(false);
 
   const desktop = (
-    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
+    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_minmax(27vh,auto)_minmax(22vh,auto)_minmax(18vh,auto)_minmax(29vh,auto)] w-full min-w-full min-h-dvh">
       {/* ── ROW 1: NAV (5 cells) ── */}
       <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
       <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
@@ -62,13 +62,13 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
 
       {/* ── ROW 2: HEADLINE (cols 2-3 span, garis 2 hidden) ── */}
       <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
-      <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch container-cell pl-6 md:pl-10 relative`} ref={headlineRef}>
+      <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch container-cell relative`} ref={headlineRef}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center cq-hero-text w-full"
+          className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center justify-start ps-[33px] cq-hero-text w-full"
         >
           Netchi&nbsp;
           <span className="flex items-center">
@@ -172,7 +172,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             MULAI SEKARANG
           </Link>
         </div>
-        <div className="flex flex-col justify-start pl-1 pr-4 md:pl-2 md:pr-6 pb-5 pt-60 relative">
+        <div className="flex flex-col justify-start pl-1 pr-4 md:pl-2 md:pr-6 pb-5 pt-8 md:pt-60 relative">
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-2</span>
           <div
             onMouseEnter={() =>
@@ -354,7 +354,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
   );
 
   return (
-    <section className="bg-white w-full min-w-full">
+    <section className="bg-white w-screen min-w-full">
       {desktop}
       {mobile}
     </section>

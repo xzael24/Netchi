@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="id"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground w-screen overflow-x-hidden">
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

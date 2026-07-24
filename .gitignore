@@ -47,4 +47,5 @@ next-env.d.ts
 AGENTS.md
 docs/agents/
 .agents/
-.gitignore
+opencode.jsonc
+opencode.json

@@ -97,7 +97,7 @@ function AnimatedFact() {
   );
 }
 
-function AnimatedDash({ label }: { label: string }) {
+function AnimatedDash({ label, main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" }: { label: string; main1?: string; main2?: string; sub1?: string; sub2?: string }) {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
@@ -132,52 +132,52 @@ function AnimatedDash({ label }: { label: string }) {
 
       <AnimatePresence mode="popLayout">
         {showFirst ? (
-          <motion.span
-            key="a"
-            initial={{ y: 200 }}
-            animate={{ y: 0 }}
-            exit={{ y: 200 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
-          >
-            -
-          </motion.span>
-        ) : (
-          <motion.span
-            key="b"
-            initial={{ y: -200 }}
-            animate={{ y: 0 }}
-            exit={{ y: -200 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
-          >
-            -
-          </motion.span>
-        )}
-      </AnimatePresence>
+<motion.span
+              key="a"
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              exit={{ y: 200 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+            >
+              {main1}
+            </motion.span>
+          ) : (
+            <motion.span
+              key="b"
+              initial={{ y: -200 }}
+              animate={{ y: 0 }}
+              exit={{ y: -200 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-black text-[#1A3CDB] leading-[0.85] text-[clamp(2rem,10cqw,3.5rem)] tracking-[-0.04em] text-center w-full"
+            >
+              {main2}
+            </motion.span>
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence mode="popLayout">
-        {showFirst ? (
-          <motion.span
-            key="a-sub"
-            initial={{ y: 200 }}
-            animate={{ y: 0 }}
-            exit={{ y: 200 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
-          >
-            -
-          </motion.span>
-        ) : (
-          <motion.span
-            key="b-sub"
-            initial={{ y: -200 }}
-            animate={{ y: 0 }}
-            exit={{ y: -200 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
-          >
-            -
+        <AnimatePresence mode="popLayout">
+          {showFirst ? (
+            <motion.span
+              key="a-sub"
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              exit={{ y: 200 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+            >
+              {sub1}
+            </motion.span>
+          ) : (
+            <motion.span
+              key="b-sub"
+              initial={{ y: -200 }}
+              animate={{ y: 0 }}
+              exit={{ y: -200 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-bold text-[#1A3CDB]/80 leading-tight text-[clamp(0.55rem,2.5cqw,0.85rem)] uppercase tracking-[0.1em] text-center w-full"
+            >
+              {sub2}
           </motion.span>
         )}
       </AnimatePresence>
@@ -187,7 +187,7 @@ function AnimatedDash({ label }: { label: string }) {
 
 export function Section2() {
   return (
-    <section className="bg-white w-full min-w-full">
+    <section className="bg-white w-screen min-w-full">
       {/* Row 1 - 4 kolom */}
       <div className={`hidden lg:grid grid-cols-[2.6%_65%_29.05%_1fr] grid-rows-[28vh] w-full min-w-full border-b-2 ${LINE}`}>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
@@ -224,7 +224,7 @@ export function Section2() {
           { label: "4://LEARN", title: "Pahami UU\nPDP", desc: "Kenali hak-hakmu\natas data pribadi" },
           { label: "5://MASK", title: "Lindungi Identitas\nAsli", desc: "Pakai data palsu buat daftar\ndi tempat abal-abal" },
         ].map((item, i) => (
-          <div key={i} className={`border-r-2 ${LINE} grid grid-rows-[0.08fr_1fr]`}>
+          <div key={i} className={`border-r-2 ${LINE} grid grid-rows-[0.08fr_1fr] container-cell`}>
             <div className={`border-b-2 ${LINE} flex items-center justify-start p-1`}>
               <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] text-[clamp(0.5rem,10cqw,0.75rem)]">{item.label}</span>
               <span className="ml-2 text-[8px] text-[#1A3CDB]/40 font-mono">R2C{i+2}-1</span>
@@ -249,7 +249,7 @@ export function Section2() {
       <div className={`hidden lg:grid grid-cols-[2.6%_repeat(5,18.81%)_1fr] grid-rows-[15vh] w-full min-w-full border-b-2 ${LINE}`}>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R4C1</div>
         {[...Array(5)].map((_, i) => (
-          <div key={i} className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>
+          <div key={i} className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono container-cell`}>
             {i === 0 ? (
               <div className="flex items-end justify-start w-full h-full relative">
                 <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R4C2</span>
@@ -259,6 +259,12 @@ export function Section2() {
               </div>
             ) : i === 1 ? (
               <AnimatedFact />
+            ) : i === 2 ? (
+              <AnimatedDash label={`R4C${i + 2}`} main1="87%" sub1="pakai password SAMA" main2="70%" sub2="diretas karena 2FA ga aktif" />
+            ) : i === 3 ? (
+              <AnimatedDash label={`R4C${i + 2}`} main1="Password 8 karakter" sub1="bisa dicrack kurang dari 1 jam" main2="&quot;123456&quot;" sub2="masih jadi password paling umum" />
+            ) : i === 4 ? (
+              <AnimatedDash label={`R4C${i + 2}`} main1="91%" sub1="setujui syarat &amp; ketentuan tanpa baca" main2="Rp 500/orang" sub2="Data pribadimu dijual di dark web" />
             ) : (
               <AnimatedDash label={`R4C${i + 2}`} />
             )}

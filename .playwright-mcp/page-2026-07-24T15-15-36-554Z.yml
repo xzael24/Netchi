@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: N1
+      - generic [ref=e5]:
+        - generic [ref=e6]: N2
+        - generic [ref=e7]:
+          - text: Netchi
+          - generic [ref=e8]: S
+          - text: entinel
+      - generic [ref=e9]: N3
+      - generic [ref=e10]:
+        - generic [ref=e11]: N4
+        - link "MULAI SEKARANG" [ref=e13] [cursor=pointer]:
+          - /url: /breach
+        - link "Menu" [ref=e14] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e15]:
+        - generic [ref=e16]: N5
+        - button "Language" [ref=e17]
+  - generic [ref=e22]:
+    - generic [ref=e23]: R1C1
+    - generic [ref=e24]: R1C2
+    - generic [ref=e25]: R1C3
+    - generic [ref=e26]:
+      - generic [ref=e27]: R1C4
+      - link "Menu" [ref=e28] [cursor=pointer]:
+        - /url: "#"
+    - generic [ref=e29]:
+      - generic [ref=e30]: R1C5
+      - button "Language" [ref=e31]
+    - generic [ref=e35]: R2C1
+    - generic [ref=e36]:
+      - generic [ref=e37]: R2C2
+      - heading "Netchi S entinel" [level=1] [ref=e38]:
+        - text: Netchi
+        - generic [ref=e39]:
+          - generic [ref=e40]: S
+          - generic [ref=e41]: entinel
+    - generic [ref=e42]: R2C3
+    - generic [ref=e43]: R3C1
+    - generic [ref=e44]:
+      - generic [ref=e45]: R3C2
+      - paragraph [ref=e46]: Privasi Data & Proteksi Identitas Digital yang Melawan Kompleksitas
+    - generic [ref=e47]: R3C4
+    - generic [ref=e48]:
+      - generic [ref=e49]: R3C5
+      - generic [ref=e50]: 0://HERO
+    - generic [ref=e51]: R4C1
+    - generic [ref=e52]: R4C2
+    - generic [ref=e53]:
+      - generic [ref=e54]: R4C3
+      - paragraph [ref=e55]: Data pribadimu adalah aset berharga, namun sering kali rentan. Netchi hadir membantumu memahami, memeriksa, dan melindungi identitas digital dari ancaman kebocoran data.
+    - generic [ref=e56]: R4C4
+    - generic [ref=e57]: R4C5
+    - generic [ref=e58]: R5C1
+    - generic [ref=e59]: R5C2
+    - generic [ref=e70]:
+      - generic [ref=e71]: R5C4-1
+      - link "MULAI SEKARANG" [ref=e73] [cursor=pointer]:
+        - /url: /breach
+      - generic [ref=e74]:
+        - generic [ref=e75]: R5C4-2
+        - link "Jelajahi ↓" [ref=e77] [cursor=pointer]:
+          - /url: /privacy-score
+          - text: Jelajahi
+          - generic [ref=e78]: ↓
+    - generic [ref=e79]: R5C5
+  - generic [ref=e80]:
+    - generic [ref=e81]:
+      - generic [ref=e82]: R1C1
+      - heading "Yang Bisa Kamu Lakukan" [level=2] [ref=e84]: Yang Bisa KamuLakukan
+      - generic [ref=e85]:
+        - generic [ref=e86]: R1C3-1
+        - generic [ref=e87]: R1C3-2
+      - generic [ref=e88]:
+        - generic [ref=e89]: R1C4-1
+        - generic [ref=e90]:
+          - generic [ref=e91]: R1C4-2
+          - generic [ref=e92]: 1://TOOLS
+    - generic [ref=e93]:
+      - generic [ref=e94]: R2C1
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]: 1://SCAN
+          - generic [ref=e98]: R2C2-1
+        - generic [ref=e99]:
+          - generic [ref=e100]: Lacak Kebocoran Data
+          - generic [ref=e101]: Cek apakah email & datamu pernah bocor
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]: 2://SCORE
+          - generic [ref=e105]: R2C3-1
+        - generic [ref=e106]:
+          - generic [ref=e107]: Ukur Skor Privasi
+          - generic [ref=e108]: Evaluasi seberapa aman kebiasaan digitalmu
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - generic [ref=e111]: 3://CRACK
+          - generic [ref=e112]: R2C4-1
+        - generic [ref=e113]:
+          - generic [ref=e114]: Buat Password Kuat
+          - generic [ref=e115]: Generate password rumit anti-crack
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - generic [ref=e118]: 4://LEARN
+          - generic [ref=e119]: R2C5-1
+        - generic [ref=e120]:
+          - generic [ref=e121]: Pahami UU PDP
+          - generic [ref=e122]: Kenali hak-hakmu atas data pribadi
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - generic [ref=e125]: 5://MASK
+          - generic [ref=e126]: R2C6-1
+        - generic [ref=e127]:
+          - generic [ref=e128]: Lindungi Identitas Asli
+          - generic [ref=e129]: Pakai data palsu buat daftar di tempat abal-abal
+      - generic [ref=e130]: R2C7
+    - generic [ref=e131]:
+      - generic [ref=e132]: R3C1
+      - generic [ref=e133]: R3C2
+      - generic [ref=e134]: R3C3
+    - generic [ref=e135]:
+      - generic [ref=e136]: R4C1
+      - generic [ref=e138]:
+        - generic [ref=e139]: R4C2
+        - heading "Fakta Privasi" [level=2] [ref=e140]: FaktaPrivasi
+      - generic [ref=e142]:
+        - generic [ref=e143]: R4C3
+        - generic [ref=e145]: 1 dari 4 orang
+        - generic [ref=e146]: pernah klik link phising
+      - generic [ref=e148]:
+        - generic [ref=e149]: R4C4
+        - generic [ref=e151]: "-"
+        - generic [ref=e152]: "-"
+      - generic [ref=e154]:
+        - generic [ref=e155]: R4C5
+        - generic [ref=e157]: "-"
+        - generic [ref=e158]: "-"
+      - generic [ref=e160]:
+        - generic [ref=e161]: R4C6
+        - generic [ref=e163]: "-"
+        - generic [ref=e164]: "-"
+      - generic [ref=e165]: R4C7
+    - generic [ref=e166]:
+      - generic [ref=e167]: R5C1
+      - generic [ref=e168]: R5C2
+      - generic [ref=e169]: R5C3

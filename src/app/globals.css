@@ -16,6 +16,14 @@
   --font-pixel: var(--font-press-start);
 }
 
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -26,12 +34,10 @@
   }
 }
 
-/* Container-query wrapper: children can scale to the cell width */
 @utility container-cell {
   container-type: inline-size;
 }
 
-/* Fluid typography — scale based on container width (cqw) so text always fits its column */
 @container (min-width: 0px) {
   .cq-hero-text {
     font-size: clamp(3rem, 20cqw, 15rem);
@@ -78,4 +84,16 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+@media (max-height: 700px) {
+  .cq-hero-text { font-size: clamp(1.5rem, 12cqw, 8rem); }
+  .cq-hero-pixel { font-size: clamp(1rem, 10cqw, 6rem); }
+  .cq-hero-sub  { font-size: clamp(0.9rem, 4cqw, 2.5rem); }
+}
+
+@media (max-width: 1400px) {
+  .cq-hero-text { font-size: clamp(2rem, 15cqw, 10rem); }
+  .cq-hero-pixel { font-size: clamp(1.2rem, 13cqw, 8.5rem); }
+  .cq-hero-sub  { font-size: clamp(1rem, 5cqw, 3rem); }
 }
