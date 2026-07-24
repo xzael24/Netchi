@@ -49,3 +49,5 @@ docs/agents/
 .agents/
 opencode.jsonc
 opencode.json
+
+.playwright-mcp/

@@ -1,7 +1,0 @@
-[   39311ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://localhost:3000/_next/static/chunks/webpack.js?v=1784899406852:0
-[   41559ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/css/app/layout.css?v=1784899406852:0
-[   41774ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/main-app.js?v=1784899406852:0
-[   41775ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/app-pages-internals.js:0
-[   41778ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/app/layout.js:0
-[   41778ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/app/page.js:0
-[   44162ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/favicon.ico:0
