@@ -15,43 +15,47 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N1</div>
         <div className={`border-r-2 ${LINE} flex items-center justify-start pl-2 md:pl-4 font-display font-bold tracking-widest cq-hero-nav relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N2</span>
-          <AnimatePresence>
-            {headlineVisible && (
-              <motion.span
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="flex items-center text-[1.5em]"
-              >
-                Netchi&nbsp;
-                <span className="font-pixel mt-[0.10em] text-[0.80em]" style={{ textRendering: "optimizeSpeed" }}>S</span>
-                entinel
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <div className="overflow-hidden">
+            <AnimatePresence>
+              {headlineVisible && (
+                <motion.div
+                  initial={{ y: 20 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: -20 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex items-center text-[1.1em]"
+                >
+                  Netchi&nbsp;
+                  <span className="font-pixel mt-[0.10em] text-[0.80em]" style={{ textRendering: "optimizeSpeed" }}>S</span>
+                  entinel
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N3</div>
         <div className={`border-r-2 ${LINE} flex items-center justify-end container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N4</span>
-          <AnimatePresence>
-            {buttonVisible && (
-              <motion.span
-                initial={{ opacity: 0, x: -6 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -6 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="mr-auto"
-              >
+          <div className="overflow-hidden mr-auto">
+            <AnimatePresence>
+              {buttonVisible && (
+                <motion.div
+                  key="btn-start"
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -20, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
                 <Link
                   href="/breach"
-                  className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[clamp(0.45rem,2.5cqw,0.75rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
+                  className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 text-[clamp(0.5rem,3.5cqw,0.85rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
                 >
                   MULAI SEKARANG
                 </Link>
-              </motion.span>
-            )}
-          </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <Link href="#" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
             Menu
           </Link>

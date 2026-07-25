@@ -191,7 +191,7 @@ export function Section2() {
       {/* Row 1 - 4 kolom */}
       <div className={`hidden lg:grid grid-cols-[2.6%_65%_29.05%_1fr] grid-rows-[28vh] w-full min-w-full border-b-2 ${LINE}`}>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
-        <div className={`border-r-2 ${LINE} flex items-end justify-start p-6 md:p-8`}>
+        <div className={`border-r-2 ${LINE} flex items-end justify-start pt-6 md:pt-8 pl-1 md:pl-2 pr-6 md:pr-8`}>
           <h2 className="font-display font-bold text-[#1A3CDB] leading-[1] tracking-wide uppercase text-[3.5vw]">
             Yang Bisa Kamu<br />Lakukan
           </h2>
