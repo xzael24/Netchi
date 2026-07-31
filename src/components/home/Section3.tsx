@@ -1,199 +1,157 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const LINE = "border-cream/25";
 
+const ROW: Record<string, { top: string; height: string }> = {
+  r1: { top: "0vh", height: "4vh" },
+  r2: { top: "4vh", height: "7vh" },
+  r3: { top: "13vh", height: "6vh" },
+  r4: { top: "21vh", height: "18vh" },
+  r6: { top: "43vh", height: "6vh" },
+  r7: { top: "51vh", height: "18vh" },
+  r9: { top: "73vh", height: "6vh" },
+  r10: { top: "81vh", height: "18vh" },
+};
+
 export function Section3() {
-  const pinRef = useRef<HTMLDivElement>(null);
-  const r6Ref = useRef<HTMLDivElement>(null);
-  const r7Ref = useRef<HTMLDivElement>(null);
-  const r9Ref = useRef<HTMLDivElement>(null);
-  const r10Ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = pinRef.current;
-    if (!el) return;
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      pin: true,
-      start: "top top+=-80",
-      end: () => "+=" + Math.max(el.offsetHeight * 4, window.innerHeight),
-      pinSpacing: false,
-    });
-
-    return () => st.kill();
-  }, []);
-
-  useEffect(() => {
-    const el = r6Ref.current;
-    if (!el) return;
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      pin: true,
-      start: "top top+=202",
-      end: "+=1000",
-      pinSpacing: false,
-    });
-
-    return () => st.kill();
-  }, []);
-
-  useEffect(() => {
-    const el = r7Ref.current;
-    if (!el) return;
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      pin: true,
-      start: "top top+=284",
-      end: "+=1000",
-      pinSpacing: false,
-    });
-
-    return () => st.kill();
-  }, []);
-
-  useEffect(() => {
-    const el = r9Ref.current;
-    if (!el) return;
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      pin: true,
-      start: "top top+=284",
-      end: "+=1000",
-      pinSpacing: false,
-    });
-
-    return () => st.kill();
-  }, []);
-
-  useEffect(() => {
-    const el = r10Ref.current;
-    if (!el) return;
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      pin: true,
-      start: "top top+=366",
-      end: "+=1000",
-      pinSpacing: false,
-    });
-
-    return () => st.kill();
-  }, []);
-
   return (
     <section className="bg-white w-screen min-w-full">
-      <div className="bg-[#1A3CDB]">
-      <div className={`hidden lg:grid grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[0.5fr] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        {[
-          { id: "R1C1" },
-          { id: "R1C2" },
-          { id: "R1C3" },
-          { id: "R1C4" },
-        ].map((cell, i) => (
-          <div key={`r1-${i}`} className={`${i < 2 ? `border-r-2 ${LINE}` : i === 2 ? "border-r-2 border-r-[#1A3CDB]" : ""} ${i >= 2 ? "bg-white text-[#1A3CDB]/40" : "text-cream/30"} flex items-start justify-start p-1 text-[8px] font-mono`}>
-            {cell.id}
-          </div>
-        ))}
-      </div>
-      <div ref={pinRef} className="z-10">
-      <div className={`hidden lg:grid grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[4fr] min-h-[25vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        {[
-          { id: "R2C1" },
-          { id: "R2C2" },
-          { id: "R2C3" },
-].map((cell, i) => {
-          if (i === 1) return (
-            <div key={`r2-${i}`} className="col-span-2 border-r-2 border-cream/25 flex flex-col items-start justify-end pl-1 md:pl-2 relative">
-              <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
-              <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(2rem,5cqw,4rem)]">
-                Artikel Kami
-              </h2>
-            </div>
-          );
-          if (i === 2) return (
-            <div key={`r2-${i}`} className="flex items-end justify-start p-1 relative">
-              <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C3</span>
-              <span
-                className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap"
-                style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
-              >
-                2://EDU
-              </span>
-            </div>
-          );
-          return (
-            <div key={`r2-${i}`} className="border-r-2 border-cream/25 flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">
+      <div className="relative h-screen w-screen overflow-hidden bg-[#1A3CDB]">
+
+        <div data-row="r1" style={{ top: ROW.r1.top, height: ROW.r1.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          {[
+            { id: "R1C1" },
+            { id: "R1C2" },
+            { id: "R1C3" },
+            { id: "R1C4" },
+          ].map((cell, i) => (
+            <div key={`r1-${i}`} className={`${i < 2 ? `border-r-2 ${LINE}` : i === 2 ? "border-r-2 border-r-[#1A3CDB]" : ""} ${i >= 2 ? "bg-white text-[#1A3CDB]/40" : "text-cream/30"} flex items-start justify-start p-1 text-[8px] font-mono`}>
               {cell.id}
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
 
-      <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R3C3</div>
-      </div>
+        <div data-row="r2" style={{ top: ROW.r2.top, height: ROW.r2.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
+          <div className="col-span-2 border-r-2 border-cream/25 flex items-end justify-start pl-1 md:pl-2 relative">
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1.2rem,3.2cqw,2.4rem)]">
+              Artikel Kami
+            </h2>
+          </div>
+          <div className="flex items-end justify-start p-1 relative">
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C3</span>
+            <span
+              className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap"
+              style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
+            >
+              2://EDU
+            </span>
+          </div>
+        </div>
 
-      <div className={`hidden lg:grid grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C2</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C3</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C4</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R4C5</div>
-      </div>
-      </div>
+        <div data-row="r3" style={{ top: ROW.r3.top, height: ROW.r3.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_94.05%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
+          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-1 relative`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(0.7rem,1.9cqw,1.2rem)]">
+              1. 16 Miliar Password Bocor — 30 Database Jadi Target Malware
+            </h2>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R3C3</div>
+        </div>
 
-      <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[20vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R5C3</div>
-      </div>
+        <div data-row="r4" style={{ top: ROW.r4.top, height: ROW.r4.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Apa Yang Terjadi</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">16 miliar kredensial login bocor dari 30 database berbeda lewat malware infostealer. Ini kebocoran password terbesar dalam sejarah.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Kenapa Berbahaya</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Kombinasi email+password rawan dipakai credential stuffing ke akun lain. 1 password bocor = risiko di semua akunmu.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Yang Harus Dilakukan</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Jangan pakai password sama. Generate password unik tiap akun lewat 3://CRACK. Aktifkan 2FA di semua layanan.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R4C5</div>
+        </div>
 
-      <div ref={r6Ref} className={`hidden lg:grid z-20 relative grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R6C3</div>
-      </div>
+        <div data-row="r6" style={{ top: ROW.r6.top, height: ROW.r6.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_94.05%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C1</div>
+          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-1 relative`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(0.7rem,1.9cqw,1.2rem)]">
+              2. Prabowo Segera Tunjuk 'Wasit' Data Warga RI
+            </h2>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R6C3</div>
+        </div>
 
-      <div ref={r7Ref} className={`hidden lg:grid z-30 relative grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C2</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C3</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C4</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R7C5</div>
-      </div>
+        <div data-row="r7" style={{ top: ROW.r7.top, height: ROW.r7.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Apa Yang Terjadi</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Pemerintah merampungkan pembentukan Otoritas PDP via Perpres. Lembaga ini akan bekerja independen di luar Komdigi, lapor langsung ke Presiden.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Kenapa Penting</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Otoritas PDP bakal jadi 'wasit' data warga. Berwenang mengawasi, menyelidiki, dan menjatuhkan sanksi atas pelanggaran data pribadi.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Dampaknya</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Masyarakat bisa lapor pelanggaran data. Perusahaan wajib patuh atau kena sanksi administratif hingga pidana sesuai UU PDP.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R7C5</div>
+        </div>
 
-      <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[20vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R8C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R8C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R8C3</div>
-      </div>
+        <div data-row="r9" style={{ top: ROW.r9.top, height: ROW.r9.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_94.05%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C1</div>
+          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-1 relative`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R9C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(0.7rem,1.9cqw,1.2rem)]">
+              3. Ecommerce Ini Kena Denda Rp7,38 Triliun
+            </h2>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R9C3</div>
+        </div>
 
-      <div ref={r9Ref} className={`hidden lg:grid z-40 relative grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R9C3</div>
-      </div>
+        <div data-row="r10" style={{ top: ROW.r10.top, height: ROW.r10.height }}
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Apa Yang Terjadi</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Coupang, ecommerce terbesar Korea Selatan, kena denda Rp7,38 triliun atas kebocoran data 37,6 juta orang — lebih dari 70% populasi negara itu.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Skala Besar</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Denda terbesar dalam sejarah kebocoran data global. Mantan developer China masih simpan kunci autentikasi setelah keluar dari perusahaan.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.5rem,2cqw,0.8rem)]">Pelajaran</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.4rem,1.2cqw,0.65rem)] mt-1">Keamanan data bukan opsional. Sanksi berat menanti perusahaan lalai. kamu juga wajib aktif lindungi data pribadimu sendiri.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R10C5</div>
+        </div>
 
-      <div ref={r10Ref} className={`hidden lg:grid z-50 relative grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] w-full min-w-full bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C2</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C3</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C4</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R10C5</div>
       </div>
-    </div>
     </section>
   );
 }

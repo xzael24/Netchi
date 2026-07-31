@@ -2,6 +2,7 @@
 
 export function Section4() {
   return (
-    <section className="bg-[#1A3CDB] w-screen min-w-full min-h-[70vh]" />
+    <section className="bg-white h-full min-h-screen w-full">
+    </section>
   );
 }
