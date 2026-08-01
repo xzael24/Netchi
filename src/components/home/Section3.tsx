@@ -7,10 +7,10 @@ const ROW: Record<string, { top: string; height: string }> = {
   r2: { top: "4vh", height: "25vh" },
   r3: { top: "29vh", height: "15vh" },
   r4: { top: "44vh", height: "20vh" },
-  r6: { top: "34.2vh", height: "15vh" },
-  r7: { top: "49.5vh", height: "20vh" },
-  r9: { top: "49.5vh", height: "15vh" },
-  r10: { top: "65vh", height: "20vh" },
+  r6: { top: "44vh", height: "15vh" },
+  r7: { top: "59vh", height: "20vh" },
+  r9: { top: "59vh", height: "15vh" },
+  r10: { top: "74vh", height: "20vh" },
 };
 
 export function Section3() {
