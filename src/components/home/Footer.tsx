@@ -6,10 +6,11 @@ const LINE = "border-cream/25";
 
 const exploreLinks = [
   { label: "Beranda", href: "/" },
-  { label: "Layanan", href: "/privacy-score" },
-  { label: "Artikel", href: "/password" },
-  { label: "FAQ", href: "/uu-pdp" },
-  { label: "Kontak", href: "/contact" },
+  { label: "Cek Kebocoran", href: "/breach-checker" },
+  { label: "Skor Privasi", href: "/privacy-score" },
+  { label: "Password", href: "/password" },
+  { label: "UU PDP", href: "/uu-pdp" },
+  { label: "Dummy Data", href: "/dummy-data" },
 ];
 
 const ART: { w: string; c: string }[][] = [
@@ -78,7 +79,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col justify-center gap-2 p-5 font-mono text-[10px] text-cream/50 tracking-widest uppercase border-l-2 border-cream/25">
           <span>(c) 2026 Netchi</span>
-          <Link href="/privacy-policy" className="hover:text-cream/60 transition-colors">
+          <Link href="/uu-pdp" className="hover:text-cream/60 transition-colors">
             Privacy Policy
           </Link>
           <span>Website by Tim FTI FEST</span>

@@ -47,7 +47,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
                 <Link
-                  href="/breach"
+                  href="/breach-checker"
                   className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 text-[clamp(0.5rem,3.5cqw,0.85rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
                 >
                   MULAI SEKARANG

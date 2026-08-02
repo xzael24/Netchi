@@ -166,7 +166,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
         <div className="flex justify-end border-b-2 border-cream/25" ref={buttonRef}>
           <Link
-            href="/breach"
+            href="/breach-checker"
             className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-4 md:px-5 py-2.5 md:py-3 hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors font-bold cq-hero-cta"
           >
             MULAI SEKARANG
@@ -291,7 +291,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
       {/* CTA */}
       <div className={`flex flex-col border-b-2 ${LINE}`}>
         <Link
-          href="/breach"
+          href="/breach-checker"
           className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-5 py-4 hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors font-bold text-center text-sm sm:text-base"
         >
           MULAI SEKARANG
