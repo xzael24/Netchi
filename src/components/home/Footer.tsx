@@ -75,7 +75,7 @@ export function Footer() {
       <div className="flex flex-1 items-center justify-center overflow-hidden px-2 py-4 md:py-6">
         <span className="font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)]">
           Netchi&nbsp;
-          <span className="font-pixel mt-[0.12em] text-[clamp(1.4rem,7.5vw,11rem)]">S</span>
+          <span className="font-pixel mt-[0.15em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
           entinel
         </span>
       </div>
