@@ -116,7 +116,7 @@ export function Section5() {
   return (
     <section
       ref={ref}
-      className="relative z-20 bg-white text-[#1A3CDB] w-screen min-w-full -mt-[20vh]"
+      className="relative z-20 bg-white text-[#1A3CDB] w-screen min-w-full -mt-[20vh] border-t-2 border-[#1A3CDB]/25"
     >
       <div className="s5-rise">
       {/* Mobile: flex-col */}
