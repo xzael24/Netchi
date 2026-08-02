@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 const LINE = "border-cream/25";
 
 const ROW: Record<string, { top: string; height: string }> = {
@@ -14,6 +16,12 @@ const ROW: Record<string, { top: string; height: string }> = {
 };
 
 export function Section3() {
+  const [tip, setTip] = useState({ x: 0, y: 0, show: false });
+
+  const onTitleMove = (e: React.MouseEvent) =>
+    setTip({ x: e.clientX, y: e.clientY, show: true });
+  const onTitleLeave = () => setTip((t) => ({ ...t, show: false }));
+
   return (
     <section className="bg-white w-screen min-w-full">
       <div className="relative h-screen w-screen overflow-hidden bg-[#1A3CDB]">
@@ -54,7 +62,7 @@ export function Section3() {
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
           <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
-            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
               1. 16 Miliar Password Bocor — 30 Database Jadi Target Malware
             </h2>
           </div>
@@ -87,7 +95,7 @@ export function Section3() {
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C1</div>
           <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
-            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
               2. Prabowo Segera Tunjuk 'Wasit' Data Warga RI
             </h2>
           </div>
@@ -120,7 +128,7 @@ export function Section3() {
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C1</div>
           <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R9C2</span>
-            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
               3. Ecommerce Ini Kena Denda Rp7,38 Triliun
             </h2>
           </div>
@@ -149,6 +157,17 @@ export function Section3() {
         </div>
 
       </div>
+
+      {tip.show && (
+        <div
+          className="pointer-events-none fixed z-[100]"
+          style={{ left: tip.x + 14, top: tip.y + 14 }}
+        >
+          <span className="block bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[10px] font-bold whitespace-nowrap">
+            Lihat lebih lanjut
+          </span>
+        </div>
+      )}
     </section>
   );
 }
