@@ -31,6 +31,7 @@ export default function Home() {
       gsap.set(s4, { y: "100%" });
 
       const rows = gsap.utils.toArray<HTMLElement>("[data-row]");
+      const bars = gsap.utils.toArray<HTMLElement>("[data-curtain-bar]", parent);
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -46,7 +47,13 @@ export default function Home() {
         tl.fromTo(row, { y: "100vh" }, { y: 0, duration: 0.1 }, starts[i] ?? 0);
       });
 
-      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.32 }, 0.68);
+      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.17 }, 0.68);
+      tl.fromTo(
+        bars,
+        { scaleY: 1 },
+        { scaleY: 0, duration: 0.15, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top" },
+        0.85
+      );
     }, parent);
 
     return () => ctx.revert();
