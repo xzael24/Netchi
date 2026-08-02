@@ -8,6 +8,8 @@ import { Hero } from "@/components/home/Hero";
 import { Section2 } from "@/components/home/Section2";
 import { Section3 } from "@/components/home/Section3";
 import { Section4 } from "@/components/home/Section4";
+import { Section5 } from "@/components/home/Section5";
+import { Footer } from "@/components/home/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -78,6 +80,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Section5 />
+      <Footer />
     </>
   );
 }
