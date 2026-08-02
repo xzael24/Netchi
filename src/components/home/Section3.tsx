@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useMotionValue } from "framer-motion";
 
 const LINE = "border-cream/25";
 
@@ -16,11 +17,16 @@ const ROW: Record<string, { top: string; height: string }> = {
 };
 
 export function Section3() {
-  const [tip, setTip] = useState({ x: 0, y: 0, show: false });
+  const [show, setShow] = useState(false);
+  const tipX = useMotionValue(0);
+  const tipY = useMotionValue(0);
 
-  const onTitleMove = (e: React.MouseEvent) =>
-    setTip({ x: e.clientX, y: e.clientY, show: true });
-  const onTitleLeave = () => setTip((t) => ({ ...t, show: false }));
+  const onTitleMove = (e: React.MouseEvent) => {
+    tipX.set(e.clientX + 14);
+    tipY.set(e.clientY + 14);
+    if (!show) setShow(true);
+  };
+  const onTitleLeave = () => setShow(false);
 
   return (
     <section className="bg-white w-screen min-w-full">
@@ -158,15 +164,15 @@ export function Section3() {
 
       </div>
 
-      {tip.show && (
-        <div
-          className="pointer-events-none fixed z-[100]"
-          style={{ left: tip.x + 14, top: tip.y + 14 }}
+      {show && (
+        <motion.div
+          className="pointer-events-none fixed left-0 top-0 z-[100]"
+          style={{ x: tipX, y: tipY }}
         >
           <span className="block bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[10px] font-bold whitespace-nowrap">
             Lihat lebih lanjut
           </span>
-        </div>
+        </motion.div>
       )}
     </section>
   );
