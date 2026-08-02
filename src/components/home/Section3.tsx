@@ -3,14 +3,14 @@
 const LINE = "border-cream/25";
 
 const ROW: Record<string, { top: string; height: string }> = {
-  r1: { top: "0vh", height: "4vh" },
-  r2: { top: "4vh", height: "25vh" },
-  r3: { top: "29vh", height: "15vh" },
-  r4: { top: "44vh", height: "20vh" },
-  r6: { top: "44vh", height: "15vh" },
-  r7: { top: "59vh", height: "20vh" },
-  r9: { top: "59vh", height: "15vh" },
-  r10: { top: "74vh", height: "20vh" },
+  r1: { top: "4vh", height: "4vh" },
+  r2: { top: "8vh", height: "25vh" },
+  r3: { top: "33vh", height: "15vh" },
+  r4: { top: "48vh", height: "20vh" },
+  r6: { top: "48vh", height: "15vh" },
+  r7: { top: "63vh", height: "20vh" },
+  r9: { top: "63vh", height: "15vh" },
+  r10: { top: "78vh", height: "20vh" },
 };
 
 export function Section3() {
