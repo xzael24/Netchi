@@ -20,16 +20,13 @@ export function Section3() {
 
         <div data-row="r1" style={{ top: ROW.r1.top, height: ROW.r1.height }}
           className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[0.5fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-          {[
-            { id: "R1C1" },
-            { id: "R1C2" },
-            { id: "R1C3" },
-            { id: "R1C4" },
-          ].map((cell, i) => (
-            <div key={`r1-${i}`} className={`${i < 2 ? `border-r-2 ${LINE}` : i === 2 ? "border-r-2 border-r-[#1A3CDB]" : ""} ${i >= 2 ? "bg-white text-[#1A3CDB]/40" : "text-cream/30"} flex items-start justify-start p-1 text-[8px] font-mono`}>
-              {cell.id}
-            </div>
-          ))}
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
+          <div className="col-span-2 border-r-2 border-r-[#1A3CDB] bg-white text-[#1A3CDB]/40 flex items-start justify-start p-1 text-[8px] font-mono">
+            R1C2
+          </div>
+          <div className="bg-white text-[#1A3CDB]/40 flex items-start justify-start p-1 text-[8px] font-mono">
+            R1C3
+          </div>
         </div>
 
         <div data-row="r2" style={{ top: ROW.r2.top, height: ROW.r2.height }}
