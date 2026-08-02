@@ -42,7 +42,7 @@ export default function Home() {
           pin: sticky,
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
+          scrub: 0.5,
           anticipatePin: 1,
           pinSpacing: false,
         },
