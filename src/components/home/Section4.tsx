@@ -1,8 +1,28 @@
 "use client";
 
+import { useRef, useLayoutEffect } from "react";
+
 const BARS = 16;
 
 export function Section4() {
+  const curtainRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const el = curtainRef.current;
+    if (!el) return;
+    const setHeights = () => {
+      const total = window.innerHeight;
+      const h = Math.floor(total / BARS);
+      Array.from(el.children).forEach((c, i) => {
+        (c as HTMLElement).style.height =
+          i === BARS - 1 ? `${total - h * (BARS - 1)}px` : `${h}px`;
+      });
+    };
+    setHeights();
+    window.addEventListener("resize", setHeights);
+    return () => window.removeEventListener("resize", setHeights);
+  }, []);
+
   return (
     <section className="relative bg-white text-[#1A3CDB] w-full h-full overflow-hidden">
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center">
@@ -39,12 +59,12 @@ export function Section4() {
         </div>
       </div>
 
-      <div className="absolute inset-0 z-20 flex flex-col" aria-hidden>
+      <div ref={curtainRef} className="absolute inset-0 z-20 flex flex-col will-change-transform" aria-hidden>
         {Array.from({ length: BARS }).map((_, i) => (
           <div
             key={i}
             data-curtain-bar
-            className={`w-full origin-top ${i % 2 ? "bg-[#1530B8]" : "bg-[#1A3CDB]"}`}
+            className={`w-full origin-top will-change-transform backface-hidden ${i % 2 ? "bg-[#1530B8]" : "bg-[#1A3CDB]"}`}
             style={{ height: `${100 / BARS}%` }}
           />
         ))}

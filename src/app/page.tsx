@@ -28,6 +28,7 @@ export default function Home() {
     if (!parent || !s4) return;
 
     const ctx = gsap.context(() => {
+      gsap.ticker.lagSmoothing(0);
       gsap.set(s4, { y: "100%" });
 
       const rows = gsap.utils.toArray<HTMLElement>("[data-row]");
@@ -38,7 +39,7 @@ export default function Home() {
           trigger: parent,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1,
+          scrub: true,
         },
       });
 
@@ -51,7 +52,7 @@ export default function Home() {
       tl.fromTo(
         bars,
         { scaleY: 1 },
-        { scaleY: 0, duration: 0.15, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top" },
+        { scaleY: 0, duration: 0.15, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
         0.85
       );
     }, parent);
