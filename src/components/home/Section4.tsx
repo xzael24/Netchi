@@ -6,7 +6,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LINE = "border-cream/25";
+const BLUE = "bg-[#1A3CDB]";
+const LIGHT = "bg-[#1A3CDB]/25";
+const FAINT = "bg-[#1A3CDB]/10";
+
+const ART_TOP: { w: string; c: string }[][] = [
+  [{ w: "100%", c: BLUE }],
+  [{ w: "22%", c: LIGHT }, { w: "78%", c: BLUE }],
+  [{ w: "41%", c: BLUE }, { w: "14%", c: FAINT }, { w: "45%", c: LIGHT }],
+  [{ w: "18%", c: LIGHT }, { w: "50%", c: BLUE }, { w: "32%", c: FAINT }],
+  [{ w: "100%", c: BLUE }],
+  [{ w: "58%", c: FAINT }, { w: "42%", c: BLUE }],
+  [{ w: "33%", c: BLUE }, { w: "67%", c: LIGHT }],
+  [{ w: "12%", c: LIGHT }, { w: "64%", c: BLUE }, { w: "24%", c: LIGHT }],
+];
+
+const ART_BOTTOM: { w: string; c: string }[][] = [
+  [{ w: "30%", c: LIGHT }, { w: "70%", c: BLUE }],
+  [{ w: "52%", c: BLUE }, { w: "48%", c: FAINT }],
+  [{ w: "100%", c: BLUE }],
+  [{ w: "26%", c: LIGHT }, { w: "38%", c: FAINT }, { w: "36%", c: BLUE }],
+  [{ w: "15%", c: BLUE }, { w: "85%", c: LIGHT }],
+  [{ w: "100%", c: BLUE }],
+];
 
 export function Section4() {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,193 +36,123 @@ export function Section4() {
   useLayoutEffect(() => {
     if (!ref.current) return;
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".s4-card");
-      cards.forEach((card) => {
-        gsap.fromTo(card,
-          { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+      const st = ScrollTrigger.create({
+        trigger: ref.current,
+        start: "top 80%",
+        once: true,
       });
 
-      const cta = document.querySelector(".s4-cta");
-      if (cta) {
-        gsap.fromTo(cta,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.3,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cta,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
+      gsap.fromTo(
+        ".s4-line",
+        { yPercent: 110 },
+        {
+          yPercent: 0,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.12,
+          scrollTrigger: { trigger: ref.current, start: "top 70%", once: true },
+        }
+      );
+
+      gsap.fromTo(
+        ".s4-label, .s4-link, .s4-foot",
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          delay: 0.4,
+          scrollTrigger: { trigger: ref.current, start: "top 70%", once: true },
+        }
+      );
+
+      gsap.fromTo(
+        ".s4-bar",
+        { scaleX: 0 },
+        {
+          scaleX: 1,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.05,
+          scrollTrigger: { trigger: ref.current, start: "top 80%", once: true },
+        }
+      );
+
+      return () => st.kill();
     }, ref.current);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={ref} className="bg-[#1A3CDB] text-cream relative z-60 min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 py-20">
-      <div className="w-full max-w-7xl">
-        <div className="mb-16 text-center">
-          <span className="font-mono text-cream/40 text-xs tracking-widest uppercase">3://SOLUSI</span>
-          <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(2rem,5cqw,4rem)] mt-4">
-            Netchi Lindungi Identitas Digitalmu
-          </h2>
-          <p className="font-body text-cream/60 text-[clamp(1rem,2cqw,1.25rem)] mt-6 max-w-2xl mx-0">
-            3 artikel di atas buktiin: kebocoran data itu nyata, masif, dan mahal.
-            Netchi hadirin 3 tool utama biar kamu nggak jadi korban selanjutnya.
-          </p>
-        </div>
+    <section
+      ref={ref}
+      className="relative bg-white text-[#1A3CDB] w-full h-full overflow-hidden flex flex-col"
+    >
+      <div className="s4-label font-mono text-[#1A3CDB]/40 text-xs tracking-widest uppercase pt-6 px-6">
+        (4)//Kesimpulan
+      </div>
 
-        <div className="hidden lg:grid grid-cols-3 gap-6 mb-16">
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">2://CHECK</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Breach Monitor</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-[clamp(1.25rem,2.5cqw,1.75rem)] mb-3">
-              Cek Kebocoran Data
-            </h3>
-            <p className="font-body text-cream/60 text-[clamp(0.875rem,1.5cqw,1rem)] leading-relaxed mb-6">
-              Masukin email atau nomor HP, cek instan apakah data kamu bocor di 16 miliar+ record
-              dari 30+ database malware infostealer. Real-time, gratis, tanpa simpan query.
-            </p>
-            <a href="/breach" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Mulai Cek →
-            </a>
-          </article>
+      <div className="pointer-events-none absolute inset-x-0 top-14 flex flex-col gap-1 px-6 opacity-90">
+        {ART_TOP.map((row, ri) => (
+          <div key={`t${ri}`} className="flex gap-1 w-full">
+            {row.map((seg, si) => (
+              <div
+                key={`${ri}-${si}`}
+                className={`s4-bar h-2 md:h-2.5 origin-left ${seg.c}`}
+                style={{ width: seg.w }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
 
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">3://CRACK</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Password Vault</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-[clamp(1.25rem,2.5cqw,1.75rem)] mb-3">
-              Password Generator & Strength
-            </h3>
-            <p className="font-body text-cream/60 text-[clamp(0.875rem,1.5cqw,1rem)] leading-relaxed mb-6">
-              Generate password unik per akun (entropi tinggi, anti-dictionary). Test kekuatan
-              password lama — liat estimasi waktu crack dari brute-force sampai nation-state.
-            </p>
-            <a href="/password" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Generate Sekarang →
-            </a>
-          </article>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 px-6 pb-6 opacity-90">
+        {ART_BOTTOM.map((row, ri) => (
+          <div key={`b${ri}`} className="flex gap-1 w-full">
+            {row.map((seg, si) => (
+              <div
+                key={`${ri}-${si}`}
+                className={`s4-bar h-2 md:h-2.5 origin-left ${seg.c}`}
+                style={{ width: seg.w }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
 
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">1://SCAN</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Privacy Score</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-[clamp(1.25rem,2.5cqw,1.75rem)] mb-3">
-              Skor Privasi Digital
-            </h3>
-            <p className="font-body text-cream/60 text-[clamp(0.875rem,1.5cqw,1rem)] leading-relaxed mb-6">
-              Audit komprehensif: breach history, password reuse, 2FA status, data broker exposure,
-              app permissions. Dapat skor 0-100 + roadmap perbaikan prioritas tinggi → rendah.
-            </p>
-            <a href="/privacy-score" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Hitung Skor →
-            </a>
-          </article>
-        </div>
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center">
+        <p className="s4-label font-mono text-[#1A3CDB]/40 text-xs tracking-widest uppercase mb-8">
+          data yang bocor nggak bisa ditarik kembali
+        </p>
 
-        <div className="lg:hidden space-y-4 mb-16">
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">2://CHECK</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Breach Monitor</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-lg mb-3">Cek Kebocoran Data</h3>
-            <p className="font-body text-cream/60 text-base leading-relaxed mb-4">
-              Masukin email atau nomor HP, cek instan apakah data kamu bocor di 16 miliar+ record.
-            </p>
-            <a href="/breach" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Mulai Cek →
-            </a>
-          </article>
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">3://CRACK</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Password Vault</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-lg mb-3">Password Generator & Strength</h3>
-            <p className="font-body text-cream/60 text-base leading-relaxed mb-4">
-              Generate password unik per akun. Test kekuatan password lama — estimasi waktu crack.
-            </p>
-            <a href="/password" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Generate Sekarang →
-            </a>
-          </article>
-          <article className="s4-card group relative bg-white/5 border border-cream/10 rounded-2xl p-6 transition-all duration-300 hover:border-cream/30 hover:bg-white/10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-cream/40 text-xs">1://SCAN</span>
-              <div className="w-px h-6 bg-cream/20" />
-              <span className="font-mono text-cream/30 text-xs">Privacy Score</span>
-            </div>
-            <h3 className="font-display font-bold text-cream text-lg mb-3">Skor Privasi Digital</h3>
-            <p className="font-body text-cream/60 text-base leading-relaxed mb-4">
-              Audit komprehensif: breach history, password reuse, 2FA, data broker, app permissions.
-            </p>
-            <a href="/privacy-score" className="font-mono text-cream text-sm tracking-wider uppercase flex items-center gap-2 group-hover:gap-3 transition-gap">
-              Hitung Skor →
-            </a>
-          </article>
-        </div>
+        <h2 className="font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2rem,7cqw,5.5rem)] text-[#1A3CDB]">
+          <span className="block overflow-hidden py-1">
+            <span className="s4-line block">Yang belum bocor,</span>
+          </span>
+          <span className="block overflow-hidden py-1">
+            <span className="s4-line block">masih milikmu.</span>
+          </span>
+        </h2>
 
-        <div className="s4-cta text-center pt-8 border-t border-cream/10">
-          <p className="font-body text-cream/40 text-[clamp(0.875rem,1.5cqw,1rem)] mb-4">
-            Semua tool gratis, tidak menyimpan data input, open-source logic.
-          </p>
-          <a
-            href="/breach"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-cream text-[#1A3CDB] font-display font-bold text-[clamp(1rem,2cqw,1.25rem)] rounded-full hover:bg-cream/90 transition-colors"
-          >
-            MULAI SEKARANG
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-        </div>
+        <p className="s4-foot mt-8 max-w-md font-mono text-[#1A3CDB]/50 text-xs md:text-sm leading-relaxed">
+          Cek, perkuat, dan lindungi identitas digitalmu sekarang —
+          sebelum jadi statistik berikutnya.
+        </p>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          {[
-            { label: "0 Data Disimpan", desc: "Input tidak pernah ke server" },
-            { label: "Open Source Logic", desc: "Transparansi penuh" },
-            { label: "Real-time Check", desc: "Database terupdate harian" },
-            { label: "UU PDP Compliant", desc: "Sesuai regulasi Indonesia" },
-          ].map((item, i) => (
-            <div key={i} className="border-r border-cream/10 last:border-0 p-4">
-              <div className="font-display font-bold text-cream text-[clamp(0.875rem,1.5cqw,1rem)]">
-                {item.label}
-              </div>
-              <div className="font-mono text-cream/40 text-[clamp(0.625rem,1cqw,0.75rem)] mt-1">
-                {item.desc}
-              </div>
-            </div>
-          ))}
-        </div>
+        <a
+          href="/breach"
+          className="s4-link group mt-10 inline-flex items-center gap-3 px-8 py-4 bg-[#1A3CDB] text-white font-display font-bold text-[clamp(0.9rem,1.6cqw,1.1rem)] rounded-full hover:bg-[#1A3CDB]/90 transition-colors"
+        >
+          Mulai Lindungi Sekarang
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+
+      <div className="s4-foot font-mono text-[#1A3CDB]/40 text-xs tracking-widest uppercase pb-6 px-6 flex items-center justify-between">
+        <span>5://FINAL</span>
+        <span>Netchi Privacy Shield</span>
       </div>
     </section>
   );
