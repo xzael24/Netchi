@@ -1,6 +1,10 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const LINE = "border-[#1A3CDB]/25";
 
@@ -66,9 +70,35 @@ function AccordionItem({
 
 export function Section5() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const ref = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".s5-rise",
+        { y: "35vh" },
+        {
+          y: 0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+    }, ref.current);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="relative z-10 bg-[#f5f0d5] text-[#1A3CDB] w-screen min-w-full -mt-[15vh]">
+    <section
+      ref={ref}
+      className="relative z-20 bg-white text-[#1A3CDB] w-screen min-w-full -mt-[20vh]"
+    >
+      <div className="s5-rise">
       {/* Mobile: flex-col */}
       <div className="lg:hidden flex flex-col px-5 pt-20 pb-8">
         <div className="flex items-end justify-between mb-6">
@@ -118,6 +148,7 @@ export function Section5() {
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R2C3</div>
         </div>
+      </div>
       </div>
     </section>
   );
