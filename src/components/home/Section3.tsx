@@ -3,7 +3,7 @@
 const LINE = "border-cream/25";
 
 const ROW: Record<string, { top: string; height: string }> = {
-  r1: { top: "4vh", height: "2.5vh" },
+  r1: { top: "4vh", height: "clamp(18px, 2.5vh, 2.5vh)" },
   r2: { top: "6.5vh", height: "25vh" },
   r3: { top: "31.5vh", height: "15vh" },
   r4: { top: "46.5vh", height: "20vh" },
@@ -19,7 +19,7 @@ export function Section3() {
       <div className="relative h-screen w-screen overflow-hidden bg-[#1A3CDB]">
 
         <div data-row="r1" style={{ top: ROW.r1.top, height: ROW.r1.height }}
-          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          className={`hidden lg:grid absolute w-full overflow-hidden grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
           <div className={`border-r-2 ${LINE} flex items-start justify-start px-1 py-0.5 text-[8px] text-cream/30 font-mono`}>R1C1</div>
           <div className="col-span-2 border-r-2 border-r-[#1A3CDB] bg-white text-[#1A3CDB]/40 flex items-start justify-start px-1 py-0.5 text-[8px] font-mono">
             R1C2
