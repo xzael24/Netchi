@@ -22,7 +22,7 @@ export function Footer() {
           R1C1
         </div>
         <div className="flex items-center justify-between p-3 font-mono text-xs tracking-widest uppercase text-cream/40">
-          <span>LAST://FOOTER</span>
+          <span>5://FOOTER</span>
           <span className="hidden md:inline">© 2026</span>
         </div>
       </div>

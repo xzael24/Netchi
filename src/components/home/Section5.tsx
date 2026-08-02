@@ -127,7 +127,7 @@ export function Section5() {
             className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 whitespace-nowrap"
             style={{ writingMode: "vertical-rl", fontSize: "0.55rem" }}
           >
-            5://FAQ
+            4://FAQ
           </span>
         </div>
         {FAQS.map((qa, i) => (
@@ -141,7 +141,7 @@ export function Section5() {
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-end pl-2 md:pl-4 pb-2 relative container-cell`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C2</span>
-            <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 text-[clamp(0.4rem,2cqw,0.7rem)]">(5)//FAQ</span>
+            <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 text-[clamp(0.4rem,2cqw,0.7rem)]">4://FAQ</span>
             <h2 className="font-display font-bold text-[#1A3CDB] leading-[0.9] tracking-[-0.03em] text-[clamp(2.5rem,10cqw,5.5rem)]">
               FAQ
             </h2>
@@ -152,7 +152,7 @@ export function Section5() {
               className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] whitespace-nowrap"
               style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
             >
-              5://FAQ
+              4://FAQ
             </span>
           </div>
         </div>

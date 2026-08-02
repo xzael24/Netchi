@@ -27,7 +27,7 @@ export function Section4() {
     <section className="relative bg-white text-[#1A3CDB] w-full h-full overflow-hidden">
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-16 text-center">
         <span className="font-mono text-[#1A3CDB]/40 text-xs tracking-widest uppercase mb-8">
-          (2)//Kutipan
+          (3)//Kutipan
         </span>
 
         <blockquote className="max-w-4xl">
