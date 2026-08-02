@@ -60,9 +60,9 @@ export function Section3() {
         <div data-row="r3" style={{ top: ROW.r3.top, height: ROW.r3.height }}
           className={`hidden lg:grid absolute w-full grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
-          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
+          <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
-            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
               1. 16 Miliar Password Bocor — 30 Database Jadi Target Malware
             </h2>
           </div>
@@ -93,9 +93,9 @@ export function Section3() {
         <div data-row="r6" style={{ top: ROW.r6.top, height: ROW.r6.height }}
           className={`hidden lg:grid absolute w-full z-20 grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C1</div>
-          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
+          <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
-            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
               2. Prabowo Segera Tunjuk 'Wasit' Data Warga RI
             </h2>
           </div>
@@ -126,9 +126,9 @@ export function Section3() {
         <div data-row="r9" style={{ top: ROW.r9.top, height: ROW.r9.height }}
           className={`hidden lg:grid absolute w-full z-40 grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
           <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C1</div>
-          <div className={`border-r-2 ${LINE} flex items-end justify-start pl-1 pb-2 relative`}>
+          <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R9C2</span>
-            <h2 className="article-title font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)] cursor-pointer" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
               3. Ecommerce Ini Kena Denda Rp7,38 Triliun
             </h2>
           </div>
