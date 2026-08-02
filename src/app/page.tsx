@@ -20,12 +20,14 @@ export default function Home() {
   const btnInView = useInView(btnRef, { once: false });
 
   const pinRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const s4Ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const parent = pinRef.current;
+    const sticky = stickyRef.current;
     const s4 = s4Ref.current;
-    if (!parent || !s4) return;
+    if (!parent || !sticky || !s4) return;
 
     const ctx = gsap.context(() => {
       gsap.ticker.lagSmoothing(0);
@@ -37,9 +39,12 @@ export default function Home() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: parent,
+          pin: sticky,
           start: "top top",
           end: "bottom bottom",
           scrub: true,
+          anticipatePin: 1,
+          pinSpacing: false,
         },
       });
 
@@ -66,7 +71,7 @@ export default function Home() {
       <Hero headlineRef={headlineRef} buttonRef={btnRef} />
       <Section2 />
       <div ref={pinRef} className="relative h-[400vh]">
-        <div className="sticky top-0 h-screen overflow-hidden z-10">
+        <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
           <Section3 />
           <div ref={s4Ref} className="absolute inset-0 z-60">
             <Section4 />
