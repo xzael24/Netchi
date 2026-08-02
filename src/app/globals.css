@@ -97,3 +97,11 @@ html.lenis body {
   .cq-hero-pixel { font-size: clamp(1.2rem, 10.5cqw, 8.5rem); }
   .cq-hero-sub  { font-size: clamp(1rem, 5cqw, 3rem); }
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 22s linear infinite;
+}
