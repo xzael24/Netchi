@@ -3,14 +3,14 @@
 const LINE = "border-cream/25";
 
 const ROW: Record<string, { top: string; height: string }> = {
-  r1: { top: "4vh", height: "4vh" },
-  r2: { top: "8vh", height: "25vh" },
-  r3: { top: "33vh", height: "15vh" },
-  r4: { top: "48vh", height: "20vh" },
-  r6: { top: "48vh", height: "15vh" },
-  r7: { top: "63vh", height: "20vh" },
-  r9: { top: "63vh", height: "15vh" },
-  r10: { top: "78vh", height: "20vh" },
+  r1: { top: "4vh", height: "2.5vh" },
+  r2: { top: "6.5vh", height: "25vh" },
+  r3: { top: "31.5vh", height: "15vh" },
+  r4: { top: "46.5vh", height: "20vh" },
+  r6: { top: "46.5vh", height: "15vh" },
+  r7: { top: "61.5vh", height: "20vh" },
+  r9: { top: "61.5vh", height: "15vh" },
+  r10: { top: "76.5vh", height: "20vh" },
 };
 
 export function Section3() {
@@ -19,12 +19,12 @@ export function Section3() {
       <div className="relative h-screen w-screen overflow-hidden bg-[#1A3CDB]">
 
         <div data-row="r1" style={{ top: ROW.r1.top, height: ROW.r1.height }}
-          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[0.5fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
-          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
-          <div className="col-span-2 border-r-2 border-r-[#1A3CDB] bg-white text-[#1A3CDB]/40 flex items-start justify-start p-1 text-[8px] font-mono">
+          className={`hidden lg:grid absolute w-full grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start px-1 py-0.5 text-[8px] text-cream/30 font-mono`}>R1C1</div>
+          <div className="col-span-2 border-r-2 border-r-[#1A3CDB] bg-white text-[#1A3CDB]/40 flex items-start justify-start px-1 py-0.5 text-[8px] font-mono">
             R1C2
           </div>
-          <div className="bg-white text-[#1A3CDB]/40 flex items-start justify-start p-1 text-[8px] font-mono">
+          <div className="bg-white text-[#1A3CDB]/40 flex items-start justify-start px-1 py-0.5 text-[8px] font-mono">
             R1C3
           </div>
         </div>
