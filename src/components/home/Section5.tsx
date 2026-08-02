@@ -29,6 +29,26 @@ const FAQS = [
     answer:
       "Privacy score adalah skor yang mengukur seberapa aman kebiasaan digitalmu, dihitung dari hasil cek kebocoran, kekuatan password, dan praktik keamanan lainnya. Skor naik saat kamu memakai password unik, mengaktifkan 2FA, dan mengganti password akun yang pernah bocor.",
   },
+  {
+    question: "Apakah saya perlu membuat akun untuk memakai Netchi?",
+    answer:
+      "Tidak. Netchi dirancang tanpa sistem akun — semua cek, generator password, dan skor privasi berjalan langsung di perangkatmu. Kamu tidak perlu mendaftar, dan tidak ada profil data yang kami simpan di server.",
+  },
+  {
+    question: "Bagaimana cara kerja cek kebocoran data?",
+    answer:
+      "Email atau nomor yang kamu masukkan dicocokkan secara lokal terhadap database kebocoran yang diunduh dan terupdate berkala. Pencocokan dilakukan di perangkatmu, jadi query tidak pernah meninggalkan browser — data pribadimu tidak terkirim ke mana pun.",
+  },
+  {
+    question: "Mengapa 2FA penting dan bagaimana cara mengaktifkannya?",
+    answer:
+      "2FA (two-factor authentication) menambah lapisan keamanan kedua di luar password. Kalau passwordmu bocor, penyerang tetap tidak bisa masuk tanpa kode dari perangkatmu. Aktifkan 2FA lewat aplikasi authenticator (mis. Google Authenticator) di semua layanan penting.",
+  },
+  {
+    question: "Apakah Netchi bisa dipakai di semua perangkat?",
+    answer:
+      "Bisa. Netchi adalah web app yang berjalan di browser modern apa pun — desktop, laptop, tablet, maupun HP. Karena pemrosesan terjadi di perangkatmu, hasilnya konsisten di semua platform tanpa perlu instalasi aplikasi tambahan.",
+  },
 ];
 
 function AccordionItem({
