@@ -40,10 +40,10 @@ html::-webkit-scrollbar {
 
 @container (min-width: 0px) {
   .cq-hero-text {
-    font-size: clamp(3rem, 20cqw, 15rem);
+    font-size: clamp(2rem, 13cqw, 15rem);
   }
   .cq-hero-pixel {
-    font-size: clamp(1.5rem, 16cqw, 13rem);
+    font-size: clamp(1.2rem, 10.5cqw, 12rem);
   }
   .cq-hero-sub {
     font-size: clamp(1.25rem, 6cqw, 4rem);
@@ -93,7 +93,7 @@ html.lenis body {
 }
 
 @media (max-width: 1400px) {
-  .cq-hero-text { font-size: clamp(2rem, 15cqw, 10rem); }
-  .cq-hero-pixel { font-size: clamp(1.2rem, 13cqw, 8.5rem); }
+  .cq-hero-text { font-size: clamp(2rem, 13cqw, 10rem); }
+  .cq-hero-pixel { font-size: clamp(1.2rem, 10.5cqw, 8.5rem); }
   .cq-hero-sub  { font-size: clamp(1rem, 5cqw, 3rem); }
 }
