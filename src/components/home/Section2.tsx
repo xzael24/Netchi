@@ -13,7 +13,6 @@ function AnimatedFact() {
     const t = (delay: number) => new Promise((r) => setTimeout(r, delay));
 
     const loop = async () => {
-      // eslint-disable-next-line no-constant-condition
       while (true) {
         setPhase(0); await t(1200);
         setPhase(1); await t(1500);
@@ -25,7 +24,6 @@ function AnimatedFact() {
     return () => { c.then(() => {}); };
   }, []);
 
-  const isSweeping = phase === 0 || phase === 2;
   const showFirst = phase === 0 || phase === 1;
 
   return (
@@ -103,7 +101,6 @@ function AnimatedDash({ label, main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" 
   useEffect(() => {
     const t = (delay: number) => new Promise((r) => setTimeout(r, delay));
     const loop = async () => {
-      // eslint-disable-next-line no-constant-condition
       while (true) {
         setPhase(0); await t(1200);
         setPhase(1); await t(1500);
@@ -115,7 +112,6 @@ function AnimatedDash({ label, main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" 
     return () => { c.then(() => {}); };
   }, []);
 
-  const isSweeping = phase === 0 || phase === 2;
   const showFirst = phase === 0 || phase === 1;
 
   return (

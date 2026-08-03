@@ -1,0 +1,194 @@
+- generic [active] [ref=e1]:
+  - iframe [ref=e6]:
+    - generic [ref=f18e1]:
+      - link [ref=f18e3] [cursor=pointer]:
+        - /url: "https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjssLu5IwQA8e1pPsZxjJ7Ks9ZZPY81GoO6SXAdGn2qydwl7--6SP2NqomF5jNaicisF96it3HqteZQY5cMvboQUqFeyRv5C4eo65F6iiRUD4pqhjJe3hAvS09zx5DkU4vNYXmD2cAE8kFp3anjUSkQYldlW47bbT8QrPRE0pozhPfIrDcoN7ci1cKfEydcNvQyy8O0J6hY5bN22f9zC7zh-7DTw66FoG4SbzzcSPRhsUWVK0yuKsWwtBjtTbGhr-0o9Q-xWX5logZnjp4upNcYgNvENrGGYqy1ZdaJ4DFfq392Ba_ixtCu6IgbBgcTcgySz46CqwTthvnYqBA36u9Htgw3uBRmtQxbr-ygJXCOCKSrgB0yuBQvln72XPYy5whc59eq9Gkc2fxoScUhQfU2r5tVBnhe__mpSrykZ5iCE&sai=AMfl-YRbzQwFCjCedzPts2AA3w7p-cPBfU5V4UfBhpQw0P93_vgFicE49z2Hl-zVF0t9NhSvMQuU8ILcYOxP07Inxp4fmhX8SJWwbKWUWjZHhR7dOC4W6daoLGZPmJODBqCR-0PbrcA2_E0nl75yvYebcy3SV9tKOzYMHhfx81T1B8O1t14ZtzgHFDaJm42HVRRsMNhCRaZyZb68LWIm3OB9CYlcnCfpFYcPoXODRwDhXXtlGDu2jqb_UOZDHOqYsGT0HEKAcG0_kqYggoalCgBzQcSNxHg3QujN80kfILk17JYQZvrfQpDAUn8YkS-z3jyP3bLVM5vtriyQtNEhu30uJHdfk-c7D4IfG_vfaiJjM33VGMsfcFwXeg&sig=Cg0ArKJSzHfuYMIu4sPUEAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://ad.doubleclick.net/ddm/trackclk/N1024807.4590747CNBCINDONESIA/B36248720.452688560;dc_trk_aid=646430349;dc_trk_cid=260381521;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=;dc_tdv=1\n"
+        - img "cnbc" [ref=f18e4]
+      - iframe
+  - iframe [ref=e11]:
+    - link [ref=f13e3] [cursor=pointer]:
+      - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjstAoAnFuQBltHQ-_FbsYtdyV5aEg8w3TYvZ-nhebfprc4brwE22kmGnawlVABUYKx9hOVsK_NuuF6HYWrioX3gKQF9bItS64qZ8CRWBrukRsNWl2_AyRXUiQuYAAh9r7KEltaNyBGghurDby5YZ4qJevFP5l9U4OQEZOuWAR8ENv9XyiUq33mfaPhF9jdMp6vkH4mXo1qrKDWABMR5kkTXof_aPcdVcQjmE9XqTaDX9_WJYRdvffEDuJ5xqbLF0gVNLJGte1hNqNWJeIFHbNAC4F467Zo-MOuQP0hu_fKRU7tA1txqjLjUtzODlL0_CSExoc16P8D1eo9AaGNMCnJGa4G22nsX1VIfgnN1umAQqAF_vxp0Bo19pF0AifEoXazlpSvVQ0vx4Fp4kJ7h3n0M9ySHntL2MTZ7e&sai=AMfl-YQ45i70LUwuZuflza5K8tWcCm7p7c4NxhVZYcm-ZrNFOfhfjW9H2w8GmtvxWcp6mJUgHuCBgDrPBcFFDj0OvISbt8XhxW39VTBwEuqq9E_CCazxLQuIMemCtWJ4btp66ID8Qz_QliO7UbRLvwPJDQUtOvTl34SMcKk9h-YwfNgFSIYV9ecf_XbCMNip2U3Nev01O7Y7JQtua1lJSro6tZihhdWSxyBrhp3BgVRlB2CyZ72v0sVPCZJ4sleoS9prCennSMdtkpVGjuCmg_eUYnzWlMnwrNGZPE09QPnxIUeqK9pHD37gVy7xeY-riKALSgK-4JaxG1IvqPFbINwpTKQ2VxPSdCgatv0O84bobSXmRaPxklQCFg&sig=Cg0ArKJSzJBY3EZzLCLzEAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://forms.gle/SVg2haq5CbTwm4hG7
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - link [ref=e14] [cursor=pointer]:
+        - /url: https://www.cnbcindonesia.com/
+        - img "CNBC Indonesia" [ref=e15]
+      - navigation [ref=e16]:
+        - link "HOME" [ref=e17] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/
+        - link "MARKET" [ref=e18] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/market
+        - link "MY MONEY" [ref=e19] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/mymoney
+        - link "NEWS" [ref=e20] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/news
+        - link "TECH" [ref=e21] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/tech
+        - link "LIFESTYLE" [ref=e22] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/lifestyle
+        - link "SHARIA" [ref=e23] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/syariah
+        - link "ENTREPRENEUR" [ref=e24] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/entrepreneur
+        - link "CUAP CUAP CUAN" [ref=e25] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/cuap-cuap-cuan
+        - link [ref=e26] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/tv
+      - generic [ref=e30]:
+        - button [ref=e31] [cursor=pointer]
+        - img "user default" [ref=e36]
+  - navigation [ref=e37]:
+    - generic [ref=e39]:
+      - generic:
+        - generic:
+          - insertion [ref=e415]
+          - link "RESEARCH" [ref=e40] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/research
+          - link "OPINION" [ref=e41] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/opini
+          - link "PHOTO" [ref=e42] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/foto
+          - link "VIDEO" [ref=e43] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/video
+          - link "INFOGRAPHIC" [ref=e44] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/infografis
+          - link "BERBUATBAIK.ID" [ref=e45] [cursor=pointer]:
+            - /url: https://www.berbuatbaik.id/?utm_source=cnbc&utm_medium=navbar&utm_campaign=berbuatbaikid
+  - generic [ref=e46]:
+    - iframe [ref=e51]:
+      - link [ref=f14e3] [cursor=pointer]:
+        - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsuT8bTwNTuKDgyhod65ZKGVVrMMYXDrLFeLYq16wbNvLP4ZZoCQrYP0aH66_wCmAlxTPiiBh_93T2NRgm_MKt1ooF9Dzd1fRCSvoejek6sk4XrxMRy6-ANpa8waKGbOg_ww5nNczpdQr--jFr15T3gRLPpI3JrpDgojgS_Vz5dQNgmy7zlrzwMugjhRhrRHMgGBhXT8en3oZDovI6XP2D3yJhjiYQX0baCs67su1tF8AGBECyjMIaD-1G3pFIeOVCEq8nDzPkzHlCLLabbkWFfAGGEcxnhFJ_1Q9bUiaJEkmoW6AOcNdx9pQd_rhuxNbbUqJey9jSocyk-ci_EzFW7_oeVwFUSZdtU2HeYybEIRkxkoG5KjS8zEGViN34qedcfpxWlNRBWYAtaJe6d3m9PBf0BD4Wu-kg&sai=AMfl-YQ2iybi1QUj1wBOznskOP7YBUSwsytd3cTomd1JCfFYea4jsylLe7HiBXDoZWfSjOBzceNc8JtrFkrdH-sNUo5bFOn5DWBsHFANxtj2LApVINb1H8M5p6x_BGuB6ssouRsN0E7YmSQfLl08PpuVMmovN6aYgb7LIF85huUdgNkioq2qvNFqb2OYKuFcuijNnm27YU1HPNZW2a7SYGLT_MmdiZ6ZiHUqR9RjMD_qixNi2EZvecdGYja63tTqx5rkwvYKJYDUIERtBUUGa-WRyI7-ocoqJcQyXxiYzGQHxYrEgI_D_unQhBKVH6t8gEgUUNDIFj2VaDbkB5vX4Jgju5hMbO05sEfQgE4_kM5U_tzajUPjJrhwqg&sig=Cg0ArKJSzHaWlZuWthrEEAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://www.cnbcindonesia.com/lifestyle/20260720120317-33-752162/cari-tahu-tren-dan-inovasi-otomotif-terbaru-di-giias-2026
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - navigation "Breadcrumb" [ref=e56]:
+          - link "CNBC Indonesia" [ref=e57] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/
+          - link "Tech" [ref=e60] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/tech
+          - link "Berita Tech" [ref=e63] [cursor=pointer]:
+            - /url: "#"
+        - main [ref=e64]:
+          - article [ref=e65]
+        - separator [ref=e141]
+        - generic [ref=e142]:
+          - complementary [ref=e143]
+          - iframe [ref=e157]:
+            
+          - iframe [ref=e160]:
+            
+          - separator [ref=e161]
+          - complementary [ref=e162]
+          - complementary [ref=e197]
+      - generic [ref=e252]:
+        - iframe [ref=e258]:
+          - link [ref=f15e3] [cursor=pointer]:
+            - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjss56jFbbuslgHfQLkZDfKfdeFrnZKtbuUkuF3edsIAoxLzzQI7zrgDv1HCJxBJQewM8HKP3YFDkGOvB6iFLFhSIq-b3Ia7sXKD87SsIF09cf6OYzenkPIxDpkYrG3D3exIQ4o1U2hW8Qh29ofYJP3p3djO88C90jxmzFWP1huh_qwPZVN2BBYt10UG_HM3c9_WDR-CP4J1UZC7TNejM5Tm86KI5jfGjC3-bcmJPA_07NxFP1WRk8EW8bOreVNgBt8f9XyKeAkzGookStZ5gdNnJ6sJamfp9Whp1hcK9_qLQJLqA99byV_p1ZwL9q6V77qzmhc_E-ZHp4pnGk-EWar5oLZBhLvSWJJeG5nW0aAN7ykvbWYiy768wUWbAVgdqO93aJHfuWFKRzqrNTdCaMB-KgW31gE1JiAuo0Tb-pyc&sai=AMfl-YSyeX-QShQxSjXYlDEQQ6Xokw21of4ewvLoi1jcHNbk19RcW_uP5LOjKpFhtqmdP5lMBoMRy-AFM5ML9-QQgmPzEM07jBGb7UhW05pnJ_nxXJ_Ptj01E0fwL2h771mCkxWy11wePaKMK7WC-p_PNrcN309ZdkpsHCzfvrHW7HRFAi0CvC2eYtJkHGTeaIMb40IyaBhAWhwJrccLoNP7SdTbsvX9Mebtyg5j8CizeUW3dQTMh__UW5cMtm94hWfZnibvQZ52c7YctrwupjwFpFz6G1DARuSKO5gD2J_IT5Rhprnjr9hupZhj3j52Jq-xIlI5ZXHoB_ZdpgcdfdZ_kLXZiqCI9yh24buE2PaPXa3MOZl3mFKJcA&sig=Cg0ArKJSzPqxptwiU8_qEAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://www.cnbcindonesia.com/lifestyle/20260720120317-33-752162/cari-tahu-tren-dan-inovasi-otomotif-terbaru-di-giias-2026
+        - iframe [ref=e264]:
+          - generic [ref=f16e1]:
+            - link [ref=f16e3] [cursor=pointer]:
+              - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjss6L56qv96NWe9vZ2IaC8XKZQcro-dkW4O9rsPMSyESHVXvdiAf03zWrHg0sGOpHF2XERJ_gjTN_sOKfz3qYKKUoCKuq4fcgoViVtPwLlUFt4r2WdJz1ZYzBqYr8Z5Lv1ohs8-zaUvs27yU6kizQ106XJRqTntSKEAS6C1llpdUKMHAR20zpnOuPUE0g-zkyRjEJRyp7l6mSXyfyQTyW1nL33ZrvMWlLr-H-Bg0rnGh8Kp-cnlid2c3Xgvo9X9mtxJnwP4Q4q_euxopWf1zkc0aMK5IYtO8xeFy5UsPUjIS8Z6ckNfj6J3gxgARVj3c9vZezG6muxfWDXrfe4wm0nfjlNqKVoPv5JbGgNR_0HIQCmxv26-2oY_PJFkeEbrX3aSmD6p-5OzgL4jyrK2exXfCEobxpAJeRx9tSBJGag_dmwaBjA&sai=AMfl-YQP-Dj19k3nW6c_GiTSFYeNrxE3GIMGJ2qQ8OX8fe1UckHhhSn0uPMdJHXG3_sQTeBMAyEzE-Dl2ZsFY6BqfuZV1OhHW2dSvG9zKm7w5JwZBxB7MQ3BYaTO8vkWHGx8a1vUkeXUBFCA2ZSJKJgt7anlkDmOkfIIGywcmXef87-YJ30VYbj9wu48DCCSzVJbLjjvk8jwl6qB-pBjoZFbZ3pkN3o9C44c6VLKIQcp8-h0CaYLGFjR9WMXnGTO2itX331ZL8UOADKYbPeFGm7bFJhrgpNmctDiOMK9yNZS3l0I2oLTNGBGvIadGD3-LdkOeaiaXg-YIoxAkAKPA9UKHm49QWGcVKvSw0gvMR5FjVhQYz08Ae3wBQ&sig=Cg0ArKJSzGr-NUJ5156eEAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://ad.doubleclick.net/ddm/trackclk/N1024807.4590747CNBCINDONESIA/B36248720.452688554;dc_trk_aid=646430346;dc_trk_cid=260381521;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=;dc_tdv=1
+              - img "cnbc" [ref=f16e4]
+            - iframe
+        - generic [ref=e265]:
+          - generic [ref=e266]: Most Popular
+          - list [ref=e267]
+        - generic [ref=e294]:
+          - generic [ref=e295]: Features
+          - group "1 / 1" [ref=e298]
+  - contentinfo [ref=e309]:
+    - link [ref=e310] [cursor=pointer]:
+      - /url: "#top"
+    - generic [ref=e313]:
+      - generic [ref=e314]:
+        - generic [ref=e315]:
+          - link "logo_svg" [ref=e316] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/
+          - generic [ref=e318]: part of
+        - link "Add logo_svg as a preferred source on Google" [ref=e335] [cursor=pointer]:
+          - /url: https://www.cnbcindonesia.com/outboundlinks?url=https://www.google.com/preferences/source?q=https://www.cnbcindonesia.com
+          - generic [ref=e342]
+        - generic [ref=e348]:
+          - generic [ref=e349]: Download Apps
+          - generic [ref=e350]
+        - generic [ref=e353]:
+          - generic [ref=e354]: Connect With Us
+          - generic [ref=e355]
+        - generic [ref=e368]: ©2026 CNBC Indonesia, A Transmedia Company
+      - generic [ref=e369]:
+        - generic [ref=e370]: Kategori
+        - navigation [ref=e371]:
+          - link "My Money" [ref=e372] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/mymoney
+          - link "Tech" [ref=e373] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/tech
+          - link "Sharia" [ref=e374] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/syariah
+          - link "Cuap Cuap Cuan" [ref=e375] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/cuap-cuap-cuan
+          - link "Opini" [ref=e376] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/opini
+          - link "Video" [ref=e377] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/video
+          - link "Indeks" [ref=e378] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/indeks
+          - link "Market" [ref=e379] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/market
+          - link "News" [ref=e380] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/news
+          - link "Lifestyle" [ref=e381] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/lifestyle
+          - link "Entrepreneur" [ref=e382] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/entrepreneur
+          - link "Research" [ref=e383] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/research
+          - link "Foto" [ref=e384] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/foto
+          - link "Infografis" [ref=e385] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/infografis
+          - link "CNBC TV" [ref=e386] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/tv
+      - generic [ref=e387]:
+        - generic [ref=e388]: Layanan
+        - navigation [ref=e389]:
+          - link "berbuatbaik.id" [ref=e390] [cursor=pointer]:
+            - /url: https://berbuatbaik.id
+          - link "Pasangmata" [ref=e391] [cursor=pointer]:
+            - /url: https://pasangmata.detik.com
+          - link "Adsmart" [ref=e392] [cursor=pointer]:
+            - /url: https://adsmart.detik.com
+          - link "detikEvent" [ref=e393] [cursor=pointer]:
+            - /url: https://event.detik.com
+          - link "Trans Snow World" [ref=e394] [cursor=pointer]:
+            - /url: https://www.transentertainment.com/transsnow
+          - link "Trans Studio" [ref=e395] [cursor=pointer]:
+            - /url: https://www.transentertainment.com/transstudio
+      - generic [ref=e396]:
+        - generic [ref=e397]: Informasi
+        - navigation [ref=e398]:
+          - link "Tentang Kami" [ref=e399] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/tentang-kami
+          - link "Redaksi" [ref=e400] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/tentang-kami#redaksi
+          - link "Pedoman Media Siber" [ref=e401] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/pedoman-media-siber
+          - link "Karir" [ref=e402] [cursor=pointer]:
+            - /url: https://career.cnbcindonesia.com
+          - link "Disclaimer" [ref=e403] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/disclaimer
+          - link "CNBC Indonesia My Investment" [ref=e404] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com/cnbc-myinvestment
+      - generic [ref=e405]:
+        - generic [ref=e406]: Jaringan Media
+        - navigation [ref=e407]:
+          - link "CNN Indonesia" [ref=e408] [cursor=pointer]:
+            - /url: https://www.cnnindonesia.com
+          - link "CNBC Indonesia" [ref=e409] [cursor=pointer]:
+            - /url: https://www.cnbcindonesia.com
+          - link "Haibunda" [ref=e410] [cursor=pointer]:
+            - /url: https://www.haibunda.com
+          - link "Beautynesia" [ref=e411] [cursor=pointer]:
+            - /url: https://www.beautynesia.id
+          - link "Female Daily" [ref=e412] [cursor=pointer]:
+            - /url: https://femaledaily.com
+          - link "CXO Media" [ref=e413] [cursor=pointer]:
+            - /url: https://www.cxomedia.id

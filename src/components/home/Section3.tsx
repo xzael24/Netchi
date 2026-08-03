@@ -102,7 +102,7 @@ export function Section3() {
           <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
             <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
-              2. Prabowo Segera Tunjuk 'Wasit' Data Warga RI
+              2. Prabowo Segera Tunjuk &apos;Wasit&apos; Data Warga RI
             </h2>
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R6C3</div>
@@ -119,7 +119,7 @@ export function Section3() {
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C3</span>
             <span className="font-display font-bold text-cream leading-tight uppercase text-[clamp(0.9rem,4cqw,1.4rem)]">Kenapa Penting</span>
-            <span className="font-display text-cream/70 leading-snug text-[clamp(0.65rem,3cqw,1rem)] mt-1">Otoritas PDP bakal jadi 'wasit' data warga. Berwenang mengawasi, menyelidiki, dan menjatuhkan sanksi atas pelanggaran data pribadi.</span>
+            <span className="font-display text-cream/70 leading-snug text-[clamp(0.65rem,3cqw,1rem)] mt-1">Otoritas PDP bakal jadi &apos;wasit&apos; data warga. Berwenang mengawasi, menyelidiki, dan menjatuhkan sanksi atas pelanggaran data pribadi.</span>
           </div>
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C4</span>

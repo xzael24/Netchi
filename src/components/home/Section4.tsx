@@ -32,7 +32,7 @@ export function Section4() {
 
         <blockquote className="max-w-4xl">
           <p className="font-display font-bold leading-[1.08] tracking-[-0.02em] text-[#1A3CDB] text-[clamp(1.25rem,3.2vw,2.6rem)]">
-            “Privacy is not an option, and it shouldn't be the price we accept for
+            “Privacy is not an option, and             it shouldn&apos;t be the price we accept for
             just getting on the internet.”
           </p>
         </blockquote>
