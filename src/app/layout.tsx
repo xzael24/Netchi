@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { CustomCursor } from "@/components/layout/CustomCursor";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -47,7 +48,10 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground w-screen overflow-x-hidden">
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          {children}
+          <CustomCursor />
+        </LenisProvider>
       </body>
     </html>
   );

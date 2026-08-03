@@ -105,3 +105,8 @@ html.lenis body {
 .marquee-track {
   animation: marquee 22s linear infinite;
 }
+
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}

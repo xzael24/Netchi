@@ -8,6 +8,7 @@ import {
   scoreCategory,
   type Answer,
 } from "@/data/privacyQuestions";
+import { FeatureShell } from "@/components/layout/FeatureShell";
 
 const LINE = "border-cream/25";
 
@@ -36,21 +37,8 @@ export default function PrivacyScorePage() {
   };
 
   return (
-    <main className="bg-[#1A3CDB] text-cream w-screen min-w-full min-h-screen flex flex-col">
-      <header className={`grid grid-cols-[2.6%_18.81%_78%_1fr] border-b-2 ${LINE}`}>
-        <div className="flex items-center justify-center border-r-2 border-cream/25 p-1 font-mono text-[9px] text-cream/30">1</div>
-        <Link href="/" className={`flex items-center border-r-2 ${LINE} pl-2 md:pl-4 font-display font-bold tracking-widest`}>
-          Netchi Sentinel
-        </Link>
-        <div className={`flex items-center justify-between border-r-2 ${LINE} px-3 md:px-4`}>
-          <span className="font-mono text-xs tracking-widest uppercase text-cream/60">2://SCORE</span>
-          <Link href="/" className="font-mono text-xs uppercase tracking-widest hover:text-white">← Beranda</Link>
-        </div>
-        <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">SCORE</div>
-      </header>
-
-      <div className="flex-1 px-6 py-10 md:px-10">
-        <div className="max-w-3xl mx-auto">
+    <FeatureShell index="1" label="2://SCORE">
+      <div className="max-w-3xl mx-auto">
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
             2://SCORE — Ukur kebiasaan digitalmu
           </span>
@@ -150,7 +138,6 @@ export default function PrivacyScorePage() {
             </div>
           )}
         </div>
-      </div>
-    </main>
+    </FeatureShell>
   );
 }

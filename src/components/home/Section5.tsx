@@ -3,6 +3,7 @@
 import { useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HeadingReveal } from "@/components/layout/HeadingReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -142,9 +143,7 @@ export function Section5() {
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-end pl-2 md:pl-4 pb-2 relative container-cell`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C2</span>
             <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 text-[clamp(0.4rem,2cqw,0.7rem)]">4://FAQ</span>
-            <h2 className="font-display font-bold text-[#1A3CDB] leading-[0.9] tracking-[-0.03em] text-[clamp(2.5rem,10cqw,5.5rem)]">
-              FAQ
-            </h2>
+            <HeadingReveal as="h2" lines={["FAQ"]} className="font-display font-bold text-[#1A3CDB] leading-[0.9] tracking-[-0.03em] text-[clamp(2.5rem,10cqw,5.5rem)]" />
           </div>
           <div className="flex items-end justify-start p-1 pb-2 relative">
             <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C3</span>

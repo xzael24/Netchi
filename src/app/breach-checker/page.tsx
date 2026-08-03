@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MOCK_BREACHES } from "@/data/mockBreaches";
 import { validateEmail } from "@/lib/validate";
 import { formatNumber } from "@/lib/utils";
+import { FeatureShell } from "@/components/layout/FeatureShell";
 import type { Breach } from "@/types";
 
 const LINE = "border-cream/25";
@@ -42,27 +43,8 @@ export default function BreachCheckerPage() {
   };
 
   return (
-    <main className="bg-[#1A3CDB] text-cream w-screen min-w-full min-h-screen flex flex-col">
-      {/* header */}
-      <header className={`grid grid-cols-[2.6%_18.81%_78%_1fr] border-b-2 ${LINE}`}>
-        <div className="flex items-center justify-center border-r-2 border-cream/25 p-1 font-mono text-[9px] text-cream/30">
-          1
-        </div>
-        <Link href="/" className={`flex items-center border-r-2 ${LINE} pl-2 md:pl-4 font-display font-bold tracking-widest`}>
-          Netchi Sentinel
-        </Link>
-        <div className={`flex items-center justify-between border-r-2 ${LINE} px-3 md:px-4`}>
-          <span className="font-mono text-xs tracking-widest uppercase text-cream/60">1://SCAN</span>
-          <Link href="/" className="font-mono text-xs uppercase tracking-widest hover:text-white">
-            ← Beranda
-          </Link>
-        </div>
-        <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">
-          BREACH
-        </div>
-      </header>
-
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-16">
+    <FeatureShell index="1" label="1://SCAN">
+      <div className="flex flex-col items-center justify-center py-10 text-center">
         <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40 mb-4">
           1://SCAN — Cek kebocoran data
         </span>
@@ -141,6 +123,6 @@ export default function BreachCheckerPage() {
           </div>
         )}
       </div>
-    </main>
+    </FeatureShell>
   );
 }

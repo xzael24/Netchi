@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Magnetic } from "@/components/layout/Magnetic";
 
 const LINE = "border-cream/25";
 
@@ -30,21 +31,22 @@ export function Footer() {
       {/* R2: big awwwards nav links */}
       <nav className="flex flex-col">
         {navLinks.map((link, i) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="group flex items-center justify-between border-b-2 border-cream/25 px-3 py-1.5 md:px-6 md:py-2"
-          >
-            <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.25rem,3vw,3rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
-              {link.label}
-            </span>
-            <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cream/40">
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[#ff4d4d]">
-                →
+          <Magnetic key={link.label} strength={0.15}>
+            <Link
+              href={link.href}
+              className="group flex items-center justify-between border-b-2 border-cream/25 px-3 py-1.5 md:px-6 md:py-2"
+            >
+              <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.25rem,3vw,3rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
+                {link.label}
               </span>
-            </span>
-          </Link>
+              <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cream/40">
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[#ff4d4d]">
+                  →
+                </span>
+              </span>
+            </Link>
+          </Magnetic>
         ))}
       </nav>
 
