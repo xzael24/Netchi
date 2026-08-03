@@ -73,9 +73,9 @@ export function Footer() {
 
       {/* R5: massive wordmark */}
       <div className="flex flex-1 items-center justify-center overflow-hidden px-2 py-4 md:py-6">
-        <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)]">
+        <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]">
           Netchi&nbsp;
-          <span className="font-pixel mt-[0.45em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
+          <span className="font-pixel translate-y-[0.3em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
           entinel
         </span>
       </div>
