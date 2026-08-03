@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MOCK_BREACHES } from "@/data/mockBreaches";
 import { validateEmail } from "@/lib/validate";
 import { formatNumber } from "@/lib/utils";
 import { FeatureShell } from "@/components/layout/FeatureShell";
@@ -12,34 +11,39 @@ const LINE = "border-cream/25";
 
 type Result =
   | { status: "idle" }
+  | { status: "loading" }
   | { status: "error"; message: string }
-  | { status: "aman" }
-  | { status: "bocor"; breach: Breach };
-
-function matchBreach(email: string): Breach | null {
-  const domain = email.split("@")[1]?.toLowerCase();
-  if (!domain) return null;
-  return (
-    MOCK_BREACHES.find((b) => {
-      const base = b.Domain.trim().toLowerCase();
-      return domain === base || domain.startsWith(base);
-    }) ?? null
-  );
-}
+  | { status: "aman"; source: "hibp" | "mock" }
+  | { status: "bocor"; breach: Breach; source: "hibp" | "mock" };
 
 export default function BreachCheckerPage() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<Result>({ status: "idle" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const v = validateEmail(input);
     if (!v.ok) {
       setResult({ status: "error", message: v.error });
       return;
     }
-    const breach = matchBreach(v.value);
-    setResult(breach ? { status: "bocor", breach } : { status: "aman" });
+    setResult({ status: "loading" });
+    try {
+      const res = await fetch(`/api/check?account=${encodeURIComponent(v.value)}`);
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        setResult({ status: "error", message: body?.error ?? "Terjadi kesalahan" });
+        return;
+      }
+      const data = (await res.json()) as { source: "hibp" | "mock"; breaches: Breach[] };
+      if (data.breaches.length > 0) {
+        setResult({ status: "bocor", breach: data.breaches[0], source: data.source });
+      } else {
+        setResult({ status: "aman", source: data.source });
+      }
+    } catch {
+      setResult({ status: "error", message: "Gagal terhubung. Coba lagi." });
+    }
   };
 
   return (
@@ -68,9 +72,10 @@ export default function BreachCheckerPage() {
             />
             <button
               type="submit"
-              className="bg-[#f5f0d5] text-[#1D3CDB] font-mono uppercase tracking-widest px-6 py-3 text-sm font-bold hover:bg-cream/80"
+              disabled={result.status === "loading"}
+              className="bg-[#f5f0d5] text-[#1D3CDB] font-mono uppercase tracking-widest px-6 py-3 text-sm font-bold hover:bg-cream/80 disabled:opacity-60"
             >
-              Cek →
+              {result.status === "loading" ? "Mengecek…" : "Cek →"}
             </button>
           </div>
 
@@ -84,7 +89,9 @@ export default function BreachCheckerPage() {
             <div className={`border-2 ${LINE} bg-cream/5 p-5`}>
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#ff6b6b]">⚠ Kebocoran terdeteksi</span>
-                <span className="font-mono text-sm">{formatNumber(result.breach.PwnCount)} akun</span>
+                <span className={`font-mono text-[10px] uppercase tracking-widest ${result.source === "hibp" ? "text-[#4cd99b]" : "text-cream/40"}`}>
+                  {result.source === "hibp" ? "● Data real (HIBP)" : "● Data demo"}
+                </span>
               </div>
               <h2 className="mt-3 font-display font-bold text-xl">{result.breach.Domain}</h2>
               <p className="mt-2 text-sm text-cream/80 leading-relaxed">{result.breach.Description}</p>
@@ -96,7 +103,7 @@ export default function BreachCheckerPage() {
                 ))}
               </div>
               <p className="mt-4 font-mono text-[11px] text-cream/50">
-                Bocor pada {new Date(result.breach.BreachDate).getFullYear()}
+                Bocor pada {new Date(result.breach.BreachDate).getFullYear()} · {formatNumber(result.breach.PwnCount)} akun terdampak
               </p>
             </div>
             <div className={`mt-4 border-2 ${LINE} p-4`}>
@@ -115,9 +122,14 @@ export default function BreachCheckerPage() {
 
         {result.status === "aman" && (
           <div className="mt-10 w-full max-w-xl border-2 border-cream/25 bg-cream/5 p-5">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#4cd99b]">✓ Tidak ditemukan kebocoran</span>
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#4cd99b]">✓ Tidak ditemukan kebocoran</span>
+              <span className={`font-mono text-[10px] uppercase tracking-widest ${result.source === "hibp" ? "text-[#4cd99b]" : "text-cream/40"}`}>
+                {result.source === "hibp" ? "● Data real (HIBP)" : "● Data demo"}
+              </span>
+            </div>
             <p className="mt-2 text-sm text-cream/80">
-              Bagus! Tidak ada kecocokan di database mock kami. Tetap waspada — cek rutin
+              Bagus! Tidak ada kecocokan. Tetap waspada — cek rutin
               dan jangan pakai satu password untuk semua akun.
             </p>
           </div>

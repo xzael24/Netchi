@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FeatureShell } from "@/components/layout/FeatureShell";
+import { checkPasswordPwned } from "@/lib/pwned";
 import {
   calculatePasswordEntropy,
   getTimeToCrack,
@@ -58,6 +59,19 @@ export default function PasswordPage() {
   });
   const [results, setResults] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
+  const [checkInput, setCheckInput] = useState("");
+  const [checking, setChecking] = useState(false);
+  const [checkResult, setCheckResult] = useState<{ pwned: boolean; count: number; error?: string } | null>(null);
+
+  const handleCheck = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!checkInput || checking) return;
+    setChecking(true);
+    setCheckResult(null);
+    const res = await checkPasswordPwned(checkInput);
+    setCheckResult(res);
+    setChecking(false);
+  };
 
   const anyCharset = opts.lower || opts.upper || opts.numbers || opts.symbols;
 
@@ -193,6 +207,53 @@ export default function PasswordPage() {
               })}
             </div>
           )}
+
+          <div className={`mt-12 border-2 ${LINE} bg-cream/5 p-5`}>
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-cream/50">
+                Real check — password pernah bocor?
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#4cd99b]">● Data real (HIBP)</span>
+            </div>
+            <p className="mt-2 text-sm text-cream/70">
+              Cek apakah password kamu sudah pernah muncul di kebocoran data. Password di-hash SHA-1 di
+              perangkatmu — hanya 5 karakter prefix yang dikirim (k-anonymity). Powered by Have I Been Pwned.
+            </p>
+            <form onSubmit={handleCheck} className="mt-4 flex" noValidate>
+              <input
+                type="text"
+                value={checkInput}
+                onChange={(e) => setCheckInput(e.target.value)}
+                placeholder="masukkan password untuk dicek"
+                aria-label="Password untuk dicek"
+                className="flex-1 bg-transparent px-3 py-2 font-mono text-sm text-cream placeholder:text-cream/40 outline-none border border-cream/25"
+              />
+              <button
+                type="submit"
+                disabled={checking || !checkInput}
+                className="bg-[#f5f0d5] text-[#1D3CDB] font-mono uppercase tracking-widest px-5 py-2 text-xs font-bold disabled:opacity-50"
+              >
+                {checking ? "Mengecek…" : "Cek"}
+              </button>
+            </form>
+            {checkResult && (
+              <div className="mt-4">
+                {checkResult.error ? (
+                  <p className="font-mono text-xs text-cream/50">
+                    Terhubung ke HIBP gagal ({checkResult.error}) — pakai data offline.
+                  </p>
+                ) : checkResult.pwned ? (
+                  <p className="font-mono text-sm text-[#ff6b6b]">
+                    ⚠ Password ini ditemukan {checkResult.count.toLocaleString("id-ID")}× dalam kebocoran data. JANGAN dipakai.
+                  </p>
+                ) : (
+                  <p className="font-mono text-sm text-[#4cd99b]">
+                    ✓ Password tidak ditemukan dalam kebocoran data yang diketahui.
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
     </FeatureShell>
   );
