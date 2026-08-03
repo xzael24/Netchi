@@ -33,9 +33,9 @@ export function Footer() {
           <Link
             key={link.label}
             href={link.href}
-            className="group flex items-center justify-between border-b-2 border-cream/25 px-3 py-3 md:px-6 md:py-4"
+            className="group flex items-center justify-between border-b-2 border-cream/25 px-3 py-1.5 md:px-6 md:py-2"
           >
-            <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.5rem,4.5vw,3.75rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
+            <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.25rem,3vw,3rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
               {link.label}
             </span>
             <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cream/40">
@@ -49,7 +49,7 @@ export function Footer() {
       </nav>
 
       {/* R3: contact / data row */}
-      <div className="flex flex-col justify-between gap-3 px-3 py-4 font-mono text-sm text-cream/70 md:flex-row md:px-6">
+      <div className="flex flex-col justify-between gap-2 px-3 py-2.5 font-mono text-sm text-cream/70 md:flex-row md:px-6">
         <div>hello@netchi.app</div>
         <div>Tim Netchi — FTI Fest 2026</div>
         <div>Yogyakarta, Indonesia</div>
@@ -57,7 +57,7 @@ export function Footer() {
       </div>
 
       {/* R4: marquee ticker */}
-      <div className="overflow-hidden border-y-2 border-cream/25 py-2" aria-hidden>
+      <div className="overflow-hidden border-y-2 border-cream/25 py-1" aria-hidden>
         <div className="marquee-track flex w-max whitespace-nowrap font-mono text-sm uppercase tracking-widest text-cream/60">
           {[0, 1].map((half) => (
             <span key={half} className="flex shrink-0">
@@ -75,7 +75,7 @@ export function Footer() {
       <div className="flex flex-1 items-center justify-center overflow-hidden px-2 py-4 md:py-6">
         <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]">
           Netchi&nbsp;
-          <span className="font-pixel translate-y-[0.3em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
+          <span className="font-pixel translate-y-[0.12em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
           entinel
         </span>
       </div>
