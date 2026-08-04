@@ -4,30 +4,74 @@ import { useState } from "react";
 import Link from "next/link";
 import { validateEmail } from "@/lib/validate";
 import { formatNumber } from "@/lib/utils";
-import { detectBreach, DATASET_STATS, type BreachMatch } from "@/lib/breachEngine";
+import { DATASET_STATS, type BreachMatch } from "@/lib/breachEngine";
 import { FeatureShell } from "@/components/layout/FeatureShell";
 
 const LINE = "border-cream/25";
 
+type EmailIoData = {
+  reputation: string | null;
+  leaked: boolean;
+  breachCount: number;
+  whyBad: string | null;
+  breachEmails: string[];
+};
+
 type Result =
   | { status: "idle" }
+  | { status: "loading" }
   | { status: "error"; message: string }
-  | { status: "aman" }
-  | { status: "bocor"; matches: BreachMatch[] };
+  | { status: "aman"; source: "emailio" | "self" }
+  | { status: "bocor"; source: "emailio" | "self"; matches: BreachMatch[]; real?: EmailIoData };
 
 export default function BreachCheckerPage() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<Result>({ status: "idle" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const v = validateEmail(input);
     if (!v.ok) {
       setResult({ status: "error", message: v.error });
       return;
     }
-    const matches = detectBreach(v.value);
-    setResult(matches.length ? { status: "bocor", matches } : { status: "aman" });
+    setResult({ status: "loading" });
+    try {
+      const res = await fetch(`/api/email-check?account=${encodeURIComponent(v.value)}`);
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        setResult({ status: "error", message: body?.error ?? "Terjadi kesalahan" });
+        return;
+      }
+      const data = (await res.json()) as { source: "emailio" | "self" } & Partial<EmailIoData> & {
+        matches?: BreachMatch[];
+      };
+
+      if (data.source === "emailio") {
+        const real: EmailIoData = {
+          reputation: data.reputation ?? null,
+          leaked: data.leaked ?? false,
+          breachCount: data.breachCount ?? 0,
+          whyBad: data.whyBad ?? null,
+          breachEmails: data.breachEmails ?? [],
+        };
+        setResult(
+          real.leaked || real.breachCount > 0
+            ? { status: "bocor", source: "emailio", matches: [], real }
+            : { status: "aman", source: "emailio" }
+        );
+        return;
+      }
+
+      const matches = data.matches ?? [];
+      setResult(
+        matches.length > 0
+          ? { status: "bocor", source: "self", matches }
+          : { status: "aman", source: "self" }
+      );
+    } catch {
+      setResult({ status: "error", message: "Gagal terhubung. Coba lagi." });
+    }
   };
 
   return (
@@ -40,8 +84,8 @@ export default function BreachCheckerPage() {
           Apakah emailmu pernah bocor?
         </h1>
         <p className="mt-4 max-w-lg text-center font-body text-cream/70 text-sm md:text-base">
-          Masukkan email kamu. Kamu aman — query diperiksa langsung di perangkatmu,
-          tidak pernah dikirim ke server mana pun.
+          Email kamu dicek terhadap database kebocoran real — dan dibandingkan juga
+          dengan sistem Netchi Breach Intelligence yang berjalan lokal & offline.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl" noValidate>
@@ -56,9 +100,10 @@ export default function BreachCheckerPage() {
             />
             <button
               type="submit"
-              className="bg-[#f5f0d5] text-[#1D3CDB] font-mono uppercase tracking-widest px-6 py-3 text-sm font-bold hover:bg-cream/80"
+              disabled={result.status === "loading"}
+              className="bg-[#f5f0d5] text-[#1D3CDB] font-mono uppercase tracking-widest px-6 py-3 text-sm font-bold hover:bg-cream/80 disabled:opacity-60"
             >
-              Cek →
+              {result.status === "loading" ? "Mengecek…" : "Cek →"}
             </button>
           </div>
 
@@ -67,13 +112,53 @@ export default function BreachCheckerPage() {
           )}
         </form>
 
-        {result.status === "bocor" && (
-          <div className="mt-10 w-full max-w-2xl">
+        {result.status === "bocor" && result.source === "emailio" && result.real && (
+          <div className="mt-10 w-full max-w-2xl text-left">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#ff6b6b]">⚠ Kebocoran terdeteksi</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#4cd99b]">● Data real (email.io)</span>
+            </div>
+            <div className={`mt-3 border-2 ${LINE} bg-cream/5 p-5`}>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm">
+                <span className="text-cream/80">Reputasi: <b className="text-[#ff6b6b]">{result.real.reputation ?? "rendah"}</b></span>
+                {result.real.breachCount > 0 && (
+                  <span className="text-cream/80">Ditemukan di <b className="text-[#ff6b6b]">{result.real.breachCount} kebocoran</b></span>
+                )}
+              </div>
+              {result.real.breachEmails.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {result.real.breachEmails.map((name) => (
+                    <span key={name} className="border border-cream/25 px-2 py-1 font-mono text-[11px] text-cream/70">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {result.real.whyBad && (
+                <p className="mt-4 text-sm text-cream/70">{result.real.whyBad}</p>
+              )}
+            </div>
+            <div className={`mt-4 border-2 ${LINE} p-4`}>
+              <span className="font-mono text-[11px] uppercase tracking-widest text-cream/50">Saran tindakan</span>
+              <ul className="mt-2 list-inside list-disc text-sm text-cream/80">
+                <li>Ganti password akun ini sekarang, dan jangan ulangi di akun lain.</li>
+                <li>Aktifkan 2FA lewat aplikasi authenticator.</li>
+                <li>Gunakan Password Generator untuk password unik per akun.</li>
+              </ul>
+              <Link href="/password" className="mt-3 inline-block font-mono uppercase tracking-widest text-[#ff4d4d]">
+                Generate password aman →
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {result.status === "bocor" && result.source === "self" && (
+          <div className="mt-10 w-full max-w-2xl text-left">
             <div className="flex items-center justify-between gap-3">
               <span className="font-mono text-xs uppercase tracking-widest text-[#ff6b6b]">⚠ Kebocoran terdeteksi</span>
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#4cd99b]">● Netchi Breach DB</span>
             </div>
-            <p className="mt-1 text-left font-mono text-[11px] text-cream/40">
+            <p className="mt-1 font-mono text-[11px] text-cream/40">
               {result.matches.length} pencocokan di {formatNumber(DATASET_STATS.totalRecords)}+ record.
             </p>
             <div className="mt-3 space-y-4">
@@ -81,7 +166,7 @@ export default function BreachCheckerPage() {
                 <div key={m.breach.Name + m.matchType} className={`border-2 ${LINE} bg-cream/5 p-5`}>
                   <div className="flex items-center justify-between">
                     <h3 className="font-display font-bold text-xl">{m.breach.Name}</h3>
-                    <span className={`font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 border ${
+                    <span className={`border px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest ${
                       m.matchType === "exact" ? "border-[#4cd99b]/50 text-[#4cd99b]" : "border-cream/30 text-cream/50"
                     }`}>
                       {m.matchType === "exact" ? "pencocokan akun" : "pencocokan domain"}
@@ -119,15 +204,20 @@ export default function BreachCheckerPage() {
           <div className="mt-10 w-full max-w-xl border-2 border-cream/25 bg-cream/5 p-5">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs uppercase tracking-widest text-[#4cd99b]">✓ Tidak ditemukan kebocoran</span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#4cd99b]">● Netchi Breach DB</span>
+              <span className={`font-mono text-[10px] uppercase tracking-widest ${result.source === "emailio" ? "text-[#4cd99b]" : "text-cream/40"}`}>
+                {result.source === "emailio" ? "● Data real (email.io)" : "● Netchi Breach DB"}
+              </span>
             </div>
             <p className="mt-2 text-sm text-cream/80">
-              Tidak ada kecocokan di {formatNumber(DATASET_STATS.totalRecords)} record breach kami.
-              Tetap waspada — cek rutin dan jangan pakai satu password untuk semua akun.
+              {result.source === "emailio"
+                ? "Email kamu tidak ditemukan dalam database kebocoran real."
+                : `Tidak ada kecocokan di ${formatNumber(DATASET_STATS.totalRecords)} record breach kami.`}
             </p>
-            <p className="mt-3 font-mono text-[11px] text-cream/40">
-              Coba akun demo: andi.tokopedia@example.com / sari.bpjs@example.com
-            </p>
+            {result.source === "self" && (
+              <p className="mt-3 font-mono text-[11px] text-cream/40">
+                Coba akun demo: andi.tokopedia@example.com / sari.bpjs@example.com
+              </p>
+            )}
           </div>
         )}
       </div>
