@@ -6,6 +6,7 @@ import { validateEmail } from "@/lib/validate";
 import { formatNumber } from "@/lib/utils";
 import { DATASET_STATS, type BreachMatch } from "@/lib/breachEngine";
 import { FeatureShell } from "@/components/layout/FeatureShell";
+import type { Breach } from "@/types";
 
 const LINE = "border-cream/25";
 
@@ -21,8 +22,9 @@ type Result =
   | { status: "idle" }
   | { status: "loading" }
   | { status: "error"; message: string }
-  | { status: "aman"; source: "emailio" | "self" }
-  | { status: "bocor"; source: "emailio" | "self"; matches: BreachMatch[]; real?: EmailIoData };
+  | { status: "aman"; source: "emailio" | "hibp" | "self" }
+  | { status: "bocor"; source: "emailio" | "hibp" | "self"; matches: BreachMatch[]; real?: EmailIoData }
+  | { status: "bocor-hibp"; breaches: Breach[] };
 
 export default function BreachCheckerPage() {
   const [input, setInput] = useState("");
@@ -43,9 +45,20 @@ export default function BreachCheckerPage() {
         setResult({ status: "error", message: body?.error ?? "Terjadi kesalahan" });
         return;
       }
-      const data = (await res.json()) as { source: "emailio" | "self" } & Partial<EmailIoData> & {
+      const data = (await res.json()) as { source: "emailio" | "hibp" | "self" } & Partial<EmailIoData> & {
         matches?: BreachMatch[];
+        breaches?: Breach[];
       };
+
+      if (data.source === "hibp") {
+        const breaches = data.breaches ?? [];
+        setResult(
+          breaches.length > 0
+            ? { status: "bocor-hibp", breaches }
+            : { status: "aman", source: "hibp" }
+        );
+        return;
+      }
 
       if (data.source === "emailio") {
         const real: EmailIoData = {
@@ -111,6 +124,42 @@ export default function BreachCheckerPage() {
             <p className="mt-3 font-mono text-sm text-[#ff6b6b]">⚠ {result.message}</p>
           )}
         </form>
+
+        {result.status === "bocor-hibp" && (
+          <div className="mt-10 w-full max-w-2xl text-left">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#ff6b6b]">⚠ Kebocoran terdeteksi</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#4cd99b]">● Data real (HIBP)</span>
+            </div>
+            <div className="mt-3 space-y-4">
+              {result.breaches.map((b) => (
+                <div key={b.Name} className={`border-2 ${LINE} bg-cream/5 p-5`}>
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-display font-bold text-xl">{b.Name}</h3>
+                    <span className="font-mono text-[10px] text-cream/50">{formatNumber(b.PwnCount)} akun</span>
+                  </div>
+                  <p className="mt-2 text-sm text-cream/80 leading-relaxed">{b.Description}</p>
+                  {b.DataClasses?.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {b.DataClasses.map((c) => (
+                        <span key={c} className="border border-cream/25 px-2 py-1 font-mono text-[11px] text-cream/70">
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className={`mt-4 border-2 ${LINE} p-4`}>
+              <span className="font-mono text-[11px] uppercase tracking-widest text-cream/50">Saran tindakan</span>
+              <ul className="mt-2 list-inside list-disc text-sm text-cream/80">
+                <li>Ganti password akun ini sekarang, dan jangan ulangi di akun lain.</li>
+                <li>Aktifkan 2FA lewat aplikasi authenticator.</li>
+              </ul>
+            </div>
+          </div>
+        )}
 
         {result.status === "bocor" && result.source === "emailio" && result.real && (
           <div className="mt-10 w-full max-w-2xl text-left">
@@ -204,8 +253,8 @@ export default function BreachCheckerPage() {
           <div className="mt-10 w-full max-w-xl border-2 border-cream/25 bg-cream/5 p-5">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs uppercase tracking-widest text-[#4cd99b]">✓ Tidak ditemukan kebocoran</span>
-              <span className={`font-mono text-[10px] uppercase tracking-widest ${result.source === "emailio" ? "text-[#4cd99b]" : "text-cream/40"}`}>
-                {result.source === "emailio" ? "● Data real (email.io)" : "● Netchi Breach DB"}
+              <span className={`font-mono text-[10px] uppercase tracking-widest ${result.source !== "self" ? "text-[#4cd99b]" : "text-cream/40"}`}>
+                {result.source === "emailio" ? "● Data real (email.io)" : result.source === "hibp" ? "● Data real (HIBP)" : "● Netchi Breach DB"}
               </span>
             </div>
             <p className="mt-2 text-sm text-cream/80">
