@@ -36,8 +36,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
 
       if (svg) {
         gsap.to(svg, {
-          y: -70,
-          opacity: 0.3,
+          y: -50,
           ease: "none",
           scrollTrigger: {
             trigger: heroRef.current,
@@ -46,6 +45,21 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             scrub: true,
           },
         });
+
+        gsap.fromTo(
+          svg,
+          { opacity: 1 },
+          {
+            opacity: 0.2,
+            ease: "none",
+            scrollTrigger: {
+              trigger: heroRef.current,
+              start: "70% top",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
       }
     }, heroRef.current);
     return () => ctx.revert();
