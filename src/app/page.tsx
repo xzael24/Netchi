@@ -50,17 +50,17 @@ export default function Home() {
         },
       });
 
-      const starts = [0, 0.04, 0.08, 0.12, 0.22, 0.28, 0.38, 0.44];
+      const starts = [0.08, 0.12, 0.16, 0.2, 0.3, 0.36, 0.46, 0.52];
       rows.forEach((row, i) => {
         tl.fromTo(row, { y: "100vh" }, { y: 0, duration: 0.1 }, starts[i] ?? 0);
       });
 
-      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.17 }, 0.68);
+      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.14 }, 0.7);
       tl.fromTo(
         bars,
         { scaleY: 1 },
-        { scaleY: 0, duration: 0.15, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
-        0.85
+        { scaleY: 0, duration: 0.14, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
+        0.86
       );
     }, parent);
 
