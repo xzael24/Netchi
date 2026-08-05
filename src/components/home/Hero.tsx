@@ -3,7 +3,7 @@
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { Parallax } from "@/components/layout/Parallax";
+import { TiltGlare } from "@/components/layout/TiltGlare";
 
 const LINE = "border-cream/25";
 
@@ -127,7 +127,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
       <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
       <div className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[160px] md:min-h-[220px] container-cell relative`}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C2</span>
-        <Parallax strength={22} className="w-full h-full">
+        <TiltGlare max={7} perspective={700}>
           <motion.svg
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -163,7 +163,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             />
           ))}
           </motion.svg>
-        </Parallax>
+        </TiltGlare>
       </div>
       <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
