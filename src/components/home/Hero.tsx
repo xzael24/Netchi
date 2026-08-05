@@ -172,7 +172,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             MULAI SEKARANG
           </Link>
         </div>
-        <div className="flex flex-col justify-start pl-1 pr-4 md:pl-2 md:pr-6 pb-5 pt-8 md:pt-60 relative">
+        <div className="flex flex-col justify-start pl-1 pr-4 md:pl-2 md:pr-6 pb-5 pt-8 md:pt-12 relative">
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-2</span>
           <div
             onMouseEnter={() =>
