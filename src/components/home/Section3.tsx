@@ -7,13 +7,13 @@ const LINE = "border-cream/25";
 
 const ROW: Record<string, { top: string; height: string }> = {
   r1: { top: "4vh", height: "clamp(18px, 2.5vh, 2.5vh)" },
-  r2: { top: "6.5vh", height: "25vh" },
-  r3: { top: "31.5vh", height: "15vh" },
-  r4: { top: "46.5vh", height: "20vh" },
-  r6: { top: "46.5vh", height: "15vh" },
-  r7: { top: "61.5vh", height: "20vh" },
-  r9: { top: "61.5vh", height: "15vh" },
-  r10: { top: "76.5vh", height: "20vh" },
+  r2: { top: "6.5vh", height: "14vh" },
+  r3: { top: "20.5vh", height: "15vh" },
+  r4: { top: "35.5vh", height: "20vh" },
+  r6: { top: "35.5vh", height: "15vh" },
+  r7: { top: "50.5vh", height: "20vh" },
+  r9: { top: "50.5vh", height: "15vh" },
+  r10: { top: "65.5vh", height: "20vh" },
 };
 
 export function Section3() {
