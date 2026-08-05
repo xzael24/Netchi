@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Magnetic } from "@/components/layout/Magnetic";
+import { Tilt } from "@/components/layout/Tilt";
 
 const LINE = "border-cream/25";
 
@@ -76,14 +77,14 @@ export function Footer() {
       </div>
 
       {/* R5: massive wordmark */}
-      <div className="flex flex-1 items-center justify-center overflow-hidden px-2 py-4 md:py-6">
-        <span
-          className="footer-wordmark inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]"
-        >
-          Netchi&nbsp;
-          <span className="font-pixel translate-y-[0.12em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
-          entinel
-        </span>
+      <div className="flex flex-1 items-center justify-center px-4 py-4 md:px-6 md:py-6">
+        <Tilt max={10} perspective={700}>
+          <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]">
+            Netchi&nbsp;
+            <span className="font-pixel translate-y-[0.12em] text-[clamp(1.6rem,12vw,18rem)]">S</span>
+            entinel
+          </span>
+        </Tilt>
       </div>
 
       {/* R6: copyright */}
