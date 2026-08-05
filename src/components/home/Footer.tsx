@@ -31,7 +31,7 @@ export function Footer() {
       {/* R2: big awwwards nav links */}
       <nav className="flex flex-col">
         {navLinks.map((link, i) => (
-          <Magnetic key={link.label} strength={0.15}>
+          <Magnetic key={link.label} strength={0.15} pull={-1}>
             <Link
               href={link.href}
               className="group flex items-center justify-between border-b-2 border-cream/25 px-3 py-1.5 md:px-6 md:py-2"
