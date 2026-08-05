@@ -50,17 +50,17 @@ export default function Home() {
         },
       });
 
-      const starts = [0.16, 0.2, 0.24, 0.28, 0.38, 0.44, 0.54, 0.6];
+      const starts = [0.2, 0.24, 0.28, 0.32, 0.42, 0.48, 0.58, 0.64];
       rows.forEach((row, i) => {
         tl.fromTo(row, { y: "100vh" }, { y: 0, duration: 0.1 }, starts[i] ?? 0);
       });
 
-      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.12 }, 0.78);
+      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.12 }, 0.8);
       tl.fromTo(
         bars,
         { scaleY: 1 },
-        { scaleY: 0, duration: 0.1, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
-        0.9
+        { scaleY: 0, duration: 0.08, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
+        0.92
       );
     }, parent);
 
@@ -72,7 +72,7 @@ export default function Home() {
       <Navbar headlineVisible={!headlineInView} buttonVisible={!btnInView} />
       <Hero headlineRef={headlineRef} buttonRef={btnRef} />
       <Section2 />
-      <div ref={pinRef} className="relative h-[400vh]">
+      <div ref={pinRef} className="relative h-[500vh]">
         <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
           <Section3 />
           <div ref={s4Ref} className="absolute inset-0 z-60">
