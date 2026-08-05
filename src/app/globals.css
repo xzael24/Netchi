@@ -110,3 +110,12 @@ html.custom-cursor,
 html.custom-cursor * {
   cursor: none !important;
 }
+
+.footer-wordmark {
+  -webkit-text-stroke: 1.5px transparent;
+  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
+}
+.footer-wordmark:hover {
+  color: transparent;
+  -webkit-text-stroke-color: #f5f0d5;
+}
