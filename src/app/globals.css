@@ -118,7 +118,7 @@ html.custom-cursor * {
 .footer-wordmark:hover {
   color: transparent;
   -webkit-text-stroke-color: #f5f0d5;
-  background-image: radial-gradient(circle 150px at var(--mx, 0px) var(--my, 0px), #f5f0d5 0%, transparent 72%);
+  background-image: radial-gradient(circle 260px at var(--mx, -999px) var(--my, -999px), #f5f0d5 0%, rgba(245, 240, 213, 0.9) 30%, rgba(245, 240, 213, 0.25) 60%, transparent 80%);
   -webkit-background-clip: text;
   background-clip: text;
 }

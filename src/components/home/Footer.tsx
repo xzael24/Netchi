@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import { Magnetic } from "@/components/layout/Magnetic";
+import { useMotionValue, useSpring, useMotionValueEvent } from "framer-motion";
 
 const LINE = "border-cream/25";
 
@@ -15,6 +17,15 @@ const navLinks = [
 ];
 
 export function Footer() {
+  const wordRef = useRef<HTMLSpanElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const smx = useSpring(mx, { stiffness: 140, damping: 20 });
+  const smy = useSpring(my, { stiffness: 140, damping: 20 });
+
+  useMotionValueEvent(smx, "change", (v) => wordRef.current?.style.setProperty("--mx", `${v}px`));
+  useMotionValueEvent(smy, "change", (v) => wordRef.current?.style.setProperty("--my", `${v}px`));
+
   return (
     <footer className="relative flex min-h-screen flex-col overflow-hidden bg-[#1A3CDB] text-cream w-screen min-w-full">
       {/* R1: editorial label row */}
@@ -78,11 +89,12 @@ export function Footer() {
       {/* R5: massive wordmark */}
       <div className="flex flex-1 items-center justify-center overflow-hidden px-2 py-4 md:py-6">
         <span
+          ref={wordRef}
           className="footer-wordmark inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]"
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
-            e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-            e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+            mx.set(e.clientX - rect.left);
+            my.set(e.clientY - rect.top);
           }}
         >
           Netchi&nbsp;
