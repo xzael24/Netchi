@@ -4,9 +4,6 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const LINE = "border-cream/25";
 
@@ -19,8 +16,6 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
     if (!heroRef.current) return;
     const ctx = gsap.context(() => {
       const paths = gsap.utils.toArray<SVGPathElement>(".wave-path");
-      const svg = heroRef.current!.querySelector(".wave-svg");
-
       gsap.fromTo(
         paths,
         { strokeDasharray: "0 1", opacity: 0, y: 16 },
@@ -33,34 +28,6 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           ease: "power3.out",
         }
       );
-
-      if (svg) {
-        gsap.to(svg, {
-          y: -50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-
-        gsap.fromTo(
-          svg,
-          { opacity: 1 },
-          {
-            opacity: 0.2,
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroRef.current,
-              start: "70% top",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
-      }
     }, heroRef.current);
     return () => ctx.revert();
   }, []);
