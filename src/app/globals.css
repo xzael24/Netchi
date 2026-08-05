@@ -113,9 +113,12 @@ html.custom-cursor * {
 
 .footer-wordmark {
   -webkit-text-stroke: 1.5px transparent;
-  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
+  transition: color 0.4s ease;
 }
 .footer-wordmark:hover {
   color: transparent;
   -webkit-text-stroke-color: #f5f0d5;
+  background-image: radial-gradient(circle 150px at var(--mx, 0px) var(--my, 0px), #f5f0d5 0%, transparent 72%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
