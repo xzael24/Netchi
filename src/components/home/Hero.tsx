@@ -2,17 +2,57 @@
 
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
-import { TiltGlare } from "@/components/layout/TiltGlare";
+import { useState, useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const LINE = "border-cream/25";
 
 export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject<HTMLDivElement>; buttonRef?: React.RefObject<HTMLDivElement> }) {
   const arrowControls = useAnimation();
   const [langOpen, setLangOpen] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!heroRef.current) return;
+    const ctx = gsap.context(() => {
+      const paths = gsap.utils.toArray<SVGPathElement>(".wave-path");
+      const svg = heroRef.current!.querySelector(".wave-svg");
+
+      gsap.fromTo(
+        paths,
+        { strokeDasharray: "0 1", opacity: 0, y: 16 },
+        {
+          strokeDasharray: "1 1",
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          duration: 1.3,
+          ease: "power3.out",
+        }
+      );
+
+      if (svg) {
+        gsap.to(svg, {
+          y: -70,
+          opacity: 0.3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }, heroRef.current);
+    return () => ctx.revert();
+  }, []);
 
   const desktop = (
-    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
+    <div ref={heroRef} className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
       {/* ── ROW 1: NAV (5 cells) ── */}
       <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
       <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
@@ -127,15 +167,26 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
       <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
       <div className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[160px] md:min-h-[220px] container-cell relative`}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C2</span>
-        <TiltGlare max={7} perspective={700}>
-          <motion.svg
+        <motion.svg
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           viewBox="0 0 500 230"
-          className="w-full h-full"
+          className="wave-svg w-full h-full"
           preserveAspectRatio="xMidYMid slice"
         >
+          <defs>
+            <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#f5f0d5" stopOpacity="0" />
+              <stop offset="35%" stopColor="#f5f0d5" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#f5f0d5" stopOpacity="0.25" />
+            </linearGradient>
+            <radialGradient id="waveGlow" cx="50%" cy="115%" r="75%">
+              <stop offset="0%" stopColor="#f5f0d5" stopOpacity="0.28" />
+              <stop offset="100%" stopColor="#f5f0d5" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="500" height="230" fill="url(#waveGlow)" />
           {[
             { a: "M0,205 Q60,180 120,195 Q180,140 240,180 Q300,120 360,190 Q420,150 480,205", b: "M0,205 Q60,220 120,185 Q180,210 240,170 Q300,210 360,170 Q420,200 480,195", s: 1.4 },
             { a: "M0,180 Q80,150 160,175 Q240,110 320,165 Q380,200 440,180", b: "M0,180 Q80,200 160,160 Q240,200 320,150 Q380,160 440,170", s: 0.9 },
@@ -148,22 +199,22 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           ].map((line, i) => (
             <motion.path
               key={i}
+              className="wave-path"
               fill="none"
-              stroke="#f5f0d5"
+              stroke="url(#waveGrad)"
               strokeWidth={line.s}
-              opacity={1 - i * 0.09}
+              opacity={0}
               initial={{ d: line.a }}
               animate={{ d: [line.a, line.b, line.a] }}
               transition={{
                 duration: 3 + i * 0.6,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: i * 0.2,
+                delay: 0.6 + i * 0.2,
               }}
             />
           ))}
-          </motion.svg>
-        </TiltGlare>
+        </motion.svg>
       </div>
       <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
         <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
