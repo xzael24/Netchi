@@ -16,7 +16,7 @@ Membangun web app **Netchi Sentinel** sebagai tools edukasi & perlindungan ident
 
 ```
 /                   — Homepage: Hero → 1://TOOLS (grid fitur) → 2://EDUCATION → 3://FAQ → Footer
-/breach-checker     — Cek bocornya email/data
+/breach-checker     — Cek password pernah bocor
 /privacy-score      — Skor privasi digital
 /password           — Generator password aman
 /uu-pdp             — Hub UU PDP + artikel edukasi
@@ -38,17 +38,17 @@ Masing-masing halaman fitur pake format header section number (1://BREACH, 2://P
 
 ## Fitur Inti — Detail
 
-### 1. Breach Checker — `1://SCAN`
-**Cek apakah email atau data pribadi pernah bocor.**
+### 1. Breach Checker — `1://SCAN` (Password Breach Checker)
+**Cek apakah password pernah bocor.**
 
-- **Input**: Email atau username
-- **Proses**: Validasi format → cari di mock database breach (simulasi, ga pake API eksternal beneran)
+- **Input**: Password
+- **Proses**: Hash SHA-1 di client → cek ke HIBP Pwned Passwords (gratis, tanpa API key, k-anonymity)
 - **Output**:
-  - ✅ **Aman** — tidak ditemukan kebocoran
-  - ⚠️ **Bocor** — detail: sumber kebocoran, tahun, jenis data yang bocor (password, no HP, alamat, dll), saran tindakan
-  - ❌ **Error** — format email tidak valid
-- **Mock Data**: 10-15 dataset breach palsu (nama situs, tahun, data exposed) biar realistis
-- **Nilai Edukasi**: User sadar pentingnya ganti password rutin + beda password tiap akun
+  - ✅ **Aman** — tidak ditemukan di kebocoran yang diketahui
+  - ⚠️ **Bocor** — jumlah kemunculan di kebocoran data (700+ juta password)
+  - ⚠️ **Terlalu Umum** — ada di daftar password paling umum di dunia
+- **Data**: HIBP Pwned Passwords (real, gratis) + daftar password umum lokal
+- **Nilai Edukasi**: User sadar pentingnya password kuat & unik
 
 ### 2. Privacy Score — `2://SCORE`
 **Ukur seberapa aman kebiasaan digitalmu.**

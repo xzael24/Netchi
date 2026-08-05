@@ -11,9 +11,9 @@ const LINE = "border-[#1A3CDB]/25";
 
 const FAQS = [
   {
-    question: "Apakah cek kebocoran data gratis dan aman?",
+    question: "Apakah cek kebocoran password gratis dan aman?",
     answer:
-      "Ya, cek kebocoran data di Netchi gratis dan aman. Data yang kamu masukkan diproses langsung di perangkatmu (client-side) dan tidak pernah dikirim atau disimpan di server kami. Netchi juga open source, jadi siapa pun bisa memeriksa bagaimana data ditangani.",
+      "Ya, cek kebocoran password di Netchi gratis dan aman. Password di-hash SHA-1 langsung di perangkatmu dan hanya 5 karakter prefix yang dikirim ke Have I Been Pwned (k-anonymity) — password asli tidak pernah meninggalkan device. Netchi juga open source, jadi siapa pun bisa memeriksa bagaimana data ditangani.",
   },
   {
     question: "Apakah password yang saya generate tersimpan di server?",
@@ -36,9 +36,9 @@ const FAQS = [
       "Tidak. Netchi dirancang tanpa sistem akun — semua cek, generator password, dan skor privasi berjalan langsung di perangkatmu. Kamu tidak perlu mendaftar, dan tidak ada profil data yang kami simpan di server.",
   },
   {
-    question: "Bagaimana cara kerja cek kebocoran data?",
+    question: "Bagaimana cara kerja cek kebocoran password?",
     answer:
-      "Email atau nomor yang kamu masukkan dicocokkan secara lokal terhadap database kebocoran yang diunduh dan terupdate berkala. Pencocokan dilakukan di perangkatmu, jadi query tidak pernah meninggalkan browser — data pribadimu tidak terkirim ke mana pun.",
+      "Password di-hash SHA-1 langsung di browser. Lima karakter pertama dari hash dikirim ke database Pwned Passwords (Have I Been Pwned) untuk dicocokkan — password asli tidak pernah meninggalkan perangkatmu.",
   },
   {
     question: "Mengapa 2FA penting dan bagaimana cara mengaktifkannya?",

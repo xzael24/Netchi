@@ -39,14 +39,14 @@ flowchart TD
   Tools --> UU
   Tools --> DD
 
-  %% ===== BREACH CHECKER =====
+  %% ===== BREACH CHECKER (PASSWORD) =====
   subgraph Breach Flow
-    BrIn["Input Email / Data"]
-    BrVal["Validasi Input<br/>(format email / sanitasi)"]
-    BrCek["Cek Database<br/>(mock/simulasi)"]
-    BrAman["✅ Hasil: Aman<br/>Tidak ditemukan kebocoran"]
-    BrBocor["⚠️ Hasil: Bocor<br/>Detail kebocoran + saran"]
-    BrErr["❌ Error<br/>Input invalid"]
+    BrIn["Input Password"]
+    BrVal["Hash SHA-1 di browser<br/>(k-anonymity)"]
+    BrCek["Cek HIBP Pwned Passwords<br/>+ daftar password umum"]
+    BrAman["✅ Hasil: Aman<br/>Tidak ditemukan di kebocoran"]
+    BrBocor["⚠️ Hasil: Bocor<br/>Jumlah kemunculan + saran"]
+    BrErr["❌ Error<br/>Input kosong"]
     
     BrIn --> BrVal
     BrVal --> BrCek

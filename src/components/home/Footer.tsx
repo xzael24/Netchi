@@ -7,7 +7,7 @@ const LINE = "border-cream/25";
 
 const navLinks = [
   { label: "Beranda", href: "/" },
-  { label: "Cek Kebocoran", href: "/breach-checker" },
+  { label: "Cek Password", href: "/breach-checker" },
   { label: "Skor Privasi", href: "/privacy-score" },
   { label: "Password", href: "/password" },
   { label: "UU PDP", href: "/uu-pdp" },

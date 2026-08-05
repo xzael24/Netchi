@@ -52,7 +52,7 @@ export function scoreCategory(score: number): {
       label: "Sedang",
       emoji: "📊",
       color: "text-[#ffd166]",
-      advice: "Lumayan, tapi masih bisa ditingkatkan. Lengkapi 2FA dan rutin cek kebocoran email.",
+      advice: "Lumayan, tapi masih bisa ditingkatkan. Lengkapi 2FA dan rutin cek kebocoran password.",
     };
   return {
     label: "Tinggi",

@@ -17,7 +17,7 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 
 | ID | User Story | Prioritas |
 |----|-----------|-----------|
-| US-01 | User ingin cek apakah emailnya pernah bocor | P0 |
+| US-01 | User ingin cek apakah passwordnya pernah bocor | P0 |
 | US-02 | User ingin mengukur seberapa aman kebiasaan digitalnya | P0 |
 | US-03 | User ingin generate password kuat anti-crack | P0 |
 | US-04 | User ingin memahami hak data pribadi (UU PDP) | P0 |
@@ -28,11 +28,11 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 
 ## 5. Fitur Detail
 
-### 5.1 Breach Checker (`/breach-checker`)
-- **Input**: Email atau username
-- **Proses**: Validasi format → cari di mock database breach (10-15 dataset palsu)
-- **Output**: Aman / Bocor (detail: sumber, tahun, data exposed) / Error
-- **Nilai Edukasi**: Sadar pentingnya ganti password rutin
+### 5.1 Breach Checker (`/breach-checker`) — Password Breach Checker
+- **Input**: Password
+- **Proses**: Hash SHA-1 di client → cek ke HIBP Pwned Passwords (gratis, tanpa API key, k-anonymity) + daftar password umum lokal
+- **Output**: Aman / Bocor (jumlah kemunculan di kebocoran) / Terlalu umum / Error
+- **Nilai Edukasi**: Sadar pentingnya password kuat & unik
 
 ### 5.2 Privacy Score (`/privacy-score`)
 - **Input**: Jawaban kuis 10-15 pertanyaan kebiasaan online
@@ -61,7 +61,7 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 | Route | Halaman | Status |
 |-------|---------|--------|
 | `/` | Homepage (Hero → TOOLS → FAKTA → EDUCATION → FAQ → Footer) | Partial (Hero, Tools, Fakta) |
-| `/breach-checker` | Breach Checker | Belum |
+| `/breach-checker` | Breach Checker (password) | ✅ Done |
 | `/privacy-score` | Privacy Score | Belum |
 | `/password` | Password Generator | Belum |
 | `/uu-pdp` | UU PDP Hub | Belum |

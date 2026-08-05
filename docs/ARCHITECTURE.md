@@ -20,28 +20,27 @@ src/
 │   ├── globals.css               # Tailwind theme, container queries
 │   ├── page.tsx                  # Homepage: Hero → Section2
 │   ├── breach-checker/
-│   │   └── page.tsx              # (planned) Breach Checker tool
+│   │   └── page.tsx              # Password Breach Checker (HIBP Pwned Passwords)
 │   ├── privacy-score/
-│   │   └── page.tsx              # (planned) Privacy Score tool
+│   │   └── page.tsx              # Privacy Score quiz
 │   ├── password/
-│   │   └── page.tsx              # (planned) Password Generator
+│   │   └── page.tsx              # Password Generator + real breach check
 │   ├── uu-pdp/
-│   │   └── page.tsx              # (planned) UU PDP Hub
+│   │   └── page.tsx              # UU PDP Hub
 │   └── dummy-data/
-│       └── page.tsx              # (planned) Dummy Data Generator
+│       └── page.tsx              # Dummy Data Generator
 ├── components/
 │   ├── home/
 │   │   ├── Hero.tsx              # Hero section (desktop + mobile)
 │   │   └── Section2.tsx         # Tools Grid + Fakta section
 │   ├── features/                 # (planned) Komponen fitur
-│   │   ├── BreachChecker.tsx
-│   │   ├── PrivacyScore.tsx
-│   │   ├── PasswordGen.tsx
-│   │   ├── UUPDP.tsx
-│   │   └── DummyData.tsx
 │   ├── layout/
 │   │   ├── Navbar.tsx            # Fixed navbar (appear after hero scroll)
-│   │   └── Footer.tsx           # (planned)
+│   │   ├── Footer.tsx            # Full-screen awwwards footer
+│   │   ├── FeatureShell.tsx      # Editorial layout untuk feature pages
+│   │   ├── CustomCursor.tsx      # Custom cursor (dot + ring)
+│   │   ├── HeadingReveal.tsx     # Mask-reveal judul
+│   │   └── Magnetic.tsx          # Magnetic hover
 │   └── providers/
 │       └── LenisProvider.tsx     # Lenis smooth scroll wrapper
 ├── lib/
@@ -53,18 +52,19 @@ src/
 ## Data Flow
 
 ### Tanpa Database
-Semua fitur pake mock data / in-memory processing:
+Sebagian besar fitur pake pemrosesan in-memory / client-side (breach check real via HIBP Pwned Passwords):
 
 ```
 User Input → Client-side Validation → Processing Logic → Render Result
-                                     ↓
-                              (mock data / generate / calculate)
+                                      ↓
+                        (HIBP Pwned Passwords / generate / calculate)
 ```
 
-### Breach Checker Flow
+### Breach Checker Flow (Password)
 ```
-Email Input → Validasi Format → Cek Mock DB → Aman / Bocor / Error
-[client]                       [in-memory]
+Password Input → Hash SHA-1 (client) → Cek HIBP Pwned Passwords → Aman / Bocor / Terlalu Umum
+[client]                              [k-anonymity, gratis]      + daftar password umum lokal
+```
 ```
 
 ### Privacy Score Flow
@@ -99,9 +99,9 @@ Pilih Fields + Lokal → Generate Random → Tabel/Kartu → Copy / Download
 - **Konsekuensi**: Nilai keamanan 15% dari validasi form & sanitasi, bukan dari auth
 
 ### ADR-002: No Database
-- **Keputusan**: Semua data in-memory / mock
+- **Keputusan**: Tanpa database eksternal; pemrosesan di client / in-memory
 - **Alasan**: Fitur tidak butuh persistensi, deployment lebih sederhana (Vercel)
-- **Konsekuensi**: Mock data di file .ts, reload page berarti data reset
+- **Konsekuensi**: Data statis di file .ts; breach check real via HIBP Pwned Passwords (client-side, gratis)
 
 ### ADR-003: Monolith App Router
 - **Keputusan**: Next.js App Router monolith, bukan split frontend-backend

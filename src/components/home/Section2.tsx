@@ -214,7 +214,7 @@ export function Section2() {
       <div className={`hidden lg:grid grid-cols-[2.6%_repeat(5,18.81%)_1fr] grid-rows-[15vh] w-full min-w-full border-b-2 ${LINE}`}>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R2C1</div>
         {[
-          { label: "1://SCAN", title: "Lacak Kebocoran\nData", desc: "Cek apakah email & datamu\npernah bocor" },
+          { label: "1://SCAN", title: "Cek Password\nBocor", desc: "Cek apakah passwordmu\npernah bocor" },
           { label: "2://SCORE", title: "Ukur Skor\nPrivasi", desc: "Evaluasi seberapa aman\nkebiasaan digitalmu" },
           { label: "3://CRACK", title: "Buat Password\nKuat", desc: "Generate password rumit\nanti-crack" },
           { label: "4://LEARN", title: "Pahami UU\nPDP", desc: "Kenali hak-hakmu\natas data pribadi" },
