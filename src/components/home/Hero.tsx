@@ -11,7 +11,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
   const [langOpen, setLangOpen] = useState(false);
 
   const desktop = (
-    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_minmax(27vh,auto)_minmax(22vh,auto)_minmax(18vh,auto)_minmax(29vh,auto)] w-full min-w-full min-h-dvh">
+    <div className="hidden lg:grid bg-[#1A3CDB] text-cream grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full h-dvh">
       {/* ── ROW 1: NAV (5 cells) ── */}
       <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
       <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
