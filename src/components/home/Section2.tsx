@@ -249,7 +249,7 @@ export function Section2() {
             {i === 0 ? (
               <div className="flex items-end justify-start w-full h-full relative">
                 <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R4C2</span>
-                <h2 className="font-display font-bold text-[#1A3CDB] leading-[1] tracking-wide uppercase text-[clamp(0.8rem,4cqw,1.2rem)]">
+                <h2 className="font-display font-bold text-[#1A3CDB] leading-[1] tracking-wide uppercase text-[clamp(1rem,5.5cqw,1.8rem)]">
                   Fakta<br />Privasi
                 </h2>
               </div>
