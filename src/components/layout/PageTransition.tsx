@@ -1,51 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, animate } from "framer-motion";
+import { motion } from "framer-motion";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
-  const [count, setCount] = useState(0);
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    const controls = animate(0, 100, {
-      duration: 0.7,
-      ease: "easeInOut",
-      onUpdate: (v) => setCount(Math.round(v)),
-    });
-    const t = setTimeout(() => setDone(true), 780);
-    return () => {
-      controls.stop();
-      clearTimeout(t);
-    };
-  }, []);
-
   return (
     <>
+      {/* skeleton screen — covers old page, shimmer, then lifts after delay */}
       <motion.div
-        className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#1A3CDB] text-cream"
+        className="fixed inset-0 z-[200] flex flex-col bg-[#1A3CDB] text-cream"
         initial={{ y: 0 }}
-        animate={{ y: done ? "-100%" : 0 }}
-        transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+        animate={{ y: "-100%" }}
+        transition={{ delay: 0.75, duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
       >
-        <span className="font-display font-extrabold tracking-[-0.03em] text-[clamp(2rem,6vw,4rem)]">
-          Netchi&nbsp;
-          <span className="font-pixel text-[clamp(1rem,3vw,2rem)]">S</span>
-          entinel
-        </span>
-        <span className="mt-3 font-mono text-sm tracking-widest text-cream/50">{count}%</span>
-        <div className="mt-4 h-0.5 w-40 overflow-hidden bg-cream/20">
-          <div
-            className="h-full bg-cream transition-[width] duration-150 ease-linear"
-            style={{ width: `${count}%` }}
-          />
+        {/* header strip */}
+        <div className="skeleton h-[35px] w-full border-b border-cream/10" />
+        <div className="skeleton h-[62px] w-full border-b border-cream/10 lg:hidden" />
+
+        {/* body */}
+        <div className="flex flex-1 flex-col gap-3 px-4 py-6 md:px-6">
+          <div className="flex items-end gap-4">
+            <div className="skeleton h-3 w-16" />
+            <div className="skeleton h-10 w-3/4" />
+          </div>
+          <div className="skeleton h-3 w-2/3" />
+
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="skeleton h-36 rounded-sm" />
+            ))}
+          </div>
+
+          <div className="mt-auto flex flex-col gap-2">
+            <div className="skeleton h-3 w-full" />
+            <div className="skeleton h-3 w-5/6" />
+          </div>
         </div>
+
+        {/* footer strip */}
+        <div className="skeleton h-[28px] w-full" />
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.4, ease: "easeOut" }}
       >
         {children}
       </motion.div>
