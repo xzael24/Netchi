@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
+import { MenuButton } from "@/components/layout/MenuButton";
 
 const LINE = "border-cream/25";
 
@@ -58,9 +59,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
               )}
             </AnimatePresence>
           </div>
-          <button onClick={() => setMenuOpen(true)} className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
-            Menu
-          </button>
+          <MenuButton onClick={() => setMenuOpen(true)} />
         </div>
         <div
           className={`px-2 flex items-center justify-center relative container-cell`}
@@ -133,9 +132,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
             </motion.div>
           )}
         </AnimatePresence>
-        <button onClick={() => setMenuOpen(true)} className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
-          Menu
-        </button>
+        <MenuButton onClick={() => setMenuOpen(true)} />
       </div>
 
       <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
