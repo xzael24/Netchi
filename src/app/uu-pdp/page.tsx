@@ -25,7 +25,7 @@ export default function UuPdpPage() {
   }, [query, category]);
 
   return (
-    <FeatureShell index="1" label="4://LEARN">
+    <FeatureShell label="4://LEARN">
       <div className="mx-auto max-w-4xl">
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
             4://LEARN — Pahami hakmu atas data pribadi

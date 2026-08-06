@@ -3,14 +3,27 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
 import { MenuButton } from "@/components/layout/MenuButton";
 
 const LINE = "border-cream/25";
 
-export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
+export function Navbar({ headlineVisible = true, buttonVisible = true }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHome = usePathname() === "/";
+
+  const menuEl = isHome ? (
+    <MenuButton onClick={() => setMenuOpen(true)} />
+  ) : (
+    <Link
+      href="/"
+      className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors text-[0.875rem]"
+    >
+      Ke Beranda
+    </Link>
+  );
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#1A3CDB] text-cream">
@@ -59,7 +72,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
               )}
             </AnimatePresence>
           </div>
-          <MenuButton onClick={() => setMenuOpen(true)} />
+          {menuEl}
         </div>
         <div
           className={`px-2 flex items-center justify-center relative container-cell`}
@@ -132,7 +145,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
             </motion.div>
           )}
         </AnimatePresence>
-        <MenuButton onClick={() => setMenuOpen(true)} />
+        {menuEl}
       </div>
 
       <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />

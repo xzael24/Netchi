@@ -98,7 +98,7 @@ export default function PasswordPage() {
   };
 
   return (
-    <FeatureShell index="1" label="3://CRACK">
+    <FeatureShell label="3://CRACK">
       <div className="mx-auto max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">3://CRACK — Generator password</span>
           <h1 className="mt-2 font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2rem,5vw,3.5rem)]">

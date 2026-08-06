@@ -41,7 +41,7 @@ export default function BreachCheckerPage() {
   };
 
   return (
-    <FeatureShell index="1" label="1://SCAN">
+    <FeatureShell label="1://SCAN">
       <div className="flex flex-col items-center justify-center py-10 text-center">
         <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40 mb-4">
           1://SCAN — Cek password bocor

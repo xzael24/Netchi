@@ -45,7 +45,7 @@ export default function DummyDataPage() {
   const head = fields.length ? fields : ALL_FIELDS;
 
   return (
-    <FeatureShell index="1" label="5://MASK">
+    <FeatureShell label="5://MASK">
       <div className="mx-auto max-w-4xl">
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
             5://MASK — Data palsu untuk situs abal-abal

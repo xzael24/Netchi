@@ -37,7 +37,7 @@ export default function PrivacyScorePage() {
   };
 
   return (
-    <FeatureShell index="1" label="2://SCORE">
+    <FeatureShell label="2://SCORE">
       <div className="max-w-3xl mx-auto">
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
             2://SCORE — Ukur kebiasaan digitalmu
