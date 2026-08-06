@@ -39,11 +39,12 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N3</div>
         <div className={`border-r-2 ${LINE} flex items-center justify-end container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N4</span>
-          <div className="overflow-hidden mr-auto">
+          <div className="overflow-hidden mr-auto h-full">
             <AnimatePresence>
               {buttonVisible && (
                 <motion.div
                   key="btn-start"
+                  className="h-full"
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: -20, opacity: 0 }}
@@ -51,7 +52,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                 >
                 <Link
                   href="/breach-checker"
-                  className="bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 text-[clamp(0.5rem,3.5cqw,0.85rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
+                  className="h-full flex items-center justify-center bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 md:px-4 text-[clamp(0.5rem,3.5cqw,0.85rem)] font-bold whitespace-nowrap hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors"
                 >
                   MULAI SEKARANG
                 </Link>
