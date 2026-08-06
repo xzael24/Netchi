@@ -29,7 +29,7 @@ export function FeatureShell({
             opacity: 1,
             duration: 0.9,
             ease: "power3.out",
-            delay: 0.8,
+            delay: 0.5,
           }
         );
       });
