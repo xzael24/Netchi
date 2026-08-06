@@ -9,7 +9,7 @@ import { MenuButton } from "@/components/layout/MenuButton";
 
 const LINE = "border-cream/25";
 
-export function Navbar({ headlineVisible = true, buttonVisible = true }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
+export function Navbar({ headlineVisible = true, buttonVisible = false }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isHome = usePathname() === "/";
