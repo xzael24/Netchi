@@ -43,7 +43,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
             <div className={`flex items-center border-r-2 ${LINE} px-4 font-mono text-xs tracking-widest uppercase text-cream/60`}>
               0://MENU
             </div>
-            <div className={`flex items-center justify-end border-r-2 ${LINE} pr-4`}>
+            <div className={`flex items-center justify-end border-r-2 ${LINE}`}>
               <MenuButton onClick={onClose} label="Tutup" />
             </div>
             <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">MENU</div>
