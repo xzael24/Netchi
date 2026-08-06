@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -202,14 +203,23 @@ function RouteSkeleton({ path }: { path: string }) {
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const path = usePathname();
+  const skeletonRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (skeletonRef.current) skeletonRef.current.style.display = "none";
+    }, 1400);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <>
       <motion.div
+        ref={skeletonRef}
         className="fixed inset-0 z-[200] flex flex-col bg-[#1A3CDB] text-cream"
         initial={{ y: 0 }}
         animate={{ y: "-100%" }}
-        transition={{ delay: 0.5, duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ delay: 0.75, duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
       >
         <RouteSkeleton path={path} />
       </motion.div>
