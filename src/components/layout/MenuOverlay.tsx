@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
+import { MenuButton } from "@/components/layout/MenuButton";
 
 const LINE = "border-cream/25";
 
@@ -43,13 +44,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
               0://MENU
             </div>
             <div className={`flex items-center justify-end border-r-2 ${LINE} pr-4`}>
-              <button
-                onClick={onClose}
-                className="group flex items-center gap-2 font-mono text-xs uppercase tracking-widest hover:text-[#ff4d4d] transition-colors"
-              >
-                Tutup
-                <span className="inline-block transition-transform duration-300 group-hover:rotate-90">×</span>
-              </button>
+              <MenuButton onClick={onClose} label="Tutup" />
             </div>
             <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">MENU</div>
           </div>
