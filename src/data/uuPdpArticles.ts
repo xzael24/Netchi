@@ -112,6 +112,42 @@ export const UU_PDP_ARTICLES: UuPdpArticle[] = [
       "Kamu bisa melaporkan ke OJK dan otoritas perlindungan data.",
     ],
   },
+  {
+    id: "breach-16miliar",
+    chapter: "Berita",
+    title: "16 Miliar Password Bocor — 30 Database Jadi Target Malware",
+    summary: "16 miliar kredensial login bocor dari 30 database berbeda lewat malware infostealer.",
+    points: [
+      "Ini kebocoran password terbesar dalam sejarah — 16 miliar akun terekspos.",
+      "Infostealer malware menangkap kredensial dari browser dan mengirimkannya ke server peretas.",
+      "Cek apakah emailmu ada di dalam kebocoran ini lewat tool Cek Kebocoran di Netchi.",
+      "Segera ganti password akun penting dan aktifkan 2FA.",
+    ],
+  },
+  {
+    id: "breach-prabowo-wasit",
+    chapter: "Berita",
+    title: "Prabowo Segera Tunjuk 'Wasit' Data Warga RI",
+    summary: "Pemerintah merampungkan pembentukan Otoritas PDP via Perpres agar data warga terlindungi.",
+    points: [
+      "Otoritas PDP akan bekerja independen di luar Komdigi, lapor langsung ke Presiden.",
+      "Bertugas mengawasi pelanggaran data pribadi, meninjau kepatuhan perusahaan terhadap UU PDP.",
+      "Masyarakat bisa melapor pelanggaran data dan mendapat perlindungan hukum.",
+      "Ini momen penting bagi ekosistem privasi digital Indonesia.",
+    ],
+  },
+  {
+    id: "breach-coupang-denda",
+    chapter: "Berita",
+    title: "Ecommerce Ini Kena Denda Rp7,38 Triliun",
+    summary: "Coupang, ecommerce terbesar Korea, kena denda terbesar sejarah kebocoran data (37,6 juta orang).",
+    points: [
+      "Data 37,6 juta orang (lebih dari 70% populasi Korea Selatan) bocor dan dijual.",
+      "Mantan developer China masih simpan kunci autentikasi setelah keluar dari perusahaan.",
+      "Sanksi berat menanti perusahaan lalai — denda ini lebih besar dari pendapatan tahunannya.",
+      "Pelajaran: keamanan data bukan opsional, wajib aktif lindungi data pribadimu.",
+    ],
+  },
 ];
 
-export const UU_CATEGORIES = ["Semua", "Hak Subjek Data", "Kewajiban Pengendali Data", "Sanksi & Denda", "Contoh Kasus"] as const;
+export const UU_CATEGORIES = ["Semua", "Berita", "Hak Subjek Data", "Kewajiban Pengendali Data", "Sanksi & Denda", "Contoh Kasus"] as const;

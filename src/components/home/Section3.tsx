@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
+import Link from "next/link";
 
 const LINE = "border-cream/25";
 
@@ -69,7 +70,9 @@ export function Section3() {
           <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
             <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
-              1. 16 Miliar Password Bocor — 30 Database Jadi Target Malware
+              <Link href="/uu-pdp?article=breach-16miliar" className="block">
+                1. 16 Miliar Password Bocor - 30 Database Jadi Target Malware
+              </Link>
             </h2>
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R3C3</div>
@@ -102,7 +105,9 @@ export function Section3() {
           <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
             <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
-              2. Prabowo Segera Tunjuk &apos;Wasit&apos; Data Warga RI
+              <Link href="/uu-pdp?article=breach-prabowo-wasit" className="block">
+                2. Prabowo Segera Tunjuk &apos;Wasit&apos; Data Warga RI
+              </Link>
             </h2>
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R6C3</div>
@@ -135,7 +140,9 @@ export function Section3() {
           <div className="article-title-cell cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative" onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R9C2</span>
             <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
-              3. Ecommerce Ini Kena Denda Rp7,38 Triliun
+              <Link href="/uu-pdp?article=breach-coupang-denda" className="block">
+                3. Ecommerce Ini Kena Denda Rp7,38 Triliun
+              </Link>
             </h2>
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R9C3</div>

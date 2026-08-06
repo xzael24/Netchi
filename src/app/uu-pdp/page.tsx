@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { UU_PDP_ARTICLES, UU_CATEGORIES } from "@/data/uuPdpArticles";
 import { FeatureShell } from "@/components/layout/FeatureShell";
 
@@ -10,6 +10,17 @@ export default function UuPdpPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<(typeof UU_CATEGORIES)[number]>("Semua");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const art = params.get("article");
+    if (art) {
+      setExpandedId(art);
+      setTimeout(() => {
+        document.getElementById(`article-${art}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+    }
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -68,7 +79,7 @@ export default function UuPdpPage() {
           ) : (
             <ul className="mt-6 space-y-3">
               {filtered.map((a) => (
-                <li key={a.id} className={`border-2 ${LINE} bg-cream/5 p-4`}>
+                <li key={a.id} id={`article-${a.id}`} className={`border-2 ${LINE} bg-cream/5 p-4`}>
                   <button
                     type="button"
                     onClick={() => setExpandedId(a.id)}
