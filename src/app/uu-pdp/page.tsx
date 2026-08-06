@@ -3,14 +3,12 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { UU_PDP_ARTICLES, UU_CATEGORIES } from "@/data/uuPdpArticles";
-import { BREACH_ARTICLES } from "@/data/breachArticles";
 import { FeatureShell } from "@/components/layout/FeatureShell";
 import { HeadingReveal } from "@/components/layout/HeadingReveal";
 
 const LINE = "border-cream/25";
 
 const CHAPTER_COLORS: Record<string, string> = {
-  Berita: "bg-[#ff4d4d]/10 text-[#ff4d4d] border-[#ff4d4d]/30",
   "Hak Subjek Data": "bg-[#4cd99b]/10 text-[#4cd99b] border-[#4cd99b]/30",
   "Kewajiban Pengendali Data": "bg-[#ffd166]/10 text-[#ffd166] border-[#ffd166]/30",
   "Sanksi & Denda": "bg-[#ff6b6b]/10 text-[#ff6b6b] border-[#ff6b6b]/30",
@@ -65,26 +63,6 @@ export default function UuPdpPage() {
               >
                 {c}
               </button>
-            ))}
-          </div>
-        </div>
-
-        <div data-article-reveal className={`mt-10 border-2 ${LINE} bg-cream/5 p-5 md:p-6`}>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">Berita Terkini</span>
-          <h2 className="mt-2 font-display font-bold text-[clamp(1.2rem,2.5cqw,2rem)] mb-4">Kasus Kebocoran Data</h2>
-          <div className="grid gap-3 md:grid-cols-3">
-            {BREACH_ARTICLES.map((a) => (
-              <Link
-                key={a.slug}
-                href={`/uu-pdp/${a.slug}`}
-                className={`block border ${LINE} p-3 hover:border-cream/60 transition-colors group`}
-              >
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#ff4d4d]">Berita</span>
-                <h3 className="mt-1 font-display font-semibold text-sm leading-snug group-hover:text-[#ff4d4d] transition-colors">
-                  {a.title.length > 50 ? a.title.slice(0, 50) + "..." : a.title}
-                </h3>
-                <p className="mt-1 text-xs text-cream/60 line-clamp-2">{a.summary}</p>
-              </Link>
             ))}
           </div>
         </div>

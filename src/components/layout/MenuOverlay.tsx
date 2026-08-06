@@ -12,6 +12,7 @@ const links = [
   { label: "Cek Password", href: "/breach-checker" },
   { label: "Skor Privasi", href: "/privacy-score" },
   { label: "Password", href: "/password" },
+  { label: "Berita", href: "/berita" },
   { label: "UU PDP", href: "/uu-pdp" },
   { label: "Dummy Data", href: "/dummy-data" },
 ];
