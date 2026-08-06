@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useLayoutEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -55,8 +56,9 @@ function getArticle(slug: string): Unified | null {
 
 const LINE = "border-cream/25";
 
-export default function ArticleDetail({ params }: { params: { slug: string } }) {
-  const article = getArticle(params.slug);
+export default function ArticleDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = React.use(params);
+  const article = getArticle(slug);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
