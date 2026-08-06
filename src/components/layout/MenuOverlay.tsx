@@ -34,7 +34,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
           transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
         >
           {/* header */}
-          <div className={`grid grid-cols-[2.6%_30%_35%_29.05%_1fr] border-b-2 ${LINE}`}>
+          <div className={`grid h-[62px] grid-cols-[2.6%_30%_35%_29.05%_1fr] border-b-2 ${LINE} lg:h-[35px]`}>
             <div className={`flex items-center justify-center border-r-2 ${LINE} p-1 font-mono text-[9px] text-cream/30`}>0</div>
             <div className={`flex items-center border-r-2 ${LINE} pl-2 md:pl-4 font-display font-bold tracking-widest`}>
               Netchi Sentinel

@@ -13,7 +13,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#1A3CDB] text-cream">
-      <div className="hidden lg:grid grid-cols-[2.6%_30%_35%_29.05%_1fr] w-full min-w-full border-b-2 border-cream/25">
+      <div className="hidden lg:grid h-[35px] grid-cols-[2.6%_30%_35%_29.05%_1fr] w-full min-w-full border-b-2 border-cream/25">
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N1</div>
         <div className={`border-r-2 ${LINE} flex items-center justify-start pl-2 md:pl-4 font-display font-bold tracking-widest cq-hero-nav relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N2</span>
@@ -101,7 +101,7 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
         </div>
       </div>
 
-      <div className="lg:hidden flex items-center justify-between border-b-2 border-cream/25 px-4 py-3">
+      <div className="lg:hidden flex h-[62px] items-center justify-between border-b-2 border-cream/25 px-4 py-3">
         <button
           type="button"
           aria-label="Language"

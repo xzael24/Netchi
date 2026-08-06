@@ -46,7 +46,7 @@ export function FeatureShell({
 
   return (
     <main className="bg-[#1A3CDB] text-cream w-screen min-w-full min-h-screen flex flex-col">
-      <header className={`grid grid-cols-[2.6%_18.81%_78%_1fr] border-b-2 ${LINE}`}>
+      <header className={`grid h-[62px] grid-cols-[2.6%_18.81%_78%_1fr] border-b-2 ${LINE} lg:h-[35px]`}>
         <div className="flex items-center justify-center border-r-2 border-cream/25 p-1 font-mono text-[9px] text-cream/30">
           {index}
         </div>
