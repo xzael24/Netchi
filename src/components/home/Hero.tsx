@@ -222,9 +222,8 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
               arrowControls.set({ y: 0, opacity: 1 });
             }}
           >
-            <Link
-              href="/privacy-score"
-              className="group flex items-center gap-2 font-mono uppercase tracking-widest text-cream font-bold px-3 py-2 rounded transition-colors cq-hero-cta"
+            <span
+              className="group flex items-center gap-2 font-mono uppercase tracking-widest text-cream font-bold px-3 py-2 rounded transition-colors cq-hero-cta cursor-default"
             >
               Jelajahi
               <motion.span
@@ -233,7 +232,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
               >
                 ↓
               </motion.span>
-            </Link>
+            </span>
           </div>
         </div>
       </div>
@@ -332,9 +331,8 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           MULAI SEKARANG
         </Link>
         <div className="px-5 py-4">
-          <Link
-            href="/privacy-score"
-            className="group flex items-center gap-2 font-mono uppercase tracking-widest text-cream font-bold text-sm sm:text-base"
+          <span
+            className="group flex items-center gap-2 font-mono uppercase tracking-widest text-cream font-bold text-sm sm:text-base cursor-default"
           >
             Jelajahi
             <motion.span
@@ -343,7 +341,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             >
               ↓
             </motion.span>
-          </Link>
+          </span>
         </div>
       </div>
 
