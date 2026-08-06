@@ -2,10 +2,7 @@
 
 import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "@/components/layout/Navbar";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function FeatureShell({
   label,
@@ -32,7 +29,7 @@ export function FeatureShell({
             opacity: 1,
             duration: 0.9,
             ease: "power3.out",
-            scrollTrigger: { trigger: block, start: "top 88%", once: true },
+            delay: 1.4,
           }
         );
       });
