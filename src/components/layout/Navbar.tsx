@@ -3,11 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { MenuOverlay } from "@/components/layout/MenuOverlay";
 
 const LINE = "border-cream/25";
 
 export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: boolean; buttonVisible?: boolean }) {
   const [langOpen, setLangOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#1A3CDB] text-cream">
@@ -56,9 +58,9 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
               )}
             </AnimatePresence>
           </div>
-          <Link href="#" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
+          <button onClick={() => setMenuOpen(true)} className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
             Menu
-          </Link>
+          </button>
         </div>
         <div
           className={`px-2 flex items-center justify-center relative container-cell`}
@@ -131,10 +133,12 @@ export function Navbar({ headlineVisible, buttonVisible }: { headlineVisible?: b
             </motion.div>
           )}
         </AnimatePresence>
-        <Link href="#" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
+        <button onClick={() => setMenuOpen(true)} className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
           Menu
-        </Link>
+        </button>
       </div>
+
+      <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
     </nav>
   );
 }
