@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { MenuButton } from "@/components/layout/MenuButton";
+import { Navbar } from "@/components/layout/Navbar";
 
 const LINE = "border-cream/25";
 
@@ -50,23 +51,14 @@ export function ArticleView({
 
   return (
     <main className="bg-[#1A3CDB] text-cream w-screen min-h-screen flex flex-col">
-      {/* header bar */}
-      <div className={`grid grid-cols-[2.6%_18.81%_78%_1fr] border-b-2 ${LINE} h-[62px] lg:h-[35px]`}>
-        <div className="border-r-2 border-cream/25 p-1 text-[8px] text-cream/30 font-mono flex items-center justify-center">1</div>
-        <Link href="/" className="flex items-center border-r-2 border-cream/25 pl-2 md:pl-4 font-display font-bold tracking-widest text-cream hover:text-cream/70">
-          Netchi Sentinel
-        </Link>
-        <div className={`flex items-center justify-between border-r-2 border-cream/25 px-3 md:px-4`}>
-          <span className="font-mono text-xs tracking-widest uppercase text-cream/60">{label}</span>
-          <MenuButton onClick={() => router.push(backHref)} label="Kembali" />
-        </div>
-        <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">
-          ARTICLE
-        </div>
-      </div>
+      <Navbar />
 
-      <div ref={contentRef} className="flex-1 px-6 md:px-10 py-12 md:py-20">
+      <div ref={contentRef} className="flex-1 px-6 md:px-10 pt-[88px] pb-16 lg:pt-[64px]">
         <div className="mx-auto max-w-3xl">
+          <div data-article-reveal className={`mb-8 flex items-center justify-between border-2 ${LINE} bg-cream/5 px-4 py-2`}>
+            <span className="font-mono text-xs tracking-widest uppercase text-cream/60">{label}</span>
+            <MenuButton onClick={() => router.push(backHref)} label="Kembali" />
+          </div>
           <div data-article-reveal className="mb-8">
             <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
               {article.chapter}
