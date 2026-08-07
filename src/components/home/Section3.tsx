@@ -59,7 +59,7 @@ export function Section3() {
               className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap"
               style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
             >
-              2://EDU
+              4://BERITA
             </span>
           </div>
         </div>

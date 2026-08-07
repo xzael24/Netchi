@@ -29,10 +29,10 @@ export default function UuPdpPage() {
   }, [query, category]);
 
   return (
-    <FeatureShell label="4://LEARN">
+    <FeatureShell label="2://EDU">
       <div className="mx-auto max-w-4xl">
         <span data-article-reveal className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
-          4://LEARN — Pahami hakmu atas data pribadi
+          2://EDU — Pahami hakmu atas data pribadi
         </span>
         <div data-article-reveal>
           <HeadingReveal as="h1" lines={["UU Perlindungan", "Data Pribadi"]} className="mt-2 font-display font-bold leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,5vw,3.5rem)]" />

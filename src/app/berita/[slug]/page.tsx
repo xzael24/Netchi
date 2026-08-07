@@ -23,7 +23,7 @@ export default function BeritaDetail({ params }: { params: Promise<{ slug: strin
   return (
     <ArticleView
       article={{ ...article, chapter: "Berita" }}
-      label="2://EDU"
+      label="4://BERITA"
       backHref="/berita"
       backLabel="Berita"
     />

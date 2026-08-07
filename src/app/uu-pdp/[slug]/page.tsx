@@ -23,7 +23,7 @@ export default function UuPdpDetail({ params }: { params: Promise<{ slug: string
   return (
     <ArticleView
       article={{ slug: article.id, title: article.title, summary: article.summary, chapter: article.chapter, points: article.points }}
-      label="4://LEARN"
+      label="2://EDU"
       backHref="/uu-pdp"
       backLabel="UU PDP"
     />

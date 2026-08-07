@@ -217,7 +217,7 @@ export function Section2() {
           { label: "1://SCAN", title: "Cek Password\nBocor", desc: "Cek apakah passwordmu\npernah bocor" },
           { label: "2://SCORE", title: "Ukur Skor\nPrivasi", desc: "Evaluasi seberapa aman\nkebiasaan digitalmu" },
           { label: "3://CRACK", title: "Buat Password\nKuat", desc: "Generate password rumit\nanti-crack" },
-          { label: "4://LEARN", title: "Pahami UU\nPDP", desc: "Kenali hak-hakmu\natas data pribadi" },
+          { label: "2://EDU", title: "Pahami UU\nPDP", desc: "Kenali hak-hakmu\natas data pribadi" },
           { label: "5://MASK", title: "Lindungi Identitas\nAsli", desc: "Pakai data palsu buat daftar\ndi tempat abal-abal" },
         ].map((item, i) => (
           <div key={i} className={`border-r-2 ${LINE} grid grid-rows-[0.08fr_1fr] container-cell`}>

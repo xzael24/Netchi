@@ -12,10 +12,10 @@ const idDate = (d: string) =>
 
 export default function BeritaPage() {
   return (
-    <FeatureShell label="2://EDU">
+    <FeatureShell label="4://BERITA">
       <div className="mx-auto max-w-4xl">
         <span data-article-reveal className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
-          2://EDU — Kabar kebocoran data & perlindungan privasi
+          4://BERITA — Kabar kebocoran data & perlindungan privasi
         </span>
         <div data-article-reveal>
           <HeadingReveal as="h1" lines={["Berita &", "Kasus Terbaru"]} className="mt-2 font-display font-bold leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,5vw,3.5rem)]" />
