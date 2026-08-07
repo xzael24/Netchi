@@ -2,7 +2,9 @@
 
 import { useRef, useLayoutEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
+import { MenuButton } from "@/components/layout/MenuButton";
 
 const LINE = "border-cream/25";
 
@@ -32,6 +34,7 @@ export function ArticleView({
   backLabel: string;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useLayoutEffect(() => {
     if (!contentRef.current) return;
@@ -55,7 +58,7 @@ export function ArticleView({
         </Link>
         <div className={`flex items-center justify-between border-r-2 border-cream/25 px-3 md:px-4`}>
           <span className="font-mono text-xs tracking-widest uppercase text-cream/60">{label}</span>
-          <Link href={backHref} className="font-mono text-xs uppercase tracking-widest hover:text-white">← Kembali</Link>
+          <MenuButton onClick={() => router.push(backHref)} label="Kembali" />
         </div>
         <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">
           ARTICLE
