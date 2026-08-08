@@ -53,7 +53,7 @@ export default function UuPdpPage() {
   }, [filteredUU]);
 
   return (
-    <main className="bg-[#1A3CDB] text-cream w-screen min-h-screen flex flex-col pt-[88px] lg:pt-[64px]">
+    <main className="bg-[#1A3CDB] text-cream w-screen min-h-screen flex flex-col pt-[62px] lg:pt-[35px]">
       <Navbar />
 
       {/* R1: hero — editorial grid */}
