@@ -57,7 +57,7 @@ export default function UuPdpPage() {
       <Navbar />
 
       {/* R1: hero — editorial grid */}
-      <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[46vh] border-b-2 ${LINE}`}>
+      <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[26vh] border-b-2 ${LINE}`}>
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
         <div className={`border-r-2 ${LINE} container-cell relative flex flex-col items-start justify-end pl-2 md:pl-4 pb-3`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C2</span>
