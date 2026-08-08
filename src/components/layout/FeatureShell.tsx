@@ -41,14 +41,14 @@ export function FeatureShell({
     <main className="bg-[#1A3CDB] text-cream w-screen min-w-full min-h-screen flex flex-col">
       <Navbar />
 
-      <div ref={bodyRef} className="flex-1 px-6 pt-[88px] pb-10 md:px-10 lg:pt-[64px]">
+      <div ref={bodyRef} className="flex-1 px-6 pt-[88px] pb-12 md:px-10 lg:pt-[64px]">
         <div className="mx-auto max-w-4xl" data-reveal>
           {children}
         </div>
       </div>
 
-      {/* marquee polish strip */}
-      <div className="overflow-hidden border-t-2 border-cream/25 py-1.5" aria-hidden>
+      {/* marquee polish strip — fixed to viewport bottom */}
+      <div className="fixed bottom-0 left-0 z-40 w-full overflow-hidden border-t-2 border-cream/25 bg-[#1A3CDB] py-1.5" aria-hidden>
         <div className="marquee-track flex w-max whitespace-nowrap font-mono text-xs uppercase tracking-widest text-cream/40">
           {[0, 1].map((half) => (
             <span key={half} className="flex shrink-0">
