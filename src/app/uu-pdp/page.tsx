@@ -53,7 +53,7 @@ export default function UuPdpPage() {
   }, [filteredUU]);
 
   return (
-    <main className="bg-[#1A3CDB] text-cream w-screen min-h-screen flex flex-col">
+    <main className="bg-[#1A3CDB] text-cream w-screen min-h-screen flex flex-col pt-[88px] lg:pt-[64px]">
       <Navbar />
 
       {/* R1: hero — editorial grid */}
@@ -83,7 +83,7 @@ export default function UuPdpPage() {
       </div>
 
       {/* R1 mobile */}
-      <div className="lg:hidden flex flex-col px-5 pt-20 pb-8">
+      <div className="lg:hidden flex flex-col px-5 pb-8">
         <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">2://EDU</span>
         <h1 className="mt-2 font-display font-bold leading-[0.9] tracking-[-0.03em] text-[clamp(2.2rem,8vw,3.2rem)]">
           UU Perlindungan<br />Data Pribadi
