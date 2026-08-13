@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e6]
+      - generic [ref=e41]:
+        - generic [ref=e42]: TRENDING
+        - list [ref=e43]
+  - generic [ref=e54]:
+    - generic:
+      - insertion
+  - generic [ref=e55]:
+    - text: "Tag : kebocoran data"
+    - separator [ref=e56]
+    - navigation [ref=e57]:
+      - list [ref=e58]:
+        - listitem [ref=e59]
+        - listitem [ref=e61]
+        - listitem [ref=e63]
+        - listitem [ref=e65]
+        - listitem [ref=e67]
+      - generic [ref=e70]:
+        - combobox [ref=e71]
+        - textbox [ref=e72]: Semua Tanggal
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e76]
+        - separator [ref=e167]
+        - generic [ref=e168]
+      - generic [ref=e176]:
+        - generic
+  - contentinfo [ref=e177]:
+    - generic [ref=e179]:
+      - link "link description" [ref=e180] [cursor=pointer]:
+        - /url: "#anchor"
+        - img "icon-chevron-down-footer" [ref=e181]
+      - link "link description" [ref=e182] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/
+        - img "cnn-foot-logo" [ref=e183]
+    - generic [ref=e185]:
+      - generic [ref=e186]:
+        - text: Menyajikan berita terhangat langsung melalui handphone Anda
+        - link "link description" [ref=e187] [cursor=pointer]:
+          - /url: //app.cnnindonesia.com
+        - link "Add as a preferred source on Google" [ref=e188] [cursor=pointer]:
+          - /url: https://www.cnnindonesia.com/outboundlinks?url=https://www.google.com/preferences/source?q=https://www.cnnindonesia.com
+      - generic [ref=e200]:
+        - generic [ref=e201]: TELUSURI
+        - list [ref=e202]
+        - link "link description" [ref=e221] [cursor=pointer]:
+          - /url: https://www.cnnindonesia.com/tv
+      - generic [ref=e222]:
+        - generic [ref=e223]: IKUTI KAMI
+        - generic [ref=e224]
+    - generic [ref=e233]:
+      - text: © 2026 Trans Media, CNN name, logo and all associated elements (R) and © 2026 Cable News Network, Inc. A Time Warner Company. All rights reserved. CNN and the CNN logo are registered marks of Cable News Network, Inc., displayed with permission.
+      - link "link description" [ref=e234] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/tentang-kami
+        - text: Tentang Kami
+      - text: "|"
+      - link "link description" [ref=e235] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/tentang-kami#redaksi
+        - text: Redaksi
+      - text: "|"
+      - link "link description" [ref=e236] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/pedoman-media-siber
+        - text: Pedoman Media Siber
+      - text: "|"
+      - link "link description" [ref=e237] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/karir
+        - text: Karir
+      - text: "|"
+      - link "link description" [ref=e238] [cursor=pointer]:
+        - /url: https://www.cnnindonesia.com/disclaimer
+        - text: Disclaimer
+      - link "link description" [ref=e239] [cursor=pointer]:
+        - /url: https://us.cnn.com/
+        - text: CNN U.S.
+      - text: "|"
+      - link "link description" [ref=e240] [cursor=pointer]:
+        - /url: https://www.cnn.com/
+        - text: CNN International
+      - text: "|"
+      - link "link description" [ref=e241] [cursor=pointer]:
+        - /url: https://cnnespanol.cnn.com/
+        - text: CNN en ESPAÑOL
+      - text: "|"
+      - link "link description" [ref=e242] [cursor=pointer]:
+        - /url: http://www.cnnchile.com
+        - text: CNN Chile
+      - link "link description" [ref=e243] [cursor=pointer]:
+        - /url: http://www.cnnmexico.com
+        - text: CNN México
+      - text: "|"
+      - link "link description" [ref=e244] [cursor=pointer]:
+        - /url: https://arabic.cnn.com/
+        - text: العربية
+      - text: "|"
+      - link "link description" [ref=e245] [cursor=pointer]:
+        - /url: https://www.cnn.co.jp/
+        - text: 日本語
+      - text: "|"
+      - link "link description" [ref=e246] [cursor=pointer]:
+        - /url: https://www.cnnturk.com/
+        - text: Türkçe

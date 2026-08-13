@@ -1,0 +1,200 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, useMotionValue } from "framer-motion";
+import Link from "next/link";
+import { useLocale } from "@/components/providers/LocaleProvider";
+
+const LINE = "border-cream/25";
+
+const ROW: Record<string, { top: string; height: string }> = {
+  r1: { top: "4vh", height: "clamp(18px, 2.5vh, 2.5vh)" },
+  r2: { top: "6.5vh", height: "14vh" },
+  r3: { top: "20.5vh", height: "15vh" },
+  r4: { top: "35.5vh", height: "20vh" },
+  r6: { top: "35.5vh", height: "15vh" },
+  r7: { top: "50.5vh", height: "20vh" },
+  r9: { top: "50.5vh", height: "15vh" },
+  r10: { top: "65.5vh", height: "20vh" },
+};
+
+export function Section3() {
+  const { t } = useLocale();
+  const [show, setShow] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const tipX = useMotionValue(0);
+  const tipY = useMotionValue(0);
+
+  useEffect(() => {
+    const m = matchMedia("(max-width: 1023px)");
+    const on = () => setMobile(m.matches);
+    on();
+    m.addEventListener("change", on);
+    return () => m.removeEventListener("change", on);
+  }, []);
+
+  const T = (k: string) => {
+    const r = ROW[k];
+    if (!mobile) return r;
+    return { top: `calc(${r.top} - 14px)`, height: r.height };
+  };
+
+  const onTitleMove = (e: React.MouseEvent) => {
+    tipX.set(e.clientX + 14);
+    tipY.set(e.clientY + 14);
+    if (!show) setShow(true);
+  };
+  const onTitleLeave = () => setShow(false);
+
+  return (
+    <section className="bg-white w-screen min-w-full">
+      <div className="relative h-screen w-screen overflow-hidden bg-[#1A3CDB]">
+
+        <div data-row="r1" style={T("r1")}
+          className={`grid absolute w-full overflow-hidden grid-cols-[25px_18fr_75fr_25px] lg:grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[1fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start px-1 py-0.5 text-[8px] text-cream/30 font-mono`}>R1C1</div>
+          <div className="col-span-2 border-r-2 border-r-[#1A3CDB] bg-white text-[#1A3CDB]/40 flex items-start justify-start px-1 py-0.5 text-[8px] font-mono">
+            R1C2
+          </div>
+          <div className="bg-white text-[#1A3CDB]/40 flex items-start justify-start px-1 py-0.5 text-[8px] font-mono">
+            R1C3
+          </div>
+        </div>
+
+        <div data-row="r2" style={T("r2")}
+          className={`grid absolute w-full grid-cols-[25px_18fr_75fr_25px] lg:grid-cols-[2.6%_18.81%_75.24%_1fr] grid-rows-[4fr] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
+          <div className="col-span-2 border-r-2 border-cream/25 flex flex-col items-start justify-end pl-1 md:pl-2 relative">
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(2rem,5cqw,4rem)]">
+              {t("s3.title")}
+            </h2>
+          </div>
+          <div className="flex items-end justify-start p-1 relative">
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C3</span>
+            <span
+              className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap"
+              style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
+            >
+              4://BERITA
+            </span>
+          </div>
+        </div>
+
+        <div data-row="r3" style={T("r3")}
+          className={`grid absolute w-full grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
+          <Link href="/berita/breach-16miliar" className="article-title-cell block cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative"
+            onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+              1. 16 Miliar Password Bocor - 30 Database Jadi Target Malware
+            </h2>
+          </Link>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R3C3</div>
+        </div>
+
+        <div data-row="r4" style={T("r4")}
+          className={`grid absolute w-full grid-cols-[25px_31fr_31fr_31fr_25px] lg:grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.apa")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">16 miliar kredensial login bocor dari 30 database berbeda lewat malware infostealer. Ini kebocoran password terbesar dalam sejarah.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.kenapa")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Kombinasi email+password rawan dipakai credential stuffing ke akun lain. 1 password bocor = risiko di semua akunmu.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.yangHarus")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.5rem,1.2cqw,0.75rem)] mt-1">Jangan pakai password sama. Generate password unik tiap akun lewat 3://CRACK. Aktifkan 2FA di semua layanan.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R4C5</div>
+        </div>
+
+        <div data-row="r6" style={T("r6")}
+          className={`grid absolute w-full z-20 grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R6C1</div>
+          <Link href="/berita/breach-prabowo-wasit" className="article-title-cell block cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative z-30"
+            onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R6C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+              2. Prabowo Segera Tunjuk &apos;Wasit&apos; Data Warga RI
+            </h2>
+          </Link>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R6C3</div>
+        </div>
+
+        <div data-row="r7" style={T("r7")}
+          className={`grid absolute w-full z-30 grid-cols-[25px_31fr_31fr_31fr_25px] lg:grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R7C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.apa")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Pemerintah merampungkan pembentukan Otoritas PDP via Perpres. Lembaga ini akan bekerja independen di luar Komdigi, lapor langsung ke Presiden.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.penting")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Otoritas PDP bakal jadi &apos;wasit&apos; data warga. Berwenang mengawasi, menyelidiki, dan menjatuhkan sanksi atas pelanggaran data pribadi.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R7C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.dampak")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Masyarakat bisa lapor pelanggaran data. Perusahaan wajib patuh atau kena sanksi administratif hingga pidana sesuai UU PDP.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R7C5</div>
+        </div>
+
+        <div data-row="r9" style={T("r9")}
+          className={`grid absolute w-full z-40 grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[15vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R9C1</div>
+          <Link href="/berita/breach-coupang-denda" className="article-title-cell block cursor-pointer border-r-2 border-cream/25 flex items-end justify-start pl-1 pb-2 relative"
+            onMouseMove={onTitleMove} onMouseLeave={onTitleLeave}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R9C2</span>
+            <h2 className="font-display font-bold text-cream leading-[1] tracking-[-0.03em] text-[clamp(1rem,2.5cqw,2rem)]">
+3. Ecommerce Ini Kena Denda Rp7,38 Triliun
+            </h2>
+          </Link>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R9C3</div>
+        </div>
+
+        <div data-row="r10" style={T("r10")}
+          className={`grid absolute w-full z-50 grid-cols-[25px_31fr_31fr_31fr_25px] lg:grid-cols-[2.6%_31.35%_31.35%_31.35%_3.35%] grid-rows-[20vh] bg-[#1A3CDB] text-cream border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R10C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C2</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.apa")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Coupang, ecommerce terbesar Korea Selatan, kena denda Rp7,38 triliun atas kebocoran data 37,6 juta orang — lebih dari 70% populasi negara itu.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C3</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.skala")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Denda terbesar dalam sejarah kebocoran data global. Mantan developer China masih simpan kunci autentikasi setelah keluar dari perusahaan.</span>
+          </div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R10C4</span>
+            <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.pelajaran")}</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Keamanan data bukan opsional. Sanksi berat menanti perusahaan lalai. kamu juga wajib aktif lindungi data pribadimu sendiri.</span>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R10C5</div>
+        </div>
+
+      </div>
+
+      {show && (
+        <motion.div
+          className="pointer-events-none fixed left-0 top-0 z-[100]"
+          style={{ x: tipX, y: tipY }}
+        >
+          <span className="block bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[10px] font-bold whitespace-nowrap">
+            {t("s3.tooltip")}
+          </span>
+        </motion.div>
+      )}
+    </section>
+  );
+}

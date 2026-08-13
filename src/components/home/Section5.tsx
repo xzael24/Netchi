@@ -1,0 +1,158 @@
+﻿"use client";
+
+import { useRef, useLayoutEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HeadingReveal } from "@/components/layout/HeadingReveal";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const LINE = "border-[#1A3CDB]/25";
+
+const FAQS = [
+  {
+    question: "Apakah cek kebocoran password gratis dan aman?",
+    answer:
+      "Ya, cek kebocoran password di Netchi gratis dan aman. Password di-hash SHA-1 langsung di perangkatmu dan hanya 5 karakter prefix yang dikirim ke Have I Been Pwned (k-anonymity) — password asli tidak pernah meninggalkan device. Netchi juga open source, jadi siapa pun bisa memeriksa bagaimana data ditangani.",
+  },
+  {
+    question: "Apakah password yang saya generate tersimpan di server?",
+    answer:
+      "Tidak. Password yang dihasilkan generator Netchi dibuat langsung di browser kamu dan tidak pernah dikirim atau disimpan di server kami. Semua proses berjalan di perangkatmu secara lokal, sehingga tidak ada satu pun password yang meninggalkan perangkatmu.",
+  },
+  {
+    question: "Bagaimana Netchi mematuhi UU PDP?",
+    answer:
+      "Netchi menerapkan prinsip privacy by design: minimasi data (kami tidak mengumpulkan data pribadi), pemrosesan lokal di perangkat, dan seluruh kode bersifat open source agar bisa diaudit. Dengan begitu, kami tidak menyimpan data yang seharusnya tidak kami butuhkan — sesuai semangat UU PDP.",
+  },
+  {
+    question: "Apa itu privacy score dan bagaimana cara meningkatkannya?",
+    answer:
+      "Privacy score adalah skor yang mengukur seberapa aman kebiasaan digitalmu, dihitung dari hasil cek kebocoran, kekuatan password, dan praktik keamanan lainnya. Skor naik saat kamu memakai password unik, mengaktifkan 2FA, dan mengganti password akun yang pernah bocor.",
+  },
+  {
+    question: "Apakah saya perlu membuat akun untuk memakai Netchi?",
+    answer:
+      "Tidak. Netchi dirancang tanpa sistem akun — semua cek, generator password, dan skor privasi berjalan langsung di perangkatmu. Kamu tidak perlu mendaftar, dan tidak ada profil data yang kami simpan di server.",
+  },
+  {
+    question: "Bagaimana cara kerja cek kebocoran password?",
+    answer:
+      "Password di-hash SHA-1 langsung di browser. Lima karakter pertama dari hash dikirim ke database Pwned Passwords (Have I Been Pwned) untuk dicocokkan — password asli tidak pernah meninggalkan perangkatmu.",
+  },
+  {
+    question: "Mengapa 2FA penting dan bagaimana cara mengaktifkannya?",
+    answer:
+      "2FA (two-factor authentication) menambah lapisan keamanan kedua di luar password. Kalau passwordmu bocor, penyerang tetap tidak bisa masuk tanpa kode dari perangkatmu. Aktifkan 2FA lewat aplikasi authenticator (mis. Google Authenticator) di semua layanan penting.",
+  },
+  {
+    question: "Apakah Netchi bisa dipakai di semua perangkat?",
+    answer:
+      "Bisa. Netchi adalah web app yang berjalan di browser modern apa pun — desktop, laptop, tablet, maupun HP. Karena pemrosesan terjadi di perangkatmu, hasilnya konsisten di semua platform tanpa perlu instalasi aplikasi tambahan.",
+  },
+];
+
+function AccordionItem({
+  qa,
+  open,
+  onToggle,
+}: {
+  qa: { question: string; answer: string };
+  open: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className={`border-b-2 ${LINE}`}>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-6 py-5 text-left"
+      >
+        <span className="font-display font-bold text-[#1A3CDB] leading-tight tracking-[-0.02em] text-[clamp(0.9rem,1.6cqw,1.35rem)]">
+          {qa.question}
+        </span>
+        <span className={`shrink-0 font-mono text-[#1A3CDB] text-[clamp(1rem,2cqw,1.5rem)] transition-transform duration-300 ${open ? "rotate-45" : ""}`}>
+          +
+        </span>
+      </button>
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+      >
+        <div className="overflow-hidden">
+          <p className="pb-5 font-display text-[#1A3CDB]/70 leading-relaxed text-[clamp(0.8rem,1.4cqw,1rem)]">
+            {qa.answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Section5() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const ref = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".s5-rise",
+        { y: "35vh" },
+        {
+          y: 0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        }
+      );
+    }, ref.current);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={ref}
+      className="relative z-20 bg-white text-[#1A3CDB] w-screen min-w-full -mt-[20vh] border-t-2 border-[#1A3CDB]/25 overflow-hidden"
+    >
+      <div className="s5-rise">
+      {/* Editorial grid */}
+      <div className="grid w-full min-w-full">
+        <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[22vh] border-b-2 ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
+          <div className={`border-r-2 ${LINE} flex flex-col items-start justify-end pl-2 md:pl-4 pb-2 relative container-cell`}>
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C2</span>
+            <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 text-[clamp(0.4rem,2cqw,0.7rem)]">4://FAQ</span>
+            <HeadingReveal as="h2" lines={["FAQ"]} className="font-display font-bold text-[#1A3CDB] leading-[0.9] tracking-[-0.03em] text-[clamp(2.5rem,10cqw,5.5rem)]" />
+          </div>
+          <div className="flex items-end justify-start p-1 pb-2 relative">
+            <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C3</span>
+            <span
+              className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] whitespace-nowrap"
+              style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
+            >
+              4://FAQ
+            </span>
+          </div>
+        </div>
+
+        <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] ${LINE}`}>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R2C1</div>
+          <div className={`border-r-2 ${LINE} container-cell px-6 md:px-8 py-2`}>
+            <div className="grid grid-cols-1 gap-x-10 lg:grid-cols-2">
+              {FAQS.map((qa, i) => (
+                <AccordionItem key={i} qa={qa} open={openIndex === i} onToggle={() => setOpenIndex(openIndex === i ? null : i)} />
+              ))}
+            </div>
+          </div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R2C3</div>
+        </div>
+      </div>
+      </div>
+    </section>
+  );
+}
