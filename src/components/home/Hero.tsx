@@ -1,9 +1,8 @@
 "use client";
 
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { m, useAnimation, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, useRef, useLayoutEffect } from "react";
-import gsap from "gsap";
+import { useState, useEffect, useRef } from "react";
 import { useLocale } from "@/components/providers/LocaleProvider";
 
 const LINE = "border-cream/25";
@@ -12,31 +11,20 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
   const { setLocale, t } = useLocale();
   const arrowControls = useAnimation();
   const [langOpen, setLangOpen] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
+  const waveRef = useRef<HTMLDivElement>(null);
+  const [waveVisible, setWaveVisible] = useState(true);
 
-  useLayoutEffect(() => {
-    if (!heroRef.current) return;
-    const ctx = gsap.context(() => {
-      const paths = gsap.utils.toArray<SVGPathElement>(".wave-path");
-      gsap.fromTo(
-        paths,
-        { strokeDasharray: "0 1", opacity: 0, y: 16 },
-        {
-          strokeDasharray: "1 1",
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 1.3,
-          ease: "power3.out",
-        }
-      );
-    }, heroRef.current);
-    return () => ctx.revert();
+  useEffect(() => {
+    const el = waveRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setWaveVisible(e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
     <section className="bg-white w-screen min-w-full">
-      <div ref={heroRef} className="bg-[#1A3CDB] text-cream grid grid-cols-[25px_32fr_33fr_29fr_25px] lg:grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[27px_10vh_15vh_auto_auto] lg:grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full lg:h-dvh overflow-hidden content-start">
+      <div className="bg-[#1A3CDB] text-cream grid grid-cols-[25px_32fr_33fr_29fr_25px] lg:grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[27px_10vh_15vh_auto_auto] lg:grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full lg:h-dvh overflow-hidden content-start">
         {/* ── ROW 1: NAV (5 cells) ── */}
         <div className={`flex border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
         <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
@@ -66,7 +54,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           </button>
           <AnimatePresence>
             {langOpen && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scaleY: 0.8, y: -8 }}
                 animate={{ opacity: 1, scaleY: 1, y: 0 }}
                 exit={{ opacity: 0, scaleY: 0.8, y: -8 }}
@@ -80,7 +68,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
                 <button onClick={() => { setLocale("en"); setLangOpen(false); }} className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap">
                   EN
                 </button>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -89,18 +77,13 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
         <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden container-cell relative`} ref={headlineRef}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center justify-center lg:justify-start lg:ps-[33px] cq-hero-text w-full"
-          >
+          <h1 className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center justify-center lg:justify-start lg:ps-[33px] cq-hero-text w-full hero-rise">
             Netchi&nbsp;
             <span className="flex items-center">
               <span className="font-pixel mt-[0.15em] cq-hero-pixel">S</span>
               <span className="cq-hero-text">entinel</span>
             </span>
-          </motion.h1>
+          </h1>
         </div>
         <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C5</div>
 
@@ -108,14 +91,11 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
         <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-4 md:px-10 py-2 md:py-3 container-cell overflow-hidden relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="font-display font-bold uppercase leading-[1.1] cq-hero-sub"
+          <p
+            className="font-display font-bold uppercase leading-[1.1] cq-hero-sub hero-rise-sub"
           >
             {t("hero.sub")}
-          </motion.p>
+          </p>
         </div>
         <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C4</div>
         <div className={`border-b-2 ${LINE} flex items-start justify-start container-cell relative`}>
@@ -133,28 +113,22 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C2</div>
         <div className={`col-span-2 lg:col-span-1 border-b-2 border-r-2 ${LINE} px-4 md:px-8 flex items-center container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C3</span>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display font-bold leading-relaxed text-cream/90 w-full cq-hero-desc"
+          <p
+            className="font-display font-bold leading-relaxed text-cream/90 w-full cq-hero-desc hero-fade"
           >
             {t("hero.desc")}
-          </motion.p>
+          </p>
         </div>
         <div className={`hidden lg:flex border-b-2 border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C4</div>
         <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C5</div>
 
         {/* ── ROW 5: BARS + CTA (5 cells) ── */}
         <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
-        <div className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[120px] md:min-h-[220px] container-cell relative`}>
+        <div ref={waveRef} className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[120px] md:min-h-[220px] container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C2</span>
-          <motion.svg
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.4 }}
+          <svg
             viewBox="0 0 500 230"
-            className="wave-svg w-full h-full"
+            className="wave-svg w-full h-full hero-wave"
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
@@ -178,25 +152,39 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
               { a: "M0,80 Q80,110 160,85 Q240,60 320,100 Q380,130 440,80", b: "M0,80 Q80,60 160,110 Q240,120 320,80 Q380,90 440,90", s: 0.8 },
               { a: "M0,55 Q70,40 140,55 Q200,90 260,45 Q320,20 380,60 Q430,90 480,55", b: "M0,55 Q70,70 140,45 Q200,50 260,70 Q320,80 380,45 Q430,50 480,65", s: 1 },
               { a: "M0,30 Q80,10 160,35 Q240,60 320,20 Q380,5 440,30", b: "M0,30 Q80,50 160,20 Q240,20 320,40 Q380,50 440,20", s: 0.85 },
-            ].map((line, i) => (
-              <motion.path
-                key={i}
-                className="wave-path"
-                fill="none"
-                stroke="url(#waveGrad)"
-                strokeWidth={line.s}
-                opacity={0}
-                initial={{ d: line.a }}
-                animate={{ d: [line.a, line.b, line.a] }}
-                transition={{
-                  duration: 3 + i * 0.6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.6 + i * 0.2,
-                }}
-              />
-            ))}
-          </motion.svg>
+            ].map((line, i) =>
+              waveVisible ? (
+                <m.path
+                  key={i}
+                  className="wave-path"
+                  fill="none"
+                  stroke="url(#waveGrad)"
+                  strokeWidth={line.s}
+                  opacity={0}
+                  style={{ animationDelay: `${0.4 + i * 0.15}s` }}
+                  initial={{ d: line.a }}
+                  animate={{ d: [line.a, line.b, line.a] }}
+                  transition={{
+                    duration: 3 + i * 0.6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.6 + i * 0.2,
+                  }}
+                />
+              ) : (
+                <path
+                  key={i}
+                  className="wave-path"
+                  fill="none"
+                  stroke="url(#waveGrad)"
+                  strokeWidth={line.s}
+                  opacity={0}
+                  style={{ animationDelay: `${0.4 + i * 0.15}s` }}
+                  d={line.a}
+                />
+              )
+            )}
+          </svg>
         </div>
         <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
           <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
@@ -227,12 +215,12 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
                 className="group flex items-center gap-2 font-mono uppercase tracking-widest text-cream font-bold px-3 py-2 rounded transition-colors cq-hero-cta cursor-default whitespace-nowrap"
               >
                 {t("hero.explore")}
-                <motion.span
+                <m.span
                   animate={arrowControls}
                   className="inline-block"
                 >
                   ↓
-                </motion.span>
+                </m.span>
               </span>
             </div>
           </div>

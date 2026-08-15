@@ -59,12 +59,12 @@ export default function Home() {
         tl.fromTo(row, { y: "100vh" }, { y: 0, duration: 0.1 }, starts[i] ?? 0);
       });
 
-      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.17 }, isMobile ? 0.68 : 0.6);
+      tl.fromTo(s4, { y: "100%" }, { y: 0, duration: 0.2 }, isMobile ? 0.68 : 0.55);
       tl.fromTo(
         bars,
         { scaleY: 1 },
-        { scaleY: 0, duration: 0.15, stagger: 0.02, ease: "power4.inOut", transformOrigin: "top", force3D: true },
-        isMobile ? 0.85 : 0.75
+        { scaleY: 0, duration: 0.09, stagger: 0.012, ease: "power4.inOut", transformOrigin: "top", force3D: true },
+        isMobile ? 0.78 : 0.56
       );
     }, parent);
 
@@ -74,17 +74,19 @@ export default function Home() {
   return (
     <>
       <Navbar headlineVisible={!headlineInView} buttonVisible={!btnInView} />
-      <Hero headlineRef={headlineRef} buttonRef={btnRef} />
-      <Section2 />
-      <div ref={pinRef} className="relative h-[170vh] lg:h-[400vh]">
-        <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
-          <Section3 />
-          <div ref={s4Ref} className="absolute inset-0 z-60">
-            <Section4 />
+      <main>
+        <Hero headlineRef={headlineRef} buttonRef={btnRef} />
+        <Section2 />
+        <div ref={pinRef} className="relative h-[170vh] lg:h-[310vh]">
+          <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
+            <Section3 />
+            <div ref={s4Ref} className="absolute inset-0 z-60">
+              <Section4 />
+            </div>
           </div>
         </div>
-      </div>
-      <Section5 />
+        <Section5 />
+      </main>
       <Footer />
     </>
   );

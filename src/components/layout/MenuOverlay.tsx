@@ -1,10 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
-import { MenuButton } from "@/components/ui/MenuButton";
 import { useLocale } from "@/components/providers/LocaleProvider";
+import { lenis } from "@/components/providers/LenisProvider";
 import type { TranslationKey } from "@/lib/i18n";
 
 const LINE = "border-cream/25";
@@ -25,42 +25,32 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
     return () => {
       document.body.style.overflow = "";
+      lenis?.start();
     };
   }, [open]);
 
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           className="fixed inset-0 z-[150] flex flex-col bg-[#1A3CDB] text-cream"
           initial={{ y: "-100%" }}
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
         >
-          {/* header — mirrors mobile navbar */}
-          <div className={`grid h-[25px] grid-cols-[25px_minmax(0,65fr)_minmax(0,29fr)_25px] border-b-2 ${LINE} lg:h-[35px] lg:grid-cols-[2.6%_30%_35%_29.05%_1fr]`}>
-            <div className={`flex items-center justify-center border-r-2 ${LINE} p-1 font-mono text-[9px] text-cream/30`}>0</div>
-            <div className={`flex items-center border-r-2 ${LINE} pl-2 font-display font-bold tracking-widest container-cell overflow-hidden`}>
-              <span className="cq-mobile-nav whitespace-nowrap">
-                Netchi&nbsp;
-                <span className="font-pixel relative top-[0.15em] text-[0.8em]">S</span>
-                entinel
-              </span>
-            </div>
-            <div className={`flex items-stretch justify-end border-r-2 ${LINE}`}>
-              <MenuButton onClick={onClose} label={t("menu.close")} fill />
-            </div>
-            <div className="flex items-center justify-center p-1 font-mono text-[9px] text-cream/30">MENU</div>
-          </div>
-
           {/* links */}
           <nav className="flex flex-1 flex-col justify-center">
             {links.map((link, i) => (
               <div key={link.label} className={`overflow-hidden ${LINE}`}>
-                <motion.div
+                <m.div
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   exit={{ y: "110%", transition: { duration: 0.4, delay: (links.length - i) * 0.03 } }}
@@ -79,7 +69,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
                       <span className="inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[#ff4d4d]">→</span>
                     </span>
                   </Link>
-                </motion.div>
+                </m.div>
               </div>
             ))}
           </nav>
@@ -89,7 +79,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
             <span>Netchi — Privacy Shield</span>
             <span>FTI Fest 2026</span>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

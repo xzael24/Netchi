@@ -41,6 +41,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   allowedDevOrigins: lanDevOrigins(),
+  distDir: isProd ? ".next" : ".next-dev",
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

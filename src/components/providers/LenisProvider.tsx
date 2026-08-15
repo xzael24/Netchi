@@ -7,26 +7,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+export let lenis: Lenis | null = null;
+
 export function LenisProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const instance = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+    lenis = instance;
 
-    lenis.on("scroll", () => ScrollTrigger.update());
+    instance.on("scroll", () => ScrollTrigger.update());
 
     let rafId: number;
     function raf(time: number) {
-      lenis.raf(time);
+      instance.raf(time);
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
 
     return () => {
       cancelAnimationFrame(rafId);
-      lenis.destroy();
+      instance.destroy();
+      lenis = null;
     };
   }, []);
 

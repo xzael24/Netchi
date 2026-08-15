@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { m, useMotionValue } from "framer-motion";
 import Link from "next/link";
 import { useLocale } from "@/components/providers/LocaleProvider";
 
@@ -110,7 +110,7 @@ export function Section3() {
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-center p-3 relative container-cell`}>
             <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C4</span>
             <span className="font-display font-bold text-cream leading-tight uppercase s3-title text-[clamp(0.9rem,4cqw,1.4rem)]">{t("s3.yangHarus")}</span>
-            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.5rem,1.2cqw,0.75rem)] mt-1">Jangan pakai password sama. Generate password unik tiap akun lewat 3://CRACK. Aktifkan 2FA di semua layanan.</span>
+            <span className="font-display text-cream/70 leading-snug s3-body text-[clamp(0.65rem,3cqw,1rem)] mt-1">Jangan pakai password sama. Generate password unik tiap akun lewat 3://CRACK. Aktifkan 2FA di semua layanan.</span>
           </div>
           <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R4C5</div>
         </div>
@@ -186,14 +186,14 @@ export function Section3() {
       </div>
 
       {show && (
-        <motion.div
+        <m.div
           className="pointer-events-none fixed left-0 top-0 z-[100]"
           style={{ x: tipX, y: tipY }}
         >
           <span className="block bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest px-3 py-1.5 text-[10px] font-bold whitespace-nowrap">
             {t("s3.tooltip")}
           </span>
-        </motion.div>
+        </m.div>
       )}
     </section>
   );

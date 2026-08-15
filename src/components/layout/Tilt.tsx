@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { m, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 export function Tilt({
   children,
@@ -35,7 +35,7 @@ export function Tilt({
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={reset}
@@ -43,6 +43,6 @@ export function Tilt({
       className="will-change-transform"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

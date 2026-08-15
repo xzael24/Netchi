@@ -24,7 +24,7 @@ export function Footer() {
   return (
     <footer className="relative flex min-h-[100dvh] flex-col justify-between overflow-hidden bg-[#1A3CDB] text-cream w-screen min-w-full pt-[25px] lg:pt-[35px]">
       {/* R1: editorial label row */}
-      <div className={`grid grid-cols-[25px_minmax(0,1fr)] lg:grid-cols-[3%_97%] border-b-2 ${LINE}`}>
+      <div className={`grid grid-cols-[25px_minmax(0,1fr)] lg:grid-cols-[2.6%_97.4%] border-b-2 ${LINE}`}>
         <div className="flex items-center justify-center border-r-2 border-cream/25 px-1 font-mono text-[9px] text-cream/30">
           R1C1
         </div>
@@ -43,7 +43,7 @@ export function Footer() {
                 href={link.href}
                 className="group flex items-center justify-between px-3 py-1 md:px-6 md:py-2"
               >
-                <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.3rem,4vw,3rem)] md:text-[clamp(1.25rem,3vw,3rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
+                <span className="font-display font-bold leading-none tracking-[-0.03em] text-[clamp(1.3rem,min(4vw,4.2vh),3rem)] md:text-[clamp(1.25rem,min(3vw,4.2vh),3rem)] transition-all duration-300 group-hover:translate-x-3 group-hover:text-[#ff4d4d]">
                   {link.label}
                 </span>
                 <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-cream/40">
@@ -84,9 +84,9 @@ export function Footer() {
       {/* R5: massive wordmark */}
       <div className="flex items-center justify-center px-4 py-4 md:px-6 md:py-6 lg:flex-1">
         <Tilt max={10} perspective={700}>
-          <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.4rem,13vw,20rem)] lg:text-[clamp(2.5rem,14vw,20rem)] translate-y-[0px]">
+          <span className="inline-flex items-baseline font-display font-extrabold leading-[0.85] tracking-[-0.04em] text-cream whitespace-nowrap text-[clamp(2.4rem,min(13vw,11.7vh),20rem)] lg:text-[clamp(2.5rem,min(14vw,11.7vh),20rem)] translate-y-[0px]">
             Netchi&nbsp;
-            <span className="font-pixel translate-y-[0.12em] text-[clamp(1.5rem,10vw,18rem)] lg:text-[clamp(1.6rem,12vw,18rem)]">S</span>
+            <span className="font-pixel translate-y-[0.12em] text-[clamp(1.5rem,min(10vw,10vh),18rem)] lg:text-[clamp(1.6rem,min(12vw,10vh),18rem)]">S</span>
             entinel
           </span>
         </Tilt>

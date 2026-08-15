@@ -62,3 +62,9 @@ graphify-out/cache/
 skills-lock.json
 .opencode/
 graphify-out/
+
+# lighthouse results
+perf-lh-*.json
+
+.next-dev
+

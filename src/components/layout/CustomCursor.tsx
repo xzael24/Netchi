@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
@@ -37,12 +37,12 @@ export function CustomCursor() {
 
   return (
     <>
-      <motion.div
+      <m.div
         aria-hidden
         className="pointer-events-none fixed left-0 top-0 z-[200] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4d4d]"
         style={{ x, y }}
       />
-      <motion.div
+      <m.div
         aria-hidden
         className={`pointer-events-none fixed left-0 top-0 z-[199] h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cream/60 transition-colors duration-300 ${
           hovering ? "border-[#ff4d4d] bg-[#ff4d4d]/10" : ""

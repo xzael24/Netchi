@@ -53,7 +53,7 @@ html::-webkit-scrollbar {
     font-size: clamp(1.25rem, 6cqw, 4rem);
   }
   .cq-hero-desc {
-    font-size: clamp(0.875rem, 4cqw, 1.5rem);
+    font-size: clamp(0.875rem, min(4cqw, 2.6vh), 1.5rem);
   }
   .cq-hero-cta {
     font-size: clamp(0.45rem, 2.5cqw, 0.75rem);
@@ -166,4 +166,58 @@ html.lenis body {
 html.custom-cursor,
 html.custom-cursor * {
   cursor: none !important;
+}
+
+@keyframes hero-rise-kf {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-kf {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-rise {
+  animation: hero-rise-kf 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise-sub {
+  animation: hero-rise-kf 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.hero-fade {
+  animation: hero-fade-kf 0.8s ease 0.3s both;
+}
+
+.hero-wave {
+  animation: hero-fade-kf 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.wave-path {
+  opacity: 0;
+  animation: wave-in-kf 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes wave-in-kf {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    stroke-dasharray: 0 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    stroke-dasharray: 1 1;
+  }
 }

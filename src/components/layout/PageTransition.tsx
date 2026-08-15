@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 function B({ h, cls = "" }: { h: string; cls?: string }) {
@@ -214,7 +214,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <motion.div
+      <m.div
         ref={skeletonRef}
         className="fixed inset-0 z-[200] flex flex-col bg-[#1A3CDB] text-cream"
         initial={{ y: 0 }}
@@ -222,7 +222,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         transition={{ delay: 0.75, duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
       >
         <RouteSkeleton path={path} />
-      </motion.div>
+      </m.div>
 
       <div>
         {children}

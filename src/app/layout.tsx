@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 import { LocaleProvider } from "@/components/providers/LocaleProvider";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 
@@ -57,8 +58,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground w-screen overflow-x-hidden">
         <LocaleProvider>
           <LenisProvider>
-            {children}
-            <CustomCursor />
+            <MotionProvider>
+              {children}
+              <CustomCursor />
+            </MotionProvider>
           </LenisProvider>
         </LocaleProvider>
       </body>

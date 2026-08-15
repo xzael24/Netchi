@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, animate } from "framer-motion";
+import { m, AnimatePresence, animate } from "framer-motion";
 import {
   PRIVACY_QUESTIONS,
   calculateScore,
@@ -175,7 +175,7 @@ export default function PrivacyScorePage() {
 
             {/* question card */}
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={current}
                 initial={{ x: 48, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -231,7 +231,7 @@ export default function PrivacyScorePage() {
                     );
                   })}
                 </div>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
 
             {/* controls */}
@@ -261,7 +261,7 @@ export default function PrivacyScorePage() {
           </div>
         ) : (
           /* ---------- result ---------- */
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -334,7 +334,7 @@ export default function PrivacyScorePage() {
                 {t("ps.checkCta")}
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </div>
     </FeatureShell>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { MenuOverlay } from "@/components/layout/MenuOverlay";
@@ -15,7 +15,8 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#1A3CDB] text-cream">
+    <>
+      <nav className="fixed top-0 left-0 w-full z-[160] bg-[#1A3CDB] text-cream">
       <div className="hidden lg:grid h-[35px] grid-cols-[2.6%_30%_35%_29.05%_1fr] w-full min-w-full border-b-2 border-cream/25">
         <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N1</div>
         <div className={`border-r-2 ${LINE} flex items-center justify-start pl-2 md:pl-4 font-display font-bold tracking-widest cq-hero-nav relative`}>
@@ -23,7 +24,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           <div className="overflow-hidden">
             <AnimatePresence>
               {headlineVisible && (
-                <motion.div
+                <m.div
                   initial={{ y: 20 }}
                   animate={{ y: 0 }}
                   exit={{ y: -20 }}
@@ -33,7 +34,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                   Netchi&nbsp;
                   <span className="font-pixel mt-[0.10em] text-[0.80em]" style={{ textRendering: "optimizeSpeed" }}>S</span>
                   entinel
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
@@ -44,7 +45,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           <div className="overflow-hidden mr-auto h-full">
             <AnimatePresence>
               {buttonVisible && (
-                <motion.div
+                <m.div
                   key="btn-start"
                   className="h-full"
                   initial={{ x: -20, opacity: 0 }}
@@ -58,11 +59,11 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                 >
                   {t("nav.start")}
                 </Link>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
-          <MenuButton onClick={() => setMenuOpen(true)} />
+          <MenuButton onClick={() => setMenuOpen(v => !v)} label={menuOpen ? t("menu.close") : "Menu"} />
         </div>
         <div
           className={`px-2 flex items-center justify-center relative container-cell`}
@@ -83,7 +84,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           </button>
           <AnimatePresence>
             {langOpen && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scaleY: 0.8, y: -8 }}
                 animate={{ opacity: 1, scaleY: 1, y: 0 }}
                 exit={{ opacity: 0, scaleY: 0.8, y: -8 }}
@@ -97,7 +98,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                 <button onClick={() => { setLocale("en"); setLangOpen(false); }} className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap">
                   EN
                 </button>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -113,7 +114,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           </span>
         </div>
         <div className={`self-start h-[23px] border-r-2 ${LINE} flex items-center justify-end`}>
-          <MenuButton onClick={() => setMenuOpen(true)} compact />
+          <MenuButton onClick={() => setMenuOpen(v => !v)} label={menuOpen ? t("menu.close") : "Menu"} compact />
         </div>
         <div className="self-start h-[23px] flex items-center justify-center p-1 relative">
           <button
@@ -130,7 +131,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           </button>
           <AnimatePresence>
             {langOpen && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scaleY: 0.8 }}
                 animate={{ opacity: 1, scaleY: 1 }}
                 exit={{ opacity: 0, scaleY: 0.8 }}
@@ -144,13 +145,14 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                 <button onClick={() => { setLocale("en"); setLangOpen(false); }} className="px-0.5 py-0.5 bg-[#EF4444] text-[#1A3CDB] font-mono uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap text-[0.5rem] leading-none">
                   EN
                 </button>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
       </div>
-
-      <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
     </nav>
-  );
+
+    <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
+  </>
+);
 }
