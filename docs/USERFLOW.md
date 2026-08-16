@@ -57,7 +57,7 @@ R2 "Yang Bisa Kamu Lakukan" — 5 kartu fitur
    2://EDU   ──> /uu-pdp
    5://MASK  ──> /dummy-data
 
-R3 "Artikel Kami" (pinned scroll; 3 judul artikel)
+R3 "Berita Kami" (pinned scroll; 3 judul artikel)
    klik judul (hover: tooltip "Lihat lebih lanjut") ──> /berita/{slug}
 
 R4 Kutipan (curtain reveal) — tidak ada aksi, lanjut scroll

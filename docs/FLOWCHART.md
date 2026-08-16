@@ -5,14 +5,16 @@ flowchart TD
   %% ===== LANDING =====
   Home["🏠 Homepage<br/>/"]
   Hero["Hero Section<br/>Headline + CTA"]
-  Tools["1://TOOLS<br/>Grid 5 Fitur"]
-  Edu["2://EDUCATION<br/>Artikel Cards"]
-  FAQ["3://FAQ<br/>Accordion"]
+  Tools["1://TOOLS<br/>Grid 5 Fitur + Fakta"]
+  Edu["2://BERITA<br/>Artikel Cards"]
+  Kutipan["3://KUTIPAN<br/>Curtain Reveal"]
+  FAQ["4://FAQ<br/>Accordion"]
   Footer["Footer<br/>Nav + Sosmed + Credits"]
 
   Hero --> Tools
   Tools --> Edu
-  Edu --> FAQ
+  Edu --> Kutipan
+  Kutipan --> FAQ
   FAQ --> Footer
 
   %% ===== NAVBAR =====
@@ -115,7 +117,7 @@ flowchart TD
 ```
 Landing (Homepage)
   ↓
-Hero → Lihat Headline → Klik "MULAI SEKARANG" → Scroll ke TOOLS
+Hero → Lihat Headline → Klik "MULAI SEKARANG" → masuk /breach-checker
   ↓
 TOOLS → Pilih fitur → Masuk halaman fitur
   ↓

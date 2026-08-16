@@ -81,13 +81,13 @@ Add-Padding: true
 ### Return Type
 
 ```ts
+type PwnedError = "network" | "http" | "timeout";
 type PwnedResult =
-  | { pwned: true; count: number; error?: undefined }
-  | { pwned: false; count: number; error?: undefined }
-  | { pwned: false; count: 0; error: string };
+  | { pwned: boolean; count: number; error?: undefined }
+  | { pwned: false; count: 0; error: PwnedError };
 ```
 
-**Kasus error yang ditangkap:** jaringan gagal / HIBP tidak `200` → `error` diisi, UI menampilkan "Tidak bisa terhubung ke HIBP (…). Coba lagi."
+**Kasus error yang ditangkap:** jaringan gagal (`network`), HIBP tidak `200` (`http`), atau timeout 10 detik (`timeout`) → `error` diisi, UI menampilkan pesan sesuai tipe ("Tidak bisa terhubung ke HIBP…", "HIBP sedang sibuk…", "HIBP tidak merespons…").
 
 ---
 
@@ -102,7 +102,7 @@ checkPasswordPwned(password: string): Promise<PwnedResult>
 | `password` | `string` | password yang dicek (tidak dikirim, hanya hash prefix) |
 
 - **Dipakai:** `/breach-checker`, `/password`.
-- **Contoh:** `checkPasswordPwned("password123")` → `{ pwned: true, count: 15544420 }` (atau `{ pwned: false, count: 0 }`).
+- **Contoh:** `checkPasswordPwned("password123")` → `{ pwned: true, count: 6421042 }` (atau `{ pwned: false, count: 0 }`).
 
 ---
 
@@ -128,10 +128,14 @@ getStrengthColor(entropy: number): string   // kelas warna tailwind
 | Entropy | Waktu Crack | Label | Warna |
 | --- | --- | --- | --- |
 | < 30 | Instan | Sangat Lemah | `text-danger` |
-| 30–49 | Detik–Menit | Lemah | `text-warning` |
-| 50–69 | Jam–Hari | Sedang | `text-accent` |
-| 70–89 | Tahun–Abad | Kuat | `text-success` |
-| ≥ 90 | Tidak terpecahkan | Sangat Kuat | `text-success` |
+| 30–39 | Detik | Lemah | `text-warning` |
+| 40–49 | Menit | Lemah | `text-warning` |
+| 50–59 | Jam | Sedang | `text-accent` |
+| 60–69 | Hari | Sedang | `text-accent` |
+| 70–79 | Tahun | Kuat | `text-success` |
+| 80–89 | Abad | Kuat | `text-success` |
+| 90–99 | Abad | Sangat Kuat | `text-success` |
+| ≥ 100 | Tidak terpecahkan | Sangat Kuat | `text-success` |
 
 ---
 

@@ -97,5 +97,5 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 | Phase 4: Refine animasi & interaksi | ✅ Done |
 | Phase 5: Security hardening | ✅ Done (audit + perbaikan LOW, 15 Agu) |
 | Phase 6: Testing & optimasi | ✅ Done (Lighthouse, bundle 203 kB) |
-| Phase 7: Deploy (Vercel) | In progress — target `netchi.vercel.app` |
+| Phase 7: Deploy (Vercel) | ✅ Done — live di `https://netchi.vercel.app` (auto-deploy dari main) |
 | Deadline pengumpulan | 18 Agustus 2026 |

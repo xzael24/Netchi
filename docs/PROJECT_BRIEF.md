@@ -15,7 +15,7 @@ Membangun web app **Netchi Sentinel** sebagai tools edukasi & perlindungan ident
 ## Halaman & Route Planning
 
 ```
-/                   — Homepage: Hero → 1://TOOLS (grid fitur) → 2://EDUCATION → 3://FAQ → Footer
+/                   — Homepage: Hero → 1://TOOLS (grid fitur) → 2://BERITA → 3://KUTIPAN → 4://FAQ → Footer
 /breach-checker     — Cek password pernah bocor
 /privacy-score      — Skor privasi digital
 /password           — Generator password aman
@@ -26,12 +26,12 @@ Membangun web app **Netchi Sentinel** sebagai tools edukasi & perlindungan ident
 ### Homepage Sections
 | Section | Isi |
 |---|---|
-| Hero | (udah jadi) headline, sub, deskripsi, CTA, waving lines |
-| 1://TOOLS | Grid card 5 fitur (SCAN, SCORE, CRACK, LEARN, MASK) — link ke masing-masing page |
-| 2://FAKTA | Infografis statistik privasi (8 fakta) |
-| 3://EDUCATION | Artikel edukasi privasi data — kaya BLOG punya Netcraft |
+| Hero | headline, sub, deskripsi, CTA, waving lines |
+| 1://TOOLS | Grid card 5 fitur (SCAN, SCORE, CRACK, EDU, MASK) + infografis fakta — link ke masing-masing page |
+| 2://BERITA | Artikel edukasi privasi data — kaya BLOG punya Netcraft |
+| 3://KUTIPAN | Kutipan (curtain reveal, pinned scroll) |
 | 4://FAQ | Accordion FAQ tentang privasi & identitas digital |
-| Footer | Nav links, sosial media, credits |
+| Footer | Nav links, sosmed, credits, marquee |
 
 ### Format Halaman Fitur
 Masing-masing halaman fitur pake format header section number (1://BREACH, 2://PRIVACY, dst) — konsisten dengan Netcraft style.
@@ -83,7 +83,7 @@ Masing-masing halaman fitur pake format header section number (1://BREACH, 2://P
   - ⏱ Estimasi waktu crack (detik/tahun/abad)
 - **Nilai Edukasi**: User paham bedanya password "kuat" vs "lemah"
 
-### 4. UU PDP Hub — `4://LEARN`
+### 4. UU PDP Hub — `2://EDU`
 **Pahami hakmu atas data pribadi — bahasa manusia, bukan pengacara.**
 
 - **Konten**: Artikel pendek yang menjelaskan pasal-pasal UU PDP relevan
@@ -158,7 +158,7 @@ src/
 
 ### Grid Layout
 - 5 columns: `[2.6%_30%_35%_29.05%_1fr]`
-- 5 rows: `[44px_280px_110px_80px_260px]`
+- 5 rows (desktop, relatif viewport): `[4vh_27vh_22vh_18vh_29vh]`
 - Background: `#1A3CDB` (biru), section full screen (`min-h-screen`)
 - Text: cream `#f5f0d5`
 

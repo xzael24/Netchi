@@ -68,3 +68,6 @@ perf-lh-*.json
 
 .next-dev
 
+# research notes (agent scrape artifacts, keep local only)
+docs/research/
+

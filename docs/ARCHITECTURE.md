@@ -16,35 +16,61 @@
 ```
 src/
 ├── app/                          # Next.js App Router
-│   ├── layout.tsx                # Root layout + font loading + LenisProvider
-│   ├── globals.css               # Tailwind theme, container queries
-│   ├── page.tsx                  # Homepage: Hero → Section2
+│   ├── layout.tsx                # Root layout + font loading + Locale/Lenis/Motion provider
+│   ├── template.tsx              # PageTransition wrapper (semua halaman)
+│   ├── globals.css               # Tailwind theme (container queries, tokens)
+│   ├── robots.ts                 # robots.txt
+│   ├── page.tsx                  # Homepage (GSAP pinned scroll orchestration)
 │   ├── breach-checker/
 │   │   └── page.tsx              # Password Breach Checker (HIBP Pwned Passwords)
 │   ├── privacy-score/
-│   │   └── page.tsx              # Privacy Score quiz
+│   │   └── page.tsx              # Privacy Score quiz (12 pertanyaan)
 │   ├── password/
-│   │   └── page.tsx              # Password Generator + real breach check
+│   │   └── page.tsx              # Password Generator + cek bocor hasil
 │   ├── uu-pdp/
-│   │   └── page.tsx              # UU PDP Hub
+│   │   ├── page.tsx              # UU PDP Hub (search + filter)
+│   │   └── [slug]/page.tsx       # Detail pasal UU PDP
+│   ├── berita/
+│   │   ├── page.tsx              # Daftar artikel berita kebocoran data
+│   │   └── [slug]/page.tsx       # Detail artikel
 │   └── dummy-data/
 │       └── page.tsx              # Dummy Data Generator
 ├── components/
 │   ├── home/
 │   │   ├── Hero.tsx              # Hero section (desktop + mobile)
-│   │   └── Section2.tsx         # Tools Grid + Fakta section
-│   ├── features/                 # (planned) Komponen fitur
+│   │   ├── Section2.tsx          # Tools Grid + infografis fakta
+│   │   ├── Section3.tsx          # Berita (artikel cards)
+│   │   ├── Section4.tsx          # Kutipan (curtain reveal)
+│   │   └── Section5.tsx          # FAQ accordion
 │   ├── layout/
-│   │   ├── Navbar.tsx            # Fixed navbar (appear after hero scroll)
-│   │   ├── Footer.tsx            # Full-screen awwwards footer
-│   │   ├── FeatureShell.tsx      # Editorial layout untuk feature pages
+│   │   ├── Navbar.tsx            # Fixed navbar (muncul setelah scroll hero) + dropdown ID/EN
+│   │   ├── MenuOverlay.tsx       # Fullscreen menu (slide dari atas)
+│   │   ├── Footer.tsx            # Full-screen footer + marquee
+│   │   ├── FeatureShell.tsx      # Editorial layout untuk feature pages + marquee strip fixed
+│   │   ├── ArticleView.tsx       # Layout detail artikel (berita / uu-pdp [slug])
+│   │   ├── PageTransition.tsx    # Skeleton → reveal antar halaman
 │   │   ├── CustomCursor.tsx      # Custom cursor (dot + ring)
 │   │   ├── HeadingReveal.tsx     # Mask-reveal judul
-│   │   └── Magnetic.tsx          # Magnetic hover
+│   │   ├── Magnetic.tsx          # Magnetic hover
+│   │   └── Tilt.tsx              # Tilt 3D pada kartu
+│   ├── ui/
+│   │   └── MenuButton.tsx        # Tombol "Menu" navbar
 │   └── providers/
-│       └── LenisProvider.tsx     # Lenis smooth scroll wrapper
+│       ├── LenisProvider.tsx     # Lenis smooth scroll wrapper
+│       ├── LocaleProvider.tsx    # Konteks ID/EN (localStorage "netchi-locale")
+│       └── MotionProvider.tsx    # LazyMotion (framer-motion)
+├── data/
+│   ├── uuPdpArticles.ts          # Daftar pasal UU PDP (+ kategori)
+│   ├── uPdpArticlesExtended.ts   # Versi detail pasal
+│   ├── breachArticles.ts         # 3 artikel kebocoran data
+│   ├── commonPasswords.ts        # 51 password paling umum
+│   ├── privacyQuestions.ts       # 12 pertanyaan skor privasi + kalkulasi
+│   └── dummyData.ts              # Generator data dummy Indonesia
 ├── lib/
-│   └── utils.ts                  # Utility functions (cn, format, password entropy)
+│   ├── i18n.ts                   # Kamus ID/EN tipesafe (TranslationKey)
+│   ├── pwned.ts                  # checkPasswordPwned (SHA-1 + k-anonymity + fallback)
+│   ├── utils.ts                  # Entropy, strength bands, crack time
+│   └── validate.ts               # clampInt (batas input)
 └── types/
     └── index.ts                  # Type definitions (Breach, PrivacyQuestion, UuPdpArticle)
 ```
@@ -64,7 +90,6 @@ User Input → Client-side Validation → Processing Logic → Render Result
 ```
 Password Input → Hash SHA-1 (client) → Cek HIBP Pwned Passwords → Aman / Bocor / Terlalu Umum
 [client]                              [k-anonymity, gratis]      + daftar password umum lokal
-```
 ```
 
 ### Privacy Score Flow
@@ -111,25 +136,29 @@ Pilih Fields + Lokal → Generate Random → Tabel/Kartu → Copy / Download
 
 ```
 RootLayout
-└── LenisProvider
-    └── Navbar (fixed, muncul setelah scroll hero)
-    └── Page Content
-        ├── Homepage: Hero → Section2 (Tools + Fakta)
-        ├── /breach-checker: BreachChecker (planned)
-        ├── /privacy-score: PrivacyScore (planned)
-        ├── /password: PasswordGen (planned)
-        ├── /uu-pdp: UUPDP (planned)
-        └── /dummy-data: DummyData (planned)
-    └── Footer (planned)
+├── LocaleProvider (ID/EN, localStorage "netchi-locale")
+│   └── LenisProvider (smooth scroll)
+│       └── MotionProvider (LazyMotion)
+│           └── template.tsx → PageTransition (skeleton → reveal)
+│               ├── Navbar (fixed, muncul setelah scroll hero; MenuOverlay; dropdown ID/EN)
+│               └── Page Content
+│                   ├── Homepage: Hero → Section2 (Tools + Fakta) → Section3 (Berita)
+│                   │            → Section4 (Kutipan) → Section5 (FAQ) → Footer
+│                   ├── /breach-checker, /privacy-score, /password,
+│                   │   /uu-pdp(+[slug]), /berita(+[slug]), /dummy-data → FeatureShell/ArticleView
+│                   └── Footer (full-screen + marquee)
 ```
 
-## Security Layer (WIP)
+## Security Layer
 
-- Input validation di semua form
-- Sanitasi input (XSS protection)
-- CSP headers di next.config.ts
-- Error boundary per feature page
-- Rate limiting kalo pake API Routes
+Sudah diimplementasikan (audit 15 Agu):
+
+- Validasi input di semua form (`src/lib/validate.ts` — `clampInt`; guard charset di password generator)
+- CSP produksi (`connect-src 'self' https://api.pwnedpasswords.com`, `frame-ancestors 'none'`, `base-uri`, `form-action`), HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `poweredByHeader: false` — di `next.config.ts`
+- K-anonymity HIBP: hanya 5-char SHA-1 prefix keluar perangkat; timeout fetch 10s; error di-sanitasi per tipe (network/http/timeout)
+- Rejection sampling di password generator; `crypto.getRandomValues` di dummy data
+- Input password `type="password"` + toggle; robots.txt
+- Tanpa `dangerouslySetInnerHTML`/`eval`; teks React ter-escape otomatis
 
 ## User Flow
 
@@ -151,7 +180,7 @@ Navigasi via Navbar → halaman lain / balik Home
 
 ## Future Considerations
 
-- **Fitur**: Real API breach checker (Have I Been Pwned)
+- **Fitur**: Tambah email breach check (HIBP Breached Accounts — butuh API key)
 - **Database**: Kalo butuh persistensi, tambah SQLite via better-sqlite3
 - **Auth**: Kalo butuh, tambah NextAuth.js
 - **Testing**: Vitest + React Testing Library

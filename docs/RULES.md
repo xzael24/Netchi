@@ -37,6 +37,7 @@ Semua fitur akses langsung tanpa login. Keamanan dari validasi form & sanitasi, 
 - Background: `bg-[#f8fafc]`
 - Foreground: `text-[#0f172a]`
 - Success: `text-[#10b981]`
+- Warning: `text-[#f59e0b]`
 - Danger: `text-[#ef4444]`
 - Accent: `text-[#06b6d4]`
 - Font Display: Space Grotesk

@@ -32,7 +32,7 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://netchi.example.com"),
+  metadataBase: new URL("https://netchi.vercel.app"),
   title: "Netchi — Privacy Shield",
   description: "Platform edukasi & perlindungan privasi data digital untuk masyarakat Indonesia.",
   openGraph: {

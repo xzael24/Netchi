@@ -37,7 +37,7 @@ Wireframe level rendah untuk seluruh halaman Netchi. Format bracket `[ ]` = box/
 
 ```
 R1 HERO  [ hero editorial: headline "Netchi S entinel", sub, CTA "MULAI SEKARANG", waving lines ]
-R2 TOOLS  [ 5 kartu: 1://SCAN 2://SCORE 3://CRACK 4://EDU 5://MASK ]
+R2 TOOLS  [ 5 kartu: 1://SCAN 2://SCORE 3://CRACK 2://EDU 5://MASK + infografis fakta ]
 R3 ARTICLE [ judul section + 3 kartu artikel (hover "Lihat lebih lanjut") ]
 R4 QUOTE  [ kutipan (curtain reveal) ]
 R5 FAQ    [ accordion: + / × per pertanyaan ]
