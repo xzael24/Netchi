@@ -31,11 +31,26 @@ export default function DummyDataPage() {
   const [fields, setFields] = useState<DummyField[]>(ALL_FIELDS);
   const [count, setCount] = useState(5);
   const [rows, setRows] = useState<Partial<DummyPerson>[]>([]);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const toggle = (f: DummyField) => {
     setFields((prev) =>
       prev.includes(f) ? prev.filter((x) => x !== f) : [...prev, f]
     );
+  };
+
+  const flash = (key: string) => {
+    setCopiedKey(key);
+    window.setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1500);
+  };
+
+  const copyText = async (key: string, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      flash(key);
+    } catch {
+      /* clipboard unavailable */
+    }
   };
 
   const handleGenerate = (e: React.FormEvent) => {
@@ -56,6 +71,11 @@ export default function DummyDataPage() {
   };
 
   const head = fields.length ? fields : ALL_FIELDS;
+
+  const copyRow = async (row: Partial<DummyPerson>, i: number) => {
+    const text = head.map((h) => `${t(FIELD_T_KEYS[h])}: ${row[h] ?? ""}`).join("\n");
+    await copyText(`row-${i}`, text);
+  };
 
   return (
     <FeatureShell label="5://MASK">
@@ -129,14 +149,32 @@ export default function DummyDataPage() {
                       {head.map((h) => (
                         <th key={h} className="px-3 py-2 font-normal">{t(FIELD_T_KEYS[h])}</th>
                       ))}
+                      <th className="px-3 py-2 font-normal text-right">{t("dd.copyRow")}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rows.map((row, i) => (
                       <tr key={i} className="border-b border-cream/15 last:border-0">
                         {head.map((h) => (
-                          <td key={h} className="px-3 py-2 text-cream/85">{row[h]}</td>
+                          <td
+                            key={h}
+                            onClick={() => copyText(`${i}:${h}`, row[h] ?? "")}
+                            title={t("dd.copyHint")}
+                            className="cursor-pointer px-3 py-2 text-cream/85 hover:bg-cream/10"
+                          >
+                            {row[h]}
+                            {copiedKey === `${i}:${h}` && <span className="ml-1 text-[#4cd99b]">✓</span>}
+                          </td>
                         ))}
+                        <td className="px-3 py-2 text-right">
+                          <button
+                            type="button"
+                            onClick={() => copyRow(row, i)}
+                            className="border border-cream/25 px-2 py-1 font-mono text-[10px] uppercase tracking-widest hover:border-cream/60"
+                          >
+                            {copiedKey === `row-${i}` ? t("dd.copied") : t("dd.copyRow")}
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>

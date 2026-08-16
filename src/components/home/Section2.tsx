@@ -48,7 +48,7 @@ function AnimatedFact() {
 
   return (
     <div ref={ref} className="flex flex-col items-center justify-center w-full h-full p-2 relative overflow-hidden">
-      <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono z-10">R4C3</span>
+      
 
       {/* Wiper line */}
       <m.div
@@ -115,7 +115,7 @@ function AnimatedFact() {
   );
 }
 
-function AnimatedDash({ label, main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" }: { label: string; main1?: string; main2?: string; sub1?: string; sub2?: string }) {
+function AnimatedDash({ main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" }: { main1?: string; main2?: string; sub1?: string; sub2?: string }) {
   const { ref, active } = useInView();
   const [phase, setPhase] = useState(0);
   useRotator(active, setPhase);
@@ -124,8 +124,6 @@ function AnimatedDash({ label, main1 = "-", main2 = "-", sub1 = "-", sub2 = "-" 
 
   return (
     <div ref={ref} className="flex flex-col items-center justify-center w-full h-full p-2 relative overflow-hidden">
-      <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono z-10">{label}</span>
-
       <m.div
         className="absolute left-0 w-full h-[2px] bg-[#1A3CDB] z-20"
         animate={{
@@ -195,7 +193,7 @@ export function Section2() {
     <section className="bg-white w-screen min-w-full overflow-hidden">
       {/* Row 1 - 4 kolom */}
       <div className={`grid grid-cols-[25px_65fr_29fr_25px] lg:grid-cols-[2.6%_65%_29.05%_minmax(0,1fr)] grid-rows-[16vh] lg:grid-rows-[28vh] w-full min-w-full border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
         <div className={`border-r-2 ${LINE} flex items-end justify-start pt-6 md:pt-8 pl-1 md:pl-2 pr-6 md:pr-8`}>
           <h2 className="font-display font-bold text-[#1A3CDB] leading-[1] tracking-wide uppercase text-[clamp(1.6rem,7.5vw,3.5rem)]">
             {t("s2.title").split("\n").map((l, i) => (
@@ -207,13 +205,13 @@ export function Section2() {
           </h2>
         </div>
         <div className="grid grid-rows-[0.3fr_1fr]">
-          <div className={`flex items-start justify-start p-1 text-[8px] text-white/40 font-mono border-b-2 border-r-2 border-cream/25 bg-[#1A3CDB]`}>R1C3-1</div>
-          <div className={`flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono border-r-2 ${LINE}`}>R1C3-2</div>
+          <div className={`flex items-start justify-start p-1 text-[8px] text-white/40 font-mono border-b-2 border-r-2 border-cream/25 bg-[#1A3CDB]`}></div>
+          <div className={`flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono border-r-2 ${LINE}`}></div>
         </div>
         <div className={`grid grid-rows-[0.3fr_1fr]`}>
-          <div className={`flex items-start justify-start p-1 text-[8px] text-white/40 font-mono border-b-2 ${LINE} bg-[#1A3CDB]`}>R1C4-1</div>
+          <div className={`flex items-start justify-start p-1 text-[8px] text-white/40 font-mono border-b-2 ${LINE} bg-[#1A3CDB]`}></div>
           <div className="relative flex items-end justify-start p-1">
-            <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C4-2</span>
+            
             <span
               className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] whitespace-nowrap"
               style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
@@ -226,7 +224,7 @@ export function Section2() {
 
       {/* Row 2 */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_minmax(0,1fr)_3.35%] lg:grid-rows-[minmax(15vh,auto)] w-full min-w-full border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R2C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
         <div className={`border-r-2 ${LINE} grid grid-cols-2 gap-[2px] bg-[#1A3CDB] lg:grid-cols-5`}>
           {[
             { label: "1://SCAN", title: t("s2.toolScanTitle"), desc: t("s2.toolScanDesc") },
@@ -238,7 +236,6 @@ export function Section2() {
             <div key={i} className={`grid grid-rows-[0.12fr_1fr] bg-white container-cell ${i === 4 ? "col-span-2 lg:col-span-1" : ""}`}>
               <div className={`border-b-2 ${LINE} flex items-center justify-start p-1`}>
                 <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] text-[clamp(0.5rem,10cqw,0.75rem)]">{item.label}</span>
-                <span className="ml-2 text-[8px] text-[#1A3CDB]/40 font-mono">R2C{i+2}-1</span>
               </div>
               <div className="flex flex-col items-start justify-center p-3 whitespace-pre-line">
                 <span className="font-display font-bold text-[#1A3CDB] leading-tight uppercase text-[clamp(0.8rem,min(7.5cqw,2.4vh),2.4rem)]">{item.title}</span>
@@ -247,25 +244,25 @@ export function Section2() {
             </div>
           ))}
         </div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R2C7</div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono"></div>
       </div>
 
       {/* Row 3 - 3 kolom */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] w-full min-w-full border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R3C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R3C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R3C3</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono"></div>
       </div>
 
       {/* Row 4 - tanpa split */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_minmax(0,1fr)_3.35%] lg:grid-rows-[15vh] w-full min-w-full border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R4C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
         <div className={`border-r-2 ${LINE} grid grid-cols-1 gap-[2px] bg-[#1A3CDB] lg:grid-cols-5`}>
           {[...Array(5)].map((_, i) => (
             <div key={i} className={`flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono bg-white container-cell`}>
               {i === 0 ? (
                 <div className="flex items-end justify-start w-full h-full relative">
-                  <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R4C2</span>
+                  
                   <h2 className="font-display font-bold text-[#1A3CDB] leading-[1] tracking-wide uppercase text-[clamp(1.25rem,min(13cqw,5vh),5rem)]">
                     {t("s2.fakta").split("\n").map((l, i) => (
                       <span key={i}>
@@ -278,25 +275,25 @@ export function Section2() {
               ) : i === 1 ? (
                 <AnimatedFact />
               ) : i === 2 ? (
-                <AnimatedDash label={`R4C${i + 2}`} main1="87%" sub1={t("s2.dash1b")} main2="70%" sub2={t("s2.dash1d")} />
+                <AnimatedDash main1="87%" sub1={t("s2.dash1b")} main2="70%" sub2={t("s2.dash1d")} />
               ) : i === 3 ? (
-                <AnimatedDash label={`R4C${i + 2}`} main1={t("s2.dash2a")} sub1={t("s2.dash2b")} main2="&quot;123456&quot;" sub2={t("s2.dash2d")} />
+                <AnimatedDash main1={t("s2.dash2a")} sub1={t("s2.dash2b")} main2="&quot;123456&quot;" sub2={t("s2.dash2d")} />
               ) : i === 4 ? (
-                <AnimatedDash label={`R4C${i + 2}`} main1="91%" sub1={t("s2.dash3b")} main2={t("s2.dash3c")} sub2={t("s2.dash3d")} />
+                <AnimatedDash main1="91%" sub1={t("s2.dash3b")} main2={t("s2.dash3c")} sub2={t("s2.dash3d")} />
               ) : (
-                <AnimatedDash label={`R4C${i + 2}`} />
+                <AnimatedDash />
               )}
             </div>
           ))}
         </div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R4C7</div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono"></div>
       </div>
 
       {/* Row 5 - 3 kolom kayak row 3 */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] w-full min-w-full border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R5C1</div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R5C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R5C3</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono"></div>
       </div>
     </section>
   );

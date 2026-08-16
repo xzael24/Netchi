@@ -1,4 +1,5 @@
-export type PwnedResult = { pwned: boolean; count: number; error?: string };
+export type PwnedError = "network" | "http" | "timeout";
+export type PwnedResult = { pwned: boolean; count: number; error?: PwnedError };
 
 // Web Crypto (crypto.subtle) is only available in secure contexts (https/localhost).
 // On plain http over LAN it's undefined, so fall back to a pure-JS SHA-1.
@@ -54,8 +55,9 @@ export async function checkPasswordPwned(password: string): Promise<PwnedResult>
 
     const res = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`, {
       headers: { "Add-Padding": "true" },
+      signal: AbortSignal.timeout(10_000),
     });
-    if (!res.ok) throw new Error(`HIBP ${res.status}`);
+    if (!res.ok) return { pwned: false, count: 0, error: "http" };
     const text = await res.text();
 
     let pwned = false;
@@ -70,10 +72,10 @@ export async function checkPasswordPwned(password: string): Promise<PwnedResult>
     }
     return { pwned, count };
   } catch (err) {
-    return {
-      pwned: false,
-      count: 0,
-      error: err instanceof Error ? err.message : "network",
-    };
+    const error: PwnedError =
+      err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")
+        ? "timeout"
+        : "network";
+    return { pwned: false, count: 0, error };
   }
 }

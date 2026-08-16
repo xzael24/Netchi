@@ -42,7 +42,7 @@ const id = {
   "s2.dash3b": "setujui syarat & ketentuan tanpa baca",
   "s2.dash3c": "Rp 500/orang",
   "s2.dash3d": "Data pribadimu dijual di dark web",
-  "s3.title": "Artikel Kami",
+  "s3.title": "Berita Kami",
   "s3.tooltip": "Lihat lebih lanjut",
   "s3.apa": "Apa Yang Terjadi",
   "s3.kenapa": "Kenapa Berbahaya",
@@ -51,7 +51,7 @@ const id = {
   "s3.dampak": "Dampaknya",
   "s3.skala": "Skala Besar",
   "s3.pelajaran": "Pelajaran",
-  "s4.label": "(3)//Kutipan",
+  "s4.label": "3://Kutipan",
   "s4.role": "mantan CEO Mozilla",
   "shell.marquee": "Lindungi Identitas Digitalmu",
 
@@ -64,7 +64,11 @@ const id = {
   "breach.check": "Cek →",
   "breach.checking": "Mengecek…",
   "breach.errEmpty": "Password tidak boleh kosong",
-  "breach.errConn": "Tidak bisa terhubung ke HIBP ({err}). Coba lagi.",
+  "hibp.network": "Tidak bisa terhubung ke HIBP. Cek koneksi internetmu, lalu coba lagi.",
+  "hibp.http": "HIBP sedang sibuk. Coba lagi nanti.",
+  "hibp.timeout": "HIBP tidak merespons. Coba lagi.",
+  "ui.show": "Tampilkan",
+  "ui.hide": "Sembunyikan",
   "breach.commonTitle": "⚠ Password terlalu umum",
   "breach.commonBody":
     "Password ini masuk daftar password paling umum di dunia — pasti sudah ada di database peretas. Ganti sekarang dengan password panjang & acak.",
@@ -104,7 +108,6 @@ const id = {
   "pg.checkPlaceholder": "ketik password yang mau dicek",
   "pg.checkBtn": "Cek",
   "pg.checking": "Mengecek…",
-  "pg.checkErr": "Terhubung ke HIBP gagal ({err}) — pakai data offline.",
   "pg.checkPwned":
     "⚠ Password ini ditemukan {count}× dalam kebocoran data. JANGAN dipakai.",
   "pg.checkSafe": "✓ Password tidak ditemukan dalam kebocoran data yang diketahui.",
@@ -159,6 +162,9 @@ const id = {
     "Butuh daftar di situs yang mencurigakan? Pakai data dummy realistis khas Indonesia.",
   "dd.count": "Jumlah",
   "dd.results": "Hasil",
+  "dd.copyRow": "Salin baris",
+  "dd.copied": "Tersalin!",
+  "dd.copyHint": "Klik untuk menyalin nilai",
   "dd.field.nama": "Nama",
   "dd.field.email": "Email",
   "dd.field.phone": "No. HP",
@@ -177,7 +183,7 @@ const id = {
   "uu.marquee": "2://EDU • Netchi Sentinel • Lindungi Identitas Digitalmu •",
 
   // berita
-  "bv.label": "4://BERITA — Kabar kebocoran data & perlindungan privasi",
+  "bv.label": "2://BERITA — Kabar kebocoran data & perlindungan privasi",
   "bv.title1": "Berita &",
   "bv.title2": "Kasus Terbaru",
   "bv.desc":
@@ -239,7 +245,7 @@ const en: Record<TranslationKey, string> = {
   "s2.dash3b": "agree to terms & conditions without reading",
   "s2.dash3c": "Rp 500/person",
   "s2.dash3d": "your personal data sold on the dark web",
-  "s3.title": "Our Articles",
+  "s3.title": "Our News",
   "s3.tooltip": "See more",
   "s3.apa": "What Happened",
   "s3.kenapa": "Why It's Dangerous",
@@ -248,7 +254,7 @@ const en: Record<TranslationKey, string> = {
   "s3.dampak": "The Impact",
   "s3.skala": "Massive Scale",
   "s3.pelajaran": "Lesson",
-  "s4.label": "(3)//Quote",
+  "s4.label": "3://Quote",
   "s4.role": "former CEO of Mozilla",
   "shell.marquee": "Protect Your Digital Identity",
 
@@ -260,7 +266,11 @@ const en: Record<TranslationKey, string> = {
   "breach.check": "Check →",
   "breach.checking": "Checking…",
   "breach.errEmpty": "Password cannot be empty",
-  "breach.errConn": "Could not reach HIBP ({err}). Try again.",
+  "hibp.network": "Could not reach HIBP. Check your internet connection and try again.",
+  "hibp.http": "HIBP is busy. Try again later.",
+  "hibp.timeout": "HIBP is not responding. Try again.",
+  "ui.show": "Show",
+  "ui.hide": "Hide",
   "breach.commonTitle": "⚠ Password too common",
   "breach.commonBody":
     "This password is on the list of the most common passwords in the world — hackers definitely already have it. Change it now to a long, random one.",
@@ -299,7 +309,6 @@ const en: Record<TranslationKey, string> = {
   "pg.checkPlaceholder": "type the password to check",
   "pg.checkBtn": "Check",
   "pg.checking": "Checking…",
-  "pg.checkErr": "Failed to reach HIBP ({err}) — using offline data.",
   "pg.checkPwned":
     "⚠ This password was found {count}× in data breaches. DO NOT use it.",
   "pg.checkSafe": "✓ Password not found in known data breaches.",
@@ -352,6 +361,9 @@ const en: Record<TranslationKey, string> = {
     "Need to sign up on a suspicious site? Use realistic Indonesian dummy data.",
   "dd.count": "Count",
   "dd.results": "Results",
+  "dd.copyRow": "Copy row",
+  "dd.copied": "Copied!",
+  "dd.copyHint": "Click to copy the value",
   "dd.field.nama": "Name",
   "dd.field.email": "Email",
   "dd.field.phone": "Phone",
@@ -368,7 +380,7 @@ const en: Record<TranslationKey, string> = {
   "uu.empty": "No matching articles.",
   "uu.marquee": "2://EDU • Netchi Sentinel • Protect Your Digital Identity •",
 
-  "bv.label": "4://BERITA — Data breach & privacy news",
+  "bv.label": "2://BERITA — Data breach & privacy news",
   "bv.title1": "News &",
   "bv.title2": "Latest Cases",
   "bv.desc":

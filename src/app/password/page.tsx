@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FeatureShell } from "@/components/layout/FeatureShell";
-import { checkPasswordPwned } from "@/lib/pwned";
+import { checkPasswordPwned, type PwnedResult } from "@/lib/pwned";
 import {
   calculatePasswordEntropy,
   getTimeToCrack,
@@ -32,6 +32,19 @@ type Options = {
   excludeAmbiguous: boolean;
 };
 
+// Uniform random integer in [0, max) via rejection sampling — avoids the
+// modulo bias that plain n % max introduces.
+function randomInt(max: number): number {
+  const r = new Uint32Array(1);
+  const limit = Math.floor(0x100000000 / max) * max;
+  let n: number;
+  do {
+    crypto.getRandomValues(r);
+    n = r[0];
+  } while (n >= limit);
+  return n % max;
+}
+
 function generatePassword(opts: Options): string {
   let pool = "";
   if (opts.lower) pool += CHARSETS.lower;
@@ -41,11 +54,7 @@ function generatePassword(opts: Options): string {
   if (opts.excludeAmbiguous) pool = [...pool].filter((c) => !AMBIGUOUS.has(c)).join("");
   if (pool.length === 0) return "";
 
-  const random = new Uint32Array(opts.length);
-  crypto.getRandomValues(random);
-  return Array.from(random)
-    .map((n) => pool[n % pool.length])
-    .join("");
+  return Array.from({ length: opts.length }, () => pool[randomInt(pool.length)]).join("");
 }
 
 const LEET: Record<string, string[]> = {
@@ -57,7 +66,7 @@ function generateFromWord(word: string, opts: Options): string {
   let ri = 0;
   const rand = () => r[ri++] / 4294967296;
   const symbols = CHARSETS.symbols.split("");
-  const pick = (arr: string[]) => arr[Math.floor(rand() * arr.length)];
+  const pick = (arr: string[]) => arr[randomInt(arr.length)];
 
   const clean = word.replace(/[^a-zA-Z0-9]/g, "");
   const core = (clean || "kata")
@@ -74,7 +83,7 @@ function generateFromWord(word: string, opts: Options): string {
 
   const cap = core.charAt(0).toUpperCase() + core.slice(1);
   const pre = opts.symbols && rand() < 0.7 ? pick(symbols) : "";
-  const digits = opts.numbers ? String(Math.floor(rand() * 9000) + 1000) : "";
+  const digits = opts.numbers ? String(randomInt(9000) + 1000) : "";
   const post = opts.symbols ? pick(symbols) : "";
   let pw = pre + cap + digits + post;
   const needs = Math.max(0, 8 - pw.length);
@@ -96,8 +105,9 @@ export default function PasswordPage() {
   const [results, setResults] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
   const [checkInput, setCheckInput] = useState("");
+  const [showCheck, setShowCheck] = useState(false);
   const [checking, setChecking] = useState(false);
-  const [checkResult, setCheckResult] = useState<{ pwned: boolean; count: number; error?: string } | null>(null);
+  const [checkResult, setCheckResult] = useState<PwnedResult | null>(null);
   const [word, setWord] = useState("");
 
   const handleCheck = async (e: React.FormEvent) => {
@@ -283,13 +293,21 @@ export default function PasswordPage() {
             </p>
             <form onSubmit={handleCheck} className="mt-4 flex" noValidate>
               <input
-                type="text"
+                type={showCheck ? "text" : "password"}
                 value={checkInput}
                 onChange={(e) => setCheckInput(e.target.value)}
                 placeholder={t("pg.checkPlaceholder")}
                 aria-label="Password untuk dicek"
                 className="min-w-0 flex-1 bg-transparent px-3 py-2 font-mono text-sm text-cream placeholder:text-cream/40 outline-none border border-cream/25"
               />
+              <button
+                type="button"
+                onClick={() => setShowCheck((v) => !v)}
+                aria-label={showCheck ? t("ui.hide") : t("ui.show")}
+                className="border border-cream/25 border-l-0 px-3 font-mono text-[10px] uppercase tracking-widest text-cream/60 hover:text-cream"
+              >
+                {showCheck ? t("ui.hide") : t("ui.show")}
+              </button>
               <button
                 type="submit"
                 disabled={checking || !checkInput}
@@ -302,7 +320,7 @@ export default function PasswordPage() {
               <div className="mt-4">
                 {checkResult.error ? (
                   <p className="font-mono text-xs text-cream/50">
-                    {t("pg.checkErr", { err: checkResult.error })}
+                    {t(checkResult.error === "http" ? "hibp.http" : checkResult.error === "timeout" ? "hibp.timeout" : "hibp.network")}
                   </p>
                 ) : checkResult.pwned ? (
                   <p className="font-mono text-sm text-[#ff6b6b]">

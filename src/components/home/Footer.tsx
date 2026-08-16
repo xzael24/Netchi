@@ -26,7 +26,6 @@ export function Footer() {
       {/* R1: editorial label row */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)] lg:grid-cols-[2.6%_97.4%] border-b-2 ${LINE}`}>
         <div className="flex items-center justify-center border-r-2 border-cream/25 px-1 font-mono text-[9px] text-cream/30">
-          R1C1
         </div>
         <div className="flex items-center justify-between p-3 font-mono text-xs tracking-widest uppercase text-cream/40">
           <span>5://FOOTER</span>

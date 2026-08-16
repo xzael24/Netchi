@@ -1,14 +1,33 @@
-import { t, type Locale } from "@/lib/i18n";
+import { t, type Locale, type TranslationKey } from "@/lib/i18n";
+
+type StrengthBand = {
+  min: number;
+  timeKey: TranslationKey;
+  labelKey: TranslationKey;
+  color: string;
+};
+
+const STRENGTH_BANDS: StrengthBand[] = [
+  { min: 0, timeKey: "pg.instant", labelKey: "pg.veryWeak", color: "text-danger" },
+  { min: 30, timeKey: "pg.seconds", labelKey: "pg.weak", color: "text-warning" },
+  { min: 40, timeKey: "pg.minutes", labelKey: "pg.weak", color: "text-warning" },
+  { min: 50, timeKey: "pg.hours", labelKey: "pg.medium", color: "text-accent" },
+  { min: 60, timeKey: "pg.days", labelKey: "pg.medium", color: "text-accent" },
+  { min: 70, timeKey: "pg.years", labelKey: "pg.strong", color: "text-success" },
+  { min: 80, timeKey: "pg.centuries", labelKey: "pg.strong", color: "text-success" },
+  { min: 90, timeKey: "pg.centuries", labelKey: "pg.veryStrong", color: "text-success" },
+  { min: 100, timeKey: "pg.unbreakable", labelKey: "pg.veryStrong", color: "text-success" },
+];
+
+function bandFor(entropy: number): StrengthBand {
+  for (let i = STRENGTH_BANDS.length - 1; i >= 0; i--) {
+    if (entropy >= STRENGTH_BANDS[i].min) return STRENGTH_BANDS[i];
+  }
+  return STRENGTH_BANDS[0];
+}
 
 export function getTimeToCrack(entropy: number, locale: Locale = "id"): string {
-  if (entropy < 30) return t(locale, "pg.instant");
-  if (entropy < 40) return t(locale, "pg.seconds");
-  if (entropy < 50) return t(locale, "pg.minutes");
-  if (entropy < 60) return t(locale, "pg.hours");
-  if (entropy < 70) return t(locale, "pg.days");
-  if (entropy < 80) return t(locale, "pg.years");
-  if (entropy < 100) return t(locale, "pg.centuries");
-  return t(locale, "pg.unbreakable");
+  return t(locale, bandFor(entropy).timeKey);
 }
 
 export function calculatePasswordEntropy(password: string): number {
@@ -26,16 +45,9 @@ function getPoolSize(password: string): number {
 }
 
 export function getStrengthColor(entropy: number): string {
-  if (entropy < 30) return "text-danger";
-  if (entropy < 50) return "text-warning";
-  if (entropy < 70) return "text-accent";
-  return "text-success";
+  return bandFor(entropy).color;
 }
 
 export function getStrengthLabel(entropy: number, locale: Locale = "id"): string {
-  if (entropy < 30) return t(locale, "pg.veryWeak");
-  if (entropy < 50) return t(locale, "pg.weak");
-  if (entropy < 70) return t(locale, "pg.medium");
-  if (entropy < 90) return t(locale, "pg.strong");
-  return t(locale, "pg.veryStrong");
+  return t(locale, bandFor(entropy).labelKey);
 }

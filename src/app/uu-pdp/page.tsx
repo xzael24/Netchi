@@ -70,9 +70,9 @@ export default function UuPdpPage() {
 
       {/* R1: hero — editorial grid */}
       <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[minmax(26vh,auto)] border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-r-2 ${LINE} container-cell relative flex flex-col items-start justify-end pl-2 md:pl-4 pb-3`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C2</span>
+          
           <span className="font-mono font-extrabold uppercase tracking-widest text-cream/60 text-[clamp(0.4rem,2cqw,0.7rem)]">2://EDU</span>
           <HeadingReveal
             as="h1"
@@ -84,7 +84,7 @@ export default function UuPdpPage() {
           </p>
         </div>
         <div className="container-cell relative flex items-end justify-start p-1 pb-2">
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C3</span>
+          
           <span
             className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap"
             style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
@@ -107,7 +107,7 @@ export default function UuPdpPage() {
 
       {/* R2: search + filter */}
       <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-r-2 ${LINE} p-4 md:p-5`}>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <input
@@ -135,12 +135,12 @@ export default function UuPdpPage() {
             </div>
           </div>
         </div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R2C3</div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono"></div>
       </div>
 
       {/* R3: list header */}
       <div className={`hidden lg:grid grid-cols-[2.6%_94.05%_3.35%] grid-rows-[10vh] border-b-2 ${LINE}`}>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-r-2 ${LINE} container-cell flex items-center justify-between px-2 md:px-4`}>
           <span className="font-display font-bold uppercase tracking-wide text-cream text-[clamp(1rem,3cqw,1.6rem)]">
             {t("uu.listTitle")}
@@ -149,7 +149,7 @@ export default function UuPdpPage() {
             {t("uu.countLabel", { n: filteredUU.length })}
           </span>
         </div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R3C3</div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono"></div>
       </div>
       <div className="lg:hidden flex items-center justify-between border-b-2 border-cream/25 px-5 py-4">
         <span className="font-display font-bold uppercase tracking-wide text-cream text-lg">{t("uu.listTitle")}</span>
@@ -171,7 +171,6 @@ export default function UuPdpPage() {
               className={`group hidden lg:grid grid-cols-[2.6%_18.81%_75.24%_1fr] border-b-2 ${LINE} transition-colors hover:bg-cream/5`}
             >
               <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>
-                R4C1
               </div>
               <div className={`border-r-2 ${LINE} container-cell flex items-start justify-start px-2 py-4`}>
                 <span className="font-mono font-extrabold text-cream/30 group-hover:text-[#ff4d4d] transition-colors text-[clamp(1rem,5cqw,1.8rem)]">
@@ -187,7 +186,7 @@ export default function UuPdpPage() {
                 </h2>
                 <p className="mt-1 text-sm text-cream/70 leading-relaxed max-w-3xl">{a.summary}</p>
               </div>
-              <div className="flex items-start justify-start p-2 text-cream/40 group-hover:text-[#ff4d4d] group-hover:translate-x-1 transition-all font-mono">
+              <div className="flex items-start justify-start p-2 text-cream/40 group-hover:text-[#ff4d4d] group-hover:translate-x-1 transition-all font-mono min-w-0">
                 →
               </div>
             </Link>

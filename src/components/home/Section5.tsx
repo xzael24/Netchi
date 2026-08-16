@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
@@ -123,14 +123,14 @@ export function Section5() {
       {/* Editorial grid */}
       <div className="grid w-full min-w-full">
         <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] grid-rows-[22vh] border-b-2 ${LINE}`}>
-          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R1C1</div>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
           <div className={`border-r-2 ${LINE} flex flex-col items-start justify-end pl-2 md:pl-4 pb-2 relative container-cell`}>
-            <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C2</span>
+            
             <span className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB]/60 text-[clamp(0.4rem,2cqw,0.7rem)]">4://FAQ</span>
             <HeadingReveal as="h2" lines={["FAQ"]} className="font-display font-bold text-[#1A3CDB] leading-[0.9] tracking-[-0.03em] text-[clamp(2.5rem,10cqw,5.5rem)]" />
           </div>
           <div className="flex items-end justify-start p-1 pb-2 relative">
-            <span className="absolute top-0 left-0 p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R1C3</span>
+            
             <span
               className="font-mono font-extrabold uppercase tracking-widest text-[#1A3CDB] whitespace-nowrap"
               style={{ writingMode: "vertical-rl", fontSize: "clamp(0.3rem, 14cqw, 0.5rem)" }}
@@ -141,7 +141,7 @@ export function Section5() {
         </div>
 
         <div className={`grid grid-cols-[25px_minmax(0,1fr)_25px] lg:grid-cols-[2.6%_94.05%_3.35%] ${LINE}`}>
-          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}>R2C1</div>
+          <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono`}></div>
           <div className={`border-r-2 ${LINE} container-cell px-6 md:px-8 py-2`}>
             <div className="grid grid-cols-1 gap-x-10 lg:grid-cols-2">
               {FAQS.map((qa, i) => (
@@ -149,7 +149,7 @@ export function Section5() {
               ))}
             </div>
           </div>
-          <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono">R2C3</div>
+          <div className="flex items-start justify-start p-1 text-[8px] text-[#1A3CDB]/40 font-mono"></div>
         </div>
       </div>
       </div>

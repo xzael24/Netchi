@@ -18,9 +18,9 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
     <>
       <nav className="fixed top-0 left-0 w-full z-[160] bg-[#1A3CDB] text-cream">
       <div className="hidden lg:grid h-[35px] grid-cols-[2.6%_30%_35%_29.05%_1fr] w-full min-w-full border-b-2 border-cream/25">
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N1</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-r-2 ${LINE} flex items-center justify-start pl-2 md:pl-4 font-display font-bold tracking-widest cq-hero-nav relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N2</span>
+          
           <div className="overflow-hidden">
             <AnimatePresence>
               {headlineVisible && (
@@ -39,9 +39,9 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
             </AnimatePresence>
           </div>
         </div>
-        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>N3</div>
+        <div className={`border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-r-2 ${LINE} flex items-center justify-end container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N4</span>
+          
           <div className="overflow-hidden mr-auto h-full">
             <AnimatePresence>
               {buttonVisible && (
@@ -70,7 +70,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
           onMouseEnter={() => setLangOpen(true)}
           onMouseLeave={() => setLangOpen(false)}
         >
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">N5</span>
+          
           <button
             type="button"
             aria-label="Language"
@@ -89,13 +89,12 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
                 animate={{ opacity: 1, scaleY: 1, y: 0 }}
                 exit={{ opacity: 0, scaleY: 0.8, y: -8 }}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute top-full right-0 z-10 flex flex-col items-stretch origin-top"
-                style={{ minWidth: "100%" }}
+                className="absolute top-full right-0 z-10 flex flex-col items-stretch origin-top w-full"
               >
-                <button onClick={() => { setLocale("id"); setLangOpen(false); }} className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors w-full whitespace-nowrap">
+                <button onClick={() => { setLocale("id"); setLangOpen(false); }} className="px-1 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors w-full text-center">
                   ID
                 </button>
-                <button onClick={() => { setLocale("en"); setLangOpen(false); }} className="px-3 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full whitespace-nowrap">
+                <button onClick={() => { setLocale("en"); setLangOpen(false); }} className="px-1 py-2 bg-[#EF4444] text-[#1A3CDB] font-mono text-xs md:text-sm uppercase tracking-widest font-bold hover:bg-white/10 hover:backdrop-blur-md hover:text-white transition-colors border-t border-cream/25 w-full text-center">
                   EN
                 </button>
               </m.div>
@@ -105,7 +104,7 @@ export function Navbar({ headlineVisible = true, buttonVisible = false }: { head
       </div>
 
       <div className="lg:hidden grid h-[25px] grid-cols-[25px_minmax(0,65fr)_minmax(0,29fr)_25px] border-b-2 border-cream/25">
-        <div className={`self-start h-[23px] border-r-2 ${LINE} flex items-center justify-center p-1 font-mono text-[8px] text-cream/30`}>N1</div>
+        <div className={`self-start h-[23px] border-r-2 ${LINE} flex items-center justify-center p-1 font-mono text-[8px] text-cream/30`}></div>
         <div className={`self-start h-[23px] border-r-2 ${LINE} flex items-center pl-2 font-display font-bold tracking-widest container-cell overflow-hidden`}>
           <span className="text-[1rem] leading-none whitespace-nowrap">
             Netchi&nbsp;

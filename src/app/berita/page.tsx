@@ -14,7 +14,7 @@ const idDate = (d: string) =>
 export default function BeritaPage() {
   const { t } = useLocale();
   return (
-    <FeatureShell label="4://BERITA">
+    <FeatureShell label="2://BERITA">
       <div className="mx-auto max-w-4xl">
         <span data-article-reveal className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
           {t("bv.label")}

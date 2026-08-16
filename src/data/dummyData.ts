@@ -19,13 +19,19 @@ export const FIELD_LABELS: Record<DummyField, string> = {
 
 export type DummyPerson = Record<DummyField, string>;
 
+function secureRandom(): number {
+  const r = new Uint32Array(1);
+  crypto.getRandomValues(r);
+  return r[0] / 4294967296;
+}
+
 function pick<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(secureRandom() * arr.length)];
 }
 
 function randomDigits(len: number): string {
   let s = "";
-  for (let i = 0; i < len; i++) s += Math.floor(Math.random() * 10);
+  for (let i = 0; i < len; i++) s += Math.floor(secureRandom() * 10);
   return s;
 }
 
@@ -35,7 +41,7 @@ function generatePerson(): DummyPerson {
     nama,
     email: `${nama.toLowerCase().replace(/[^a-z]/g, "")}.${randomDigits(3)}@mail.com`,
     phone: `08${randomDigits(3)}${randomDigits(4)}${randomDigits(2)}`,
-    ttl: `${String(1 + Math.floor(Math.random() * 28)).padStart(2, "0")}-${String(1 + Math.floor(Math.random() * 12)).padStart(2, "0")}-${1975 + Math.floor(Math.random() * 25)}`,
+    ttl: `${String(1 + Math.floor(secureRandom() * 28)).padStart(2, "0")}-${String(1 + Math.floor(secureRandom() * 12)).padStart(2, "0")}-${1975 + Math.floor(secureRandom() * 25)}`,
     alamat: `${pick(STREETS)} No. ${randomDigits(3)}, ${pick(CITIES)}, Indonesia`,
     pekerjaan: pick(OCCUPATIONS),
     perusahaan: pick(COMPANIES),

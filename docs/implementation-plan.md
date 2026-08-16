@@ -1,30 +1,35 @@
-# Implementation Plan ó Security, i18n, Testing, Documentation
+# Implementation Plan ‚Äî Security, i18n, Testing, Documentation
 
 **Generated**: 2026-08-03 | **Deadline**: 18 Aug 2026
-**Scope**: Score-impacting items ó Security (15%), Code Quality & Docs (20%), i18n (PRD P2), Testing (25% Fungsionalitas)
+**Scope**: Score-impacting items ‚Äî Security (15%), Code Quality & Docs (20%), i18n (PRD P2), Testing (25% Fungsionalitas)
 
 ---
 
-## Current State Summary
+## Final Status (15 Agu 2026 ‚Äî semua item plan sudah selesai)
 
 | Area | Status |
 |------|--------|
-| Feature pages (breach-checker, privacy-score, password, uu-pdp, dummy-data) | Directory stubs exist, no page.tsx content |
-| API routes (src/app/api/) | Directory exists, empty |
-| i18n toggle (Navbar/Hero globe) | Static UI buttons only, no state or translation system |
-| Security headers | 
-ext.config.ts is empty {} |
-| Middleware | None (middleware.ts missing) |
-| Tests | None (no test files, no test framework) |
-| README | Default create-next-app boilerplate |
-| dangerouslySetInnerHTML | Not found in current code |
-| Env validation | No .env.local, no env schema |
+| 5 halaman fitur (breach-checker, privacy-score, password, uu-pdp, dummy-data) | ‚úÖ Selesai, dengan validasi input (`src/lib/validate.ts`) |
+| API routes (src/app/api/) | ‚è≠Ô∏è Tidak dibuat ‚Äî arsitektur 100% client-side (tanpa login, tanpa database), sesuai PRD. Tidak ada permintaan keluar selain HIBP k-anonymity |
+| i18n ID/EN | ‚úÖ Selesai ‚Äî `LocaleProvider` (localStorage `netchi-locale`), `src/lib/i18n.ts` (tipesafe via `TranslationKey`), `<html lang>` dinamis |
+| Security headers | ‚úÖ Selesai + audit ‚Äî CSP, HSTS (prod), nosniff, Referrer-Policy, X-Frame-Options, Permissions-Policy, poweredByHeader off. `X-XSS-Protection` di-skip (deprecated) |
+| Middleware | ‚è≠Ô∏è Tidak diperlukan (tidak ada route yang butuh auth/proteksi) |
+| Testing | ‚úÖ Lighthouse (desktop 99-100, mobile 68-80), manual checklist multi-viewport, Playwright smoke |
+| README | ‚úÖ Di-overhaul (fitur, tech stack, struktur, keamanan, i18n, deploy) |
+| Env validation | ‚è≠Ô∏è Tidak ada env/API key yang dipakai ‚Äî HIBP pakai endpoint gratis (range, k-anonymity), tanpa key |
+| `src/lib/sanitize.ts` | ‚è≠Ô∏è Tidak dibuat ‚Äî tidak ada URL/HTML dari input user; CSV export sudah RFC 4180 escaping |
+
+**Catatan keputusan yang menyimpang dari plan (dengan alasan):**
+1. `X-XSS-Protection` tidak dipasang ‚Äî header deprecated & bisa mengganggu (audit keamanan 15 Agu).
+2. CSP memakai `script-src 'unsafe-inline'` (dokumentasikan di `next.config.ts`) ‚Äî dibutuhkan inline hydration scripts Next; tidak ada sink XSS (0 `dangerouslySetInnerHTML`/`eval`).
+3. Input breach checker adalah **password** (bukan email seperti draft awal plan) ‚Äî sesuai PRD 5.1; HIBP k-anonymity tanpa API key.
+4. Keamanan tambahan hasil audit (15 Agu): timeout fetch HIBP 10s, error sanitasi (network/http/timeout), rejection sampling di password generator, `crypto.getRandomValues` di dummy data, input password `type="password"` + toggle, robots.txt.
 
 ---
 
 ## Priority 1: Security Hardening (15% score)
 
-### 1.1 Input Validation ó All Forms
+### 1.1 Input Validation ‚Äî All Forms
 **Effort**: Medium | **When**: During feature page build
 
 Every feature page has a form. Validate server-side AND client-side.
@@ -44,22 +49,22 @@ Every feature page has a form. Validate server-side AND client-side.
   export function allowlist<T extends string>(val: unknown, allowed: T[]): T | null
   `
 - Call validation before processing in each feature component
-- Display inline error states (no toast library needed ó use existing Tailwind styling)
+- Display inline error states (no toast library needed ‚Äî use existing Tailwind styling)
 
 ### 1.2 XSS Protection
 **Effort**: Low | **When**: During feature page build
 
 **What's already safe**:
-- React JSX escapes text content by default ó zero risk from {variable} interpolation
+- React JSX escapes text content by default ‚Äî zero risk from {variable} interpolation
 - No dangerouslySetInnerHTML in codebase
 - No document.innerHTML or window.eval usage
 
 **What needs attention**:
-- **URL handling** ó If any feature renders links from user input (e.g., breach source URLs), validate with 
+- **URL handling** ‚Äî If any feature renders links from user input (e.g., breach source URLs), validate with 
 ew URL() and only allow http:/https: protocols. Reject javascript: URIs.
-- **Clipboard API** ó Password generator and dummy data use 
+- **Clipboard API** ‚Äî Password generator and dummy data use 
 avigator.clipboard.writeText(). The text is developer-generated, not user-supplied, so no XSS vector.
-- **CSV/JSON download** ó Dummy data export generates content from structured data. Ensure proper escaping of CSV fields (quote-wrap fields containing commas/newlines).
+- **CSV/JSON download** ‚Äî Dummy data export generates content from structured data. Ensure proper escaping of CSV fields (quote-wrap fields containing commas/newlines).
 - **Future-proof**: Add a guard in src/lib/sanitize.ts:
   `	s
   export function safeUrl(raw: string): string | null // returns null if not http(s)
@@ -102,7 +107,7 @@ If breach checker ever hits an external API (e.g., HIBP), validate env at startu
   const API_KEY = process.env.BREACH_API_KEY;
   if (!API_KEY) throw new Error("Missing BREACH_API_KEY");
   `
-- .env.example already exists ó document required vars there
+- .env.example already exists ‚Äî document required vars there
 
 ### 1.5 API Route Protection (If Used)
 **Effort**: Low | **When**: When API routes are built
@@ -110,12 +115,12 @@ If breach checker ever hits an external API (e.g., HIBP), validate env at startu
 If any API routes are created (e.g., /api/breach):
 - Validate request body with same alidate.ts functions
 - Return proper status codes (400 for bad input, 429 for rate limit)
-- Simple in-memory rate limit: Map<IP, {count, resetTime}> ó 30 req/min per IP
+- Simple in-memory rate limit: Map<IP, {count, resetTime}> ‚Äî 30 req/min per IP
 - Never log or expose sensitive user input in error responses
 
 ---
 
-## Priority 2: ID/EN Toggle (i18n) ó PRD P2
+## Priority 2: ID/EN Toggle (i18n) ‚Äî PRD P2
 
 ### 2.1 Architecture Decision
 **Approach**: Simple React Context + dictionary files (NOT next-intl)
@@ -123,16 +128,16 @@ If any API routes are created (e.g., /api/breach):
 **Rationale**:
 - This is a static-content site (no server-side rendering of localized content)
 - Only 2 languages (ID/EN), no locale routing (/en/... not needed per PRD)
-- Globe toggle already exists in Hero + Navbar ó just needs state plumbing
+- Globe toggle already exists in Hero + Navbar ‚Äî just needs state plumbing
 - 
-ext-intl adds ~15KB, middleware complexity, and locale-prefixed routing ó overkill for toggle on static strings
+ext-intl adds ~15KB, middleware complexity, and locale-prefixed routing ‚Äî overkill for toggle on static strings
 - Simple context = zero new deps, fits the existing component tree
 
 ### 2.2 Implementation Plan
 
 **New files** (5 total):
 
-1. **src/lib/i18n/translations.ts** ó All translatable strings:
+1. **src/lib/i18n/translations.ts** ‚Äî All translatable strings:
    `	s
    export type Locale = "id" | "en";
    const translations = {
@@ -152,18 +157,18 @@ ext-intl adds ~15KB, middleware complexity, and locale-prefixed routing ó overki
    `
    **Scope**: ~200-300 strings total across all pages. Organize by page/section.
 
-2. **src/lib/i18n/LocaleContext.tsx** ó React context:
+2. **src/lib/i18n/LocaleContext.tsx** ‚Äî React context:
    `	s
    // Provides: { locale, setLocale, t }
    // Persists to localStorage
    // Updates document.documentElement.lang
    `
 
-3. **src/components/providers/LocaleProvider.tsx** ó Wraps children, reads/writes localStorage key "netchi-locale", defaults to "id".
+3. **src/components/providers/LocaleProvider.tsx** ‚Äî Wraps children, reads/writes localStorage key "netchi-locale", defaults to "id".
 
-4. Update **src/app/layout.tsx** ó Wrap <LenisProvider> in <LocaleProvider>.
+4. Update **src/app/layout.tsx** ‚Äî Wrap <LenisProvider> in <LocaleProvider>.
 
-5. Update **Navbar.tsx** + **Hero.tsx** ó Connect globe dropdown buttons to setLocale("id") / setLocale("en"). Highlight active locale. Close dropdown after selection.
+5. Update **Navbar.tsx** + **Hero.tsx** ‚Äî Connect globe dropdown buttons to setLocale("id") / setLocale("en"). Highlight active locale. Close dropdown after selection.
 
 ### 2.3 Scope Boundaries
 
@@ -245,38 +250,38 @@ ext/dynamic) if they add significant JS
 ### 3.3 Automation (Minimal)
 Since this is a solo dev competition project, skip full test frameworks. Instead:
 - 
-pm run lint ó run before each commit
+pm run lint ‚Äî run before each commit
 - 
-pm run build ó verify production build succeeds with zero errors
+pm run build ‚Äî verify production build succeeds with zero errors
 - Manual Playwright smoke test (optional, MCP server already configured): verify each route loads without JS errors
 
 ---
 
-## Priority 4: Documentation (20% of score ó Kualitas Kode & Dokumentasi)
+## Priority 4: Documentation (20% of score ‚Äî Kualitas Kode & Dokumentasi)
 
 ### 4.1 README.md Overhaul
 **Current state**: Default create-next-app boilerplate. Replace entirely.
 
 **Structure**:
 `markdown
-# Netchi Sentinel ???
-> Privasi Data & Proteksi Identitas Digital ó FTI FEST 2026
+# Netchi Sentinel ‚Äî
+> Privasi Data & Proteksi Identitas Digital ‚Äî FTI FEST 2026
 
 ## Fitur
-- ?? Breach Checker ó Cek apakah email pernah bocor
-- ?? Privacy Score ó Ukur keamanan kebiasaan digitalmu
-- ?? Password Generator ó Buat password super kuat
-- ?? UU PDP Hub ó Pahami hak data pribadimu
-- ?? Dummy Data Generator ó Data palsu untuk situs abal-abal
+- ‚úì Breach Checker ‚Äî Cek apakah email pernah bocor
+- ‚úì Privacy Score ‚Äî Ukur keamanan kebiasaan digitalmu
+- ‚úì Password Generator ‚Äî Buat password super kuat
+- ‚úì UU PDP Hub ‚Äî Pahami hak data pribadimu
+- ‚úì Dummy Data Generator ‚Äî Data palsu untuk situs abal-abal
 
 ## Tech Stack
-[table ó copy from ARCHITECTURE.md]
+[table ‚Äî copy from ARCHITECTURE.md]
 
 ## Getting Started
-[install, dev, build ó expand on current]
+[install, dev, build ‚Äî expand on current]
 
 ## Struktur Proyek
-[folder tree ó from ARCHITECTURE.md]
+[folder tree ‚Äî from ARCHITECTURE.md]
 
 ## Keamanan
 [brief: input validation, CSP headers, no auth design]
@@ -301,12 +306,12 @@ pm run build ó verify production build succeeds with zero errors
 | docs/RULES.md | Add i18n coding conventions, add testing conventions |
 
 ### 4.3 Code-Level Documentation
-- No JSDoc overload ó just document non-obvious functions (calculatePasswordEntropy, getTimeToCrack)
+- No JSDoc overload ‚Äî just document non-obvious functions (calculatePasswordEntropy, getTimeToCrack)
 - Add brief comments on security-critical code (validation functions, CSP config reason)
 - Keep inline comments minimal (current style is clean, preserve it)
 
 ### 4.4 Type Safety as Documentation
-- The existing src/types/index.ts is good ó expand it as features are built
+- The existing src/types/index.ts is good ‚Äî expand it as features are built
 - All component props should have explicit types (already the pattern in Navbar/Hero)
 - Use s const on translation dictionary for type-safe keys
 
@@ -333,5 +338,5 @@ ext.config.ts | Nothing | 15 min |
 
 1. **CSP + Framer Motion/GSAP**: 'unsafe-eval' likely needed. Test early, document why.
 2. **i18n string volume**: ~200-300 strings across 6 pages. Start with homepage + feature page headers, expand incrementally.
-3. **Time budget**: Deadline is 18 Aug. Feature pages are the critical path ó everything else layers on top.
+3. **Time budget**: Deadline is 18 Aug. Feature pages are the critical path ‚Äî everything else layers on top.
 4. **Dummy Data field escape**: CSV export needs proper RFC 4180 escaping to prevent injection via crafted data fields.

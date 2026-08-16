@@ -85,9 +85,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Section5 />
+        <div data-cv>
+          <Section5 />
+        </div>
       </main>
-      <Footer />
+      <div data-cv>
+        <Footer />
+      </div>
     </>
   );
 }

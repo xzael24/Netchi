@@ -26,11 +26,11 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
     <section className="bg-white w-screen min-w-full">
       <div className="bg-[#1A3CDB] text-cream grid grid-cols-[25px_32fr_33fr_29fr_25px] lg:grid-cols-[2.6%_30%_35%_29.05%_1fr] grid-rows-[27px_10vh_15vh_auto_auto] lg:grid-rows-[4vh_27vh_22vh_18vh_29vh] w-full min-w-full lg:h-dvh overflow-hidden content-start">
         {/* ── ROW 1: NAV (5 cells) ── */}
-        <div className={`flex border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R1C1</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C2</div>
-        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono">R1C3</div>
+        <div className={`flex border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono"></div>
+        <div className="flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono"></div>
         <div className={`flex border-r-2 ${LINE} pl-2 md:pl-8 items-center justify-end container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C4</span>
+          
           <Link href="/" className="font-display font-bold uppercase tracking-widest px-4 py-1.5 hover:bg-[#EF4444] transition-colors cq-hero-nav">
             Menu
           </Link>
@@ -40,7 +40,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           onMouseEnter={() => setLangOpen(true)}
           onMouseLeave={() => setLangOpen(false)}
         >
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R1C5</span>
+          
           <button
             type="button"
             aria-label="Language"
@@ -74,9 +74,9 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         </div>
 
         {/* ── ROW 2: HEADLINE (cols 2-4 span) ── */}
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C1</div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`col-span-3 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden container-cell relative`} ref={headlineRef}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R2C2</span>
+          
           <h1 className="font-display font-bold leading-[0.82] tracking-[-0.03em] flex items-center justify-center lg:justify-start lg:ps-[33px] cq-hero-text w-full hero-rise">
             Netchi&nbsp;
             <span className="flex items-center">
@@ -85,21 +85,21 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             </span>
           </h1>
         </div>
-        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R2C5</div>
+        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
 
         {/* ── ROW 3: SUB-HEADLINE (col 2-3) ── */}
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C1</div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`col-span-2 border-b-2 border-r-2 ${LINE} px-4 md:px-10 py-2 md:py-3 container-cell overflow-hidden relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C2</span>
+          
           <p
             className="font-display font-bold uppercase leading-[1.1] cq-hero-sub hero-rise-sub"
           >
             {t("hero.sub")}
           </p>
         </div>
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R3C4</div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`border-b-2 ${LINE} flex items-start justify-start container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R3C5</span>
+          
           <span
             className="font-mono font-extrabold uppercase tracking-widest text-cream whitespace-nowrap cq-hero-label"
             style={{ writingMode: "vertical-rl" }}
@@ -109,23 +109,23 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
         </div>
 
         {/* ── ROW 4: DESCRIPTION (5 cells) ── */}
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C1</div>
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C2</div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div className={`col-span-2 lg:col-span-1 border-b-2 border-r-2 ${LINE} px-4 md:px-8 flex items-center container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R4C3</span>
+          
           <p
             className="font-display font-bold leading-relaxed text-cream/90 w-full cq-hero-desc hero-fade"
           >
             {t("hero.desc")}
           </p>
         </div>
-        <div className={`hidden lg:flex border-b-2 border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C4</div>
-        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R4C5</div>
+        <div className={`hidden lg:flex border-b-2 border-r-2 ${LINE} items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
+        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
 
         {/* ── ROW 5: BARS + CTA (5 cells) ── */}
-        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C1</div>
+        <div className={`border-b-2 border-r-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
         <div ref={waveRef} className={`col-span-2 border-b-2 border-r-2 ${LINE} flex items-stretch overflow-hidden min-h-[120px] md:min-h-[220px] container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C2</span>
+          
           <svg
             viewBox="0 0 500 230"
             className="wave-svg w-full h-full hero-wave"
@@ -187,7 +187,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
           </svg>
         </div>
         <div className={`border-b-2 border-r-2 ${LINE} flex flex-col items-stretch justify-between container-cell relative`}>
-          <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-1</span>
+          
           <div className="flex border-b-2 border-cream/25" ref={buttonRef}>
             <Link
               href="/breach-checker"
@@ -197,7 +197,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             </Link>
           </div>
           <div className="flex flex-col justify-start pl-1 pr-2 md:pr-6 pb-5 pt-2 md:pt-12 relative">
-            <span className="absolute top-0 left-0 p-1 text-[8px] text-cream/30 font-mono">R5C4-2</span>
+            
             <div
               onMouseEnter={() =>
                 arrowControls.start({
@@ -225,7 +225,7 @@ export function Hero({ headlineRef, buttonRef }: { headlineRef?: React.RefObject
             </div>
           </div>
         </div>
-        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}>R5C5</div>
+        <div className={`border-b-2 ${LINE} flex items-start justify-start p-1 text-[8px] text-cream/30 font-mono`}></div>
       </div>
     </section>
   );

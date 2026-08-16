@@ -20,6 +20,7 @@ type Result =
 export default function BreachCheckerPage() {
   const { t } = useLocale();
   const [input, setInput] = useState("");
+  const [showPw, setShowPw] = useState(false);
   const [result, setResult] = useState<Result>({ status: "idle" });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,7 +37,8 @@ export default function BreachCheckerPage() {
     setResult({ status: "checking" });
     const res = await checkPasswordPwned(pw);
     if (res.error) {
-      setResult({ status: "error", message: t("breach.errConn", { err: res.error }) });
+      const key = res.error === "http" ? "hibp.http" : res.error === "timeout" ? "hibp.timeout" : "hibp.network";
+      setResult({ status: "error", message: t(key) });
       return;
     }
     setResult(res.pwned ? { status: "pwned", count: res.count, offline: false } : { status: "safe", offline: false });
@@ -58,13 +60,21 @@ export default function BreachCheckerPage() {
         <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl" noValidate>
           <div className={`flex border-2 ${LINE}`}>
             <input
-              type="text"
+              type={showPw ? "text" : "password"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t("breach.placeholder")}
               aria-label="Password untuk dicek"
               className="min-w-0 flex-1 bg-transparent px-4 py-3 font-mono text-sm text-cream placeholder:text-cream/40 outline-none"
             />
+            <button
+              type="button"
+              onClick={() => setShowPw((v) => !v)}
+              aria-label={showPw ? t("ui.hide") : t("ui.show")}
+              className="border-l border-cream/25 px-4 font-mono text-[10px] uppercase tracking-widest text-cream/60 hover:text-cream"
+            >
+              {showPw ? t("ui.hide") : t("ui.show")}
+            </button>
             <button
               type="submit"
               disabled={result.status === "checking"}

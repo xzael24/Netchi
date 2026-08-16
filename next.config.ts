@@ -22,6 +22,9 @@ const isProd = process.env.NODE_ENV === "production";
 // dangerouslySetInnerHTML / eval sama sekali, dan semua teks sudah di-escape
 // React — jadi risiko XSS inline minimal. frame-ancestors 'none' tetap
 // melindungi dari clickjacking.
+// HSTS hanya berlaku ketika header diterima lewat HTTPS (diabaikan browser
+// kalau halaman dikirim via http), jadi aman juga saat demo LAN. Tanpa
+// preload: belum ada domain produksi, dan preload bersifat permanen.
 const securityHeaders = [
   ...(isProd
     ? [
@@ -30,6 +33,7 @@ const securityHeaders = [
           value:
             "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self' https://api.pwnedpasswords.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
         },
+        { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
       ]
     : []),
   { key: "X-Content-Type-Options", value: "nosniff" },

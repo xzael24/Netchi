@@ -60,12 +60,13 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 
 | Route | Halaman | Status |
 |-------|---------|--------|
-| `/` | Homepage (Hero → TOOLS → FAKTA → EDUCATION → FAQ → Footer) | Partial (Hero, Tools, Fakta) |
+| `/` | Homepage (Hero → TOOLS → FAKTA → EDUCATION → FAQ → Footer) | ✅ Done |
 | `/breach-checker` | Breach Checker (password) | ✅ Done |
-| `/privacy-score` | Privacy Score | Belum |
-| `/password` | Password Generator | Belum |
-| `/uu-pdp` | UU PDP Hub | Belum |
-| `/dummy-data` | Dummy Data Generator | Belum |
+| `/privacy-score` | Privacy Score (12 pertanyaan) | ✅ Done |
+| `/password` | Password Generator | ✅ Done |
+| `/uu-pdp` | UU PDP Hub (search + filter kategori) | ✅ Done |
+| `/dummy-data` | Dummy Data Generator (copy per cell/baris, JSON/CSV) | ✅ Done |
+| `/berita` + `/berita/[slug]` | Artikel edukasi privasi | ✅ Done (US-06, P1) |
 
 ## 7. Non-Functional Requirements
 
@@ -91,9 +92,10 @@ Membangun tools interaktif yang membantu masyarakat Indonesia memahami, memeriks
 | Fase | Target |
 |------|--------|
 | Phase 1: Homepage + Hero | ✅ Done |
-| Phase 2: 5 fitur inti | Next |
-| Phase 3: Education + FAQ | Next |
-| Phase 4: Refine animasi & interaksi | Next |
-| Phase 5: Security hardening | Next |
-| Phase 6: Testing & optimasi | Next |
+| Phase 2: 5 fitur inti | ✅ Done |
+| Phase 3: Education + FAQ | ✅ Done |
+| Phase 4: Refine animasi & interaksi | ✅ Done |
+| Phase 5: Security hardening | ✅ Done (audit + perbaikan LOW, 15 Agu) |
+| Phase 6: Testing & optimasi | ✅ Done (Lighthouse, bundle 203 kB) |
+| Phase 7: Deploy (Vercel) | In progress — target `netchi.vercel.app` |
 | Deadline pengumpulan | 18 Agustus 2026 |
