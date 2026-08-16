@@ -71,3 +71,6 @@ perf-lh-*.json
 # research notes (agent scrape artifacts, keep local only)
 docs/research/
 
+# agent conventions doc (keep local only)
+docs/RULES.md
+

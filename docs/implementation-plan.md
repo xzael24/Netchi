@@ -253,7 +253,7 @@ Since this is a solo dev competition project, skip full test frameworks. Instead
 pm run lint — run before each commit
 - 
 pm run build — verify production build succeeds with zero errors
-- Manual Playwright smoke test (optional, MCP server already configured): verify each route loads without JS errors
+- Manual Playwright smoke test (opsional): verify each route loads without JS errors
 
 ---
 
