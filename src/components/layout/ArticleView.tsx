@@ -45,7 +45,7 @@ export function ArticleView({
       gsap.fromTo(
         "[data-article-reveal]",
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.1, delay: 0.3 }
+        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.1, delay: 1.45 }
       );
     }, contentRef.current);
     return () => ctx.revert();

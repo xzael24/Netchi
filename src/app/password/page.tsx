@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FeatureShell } from "@/components/layout/FeatureShell";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 import { checkPasswordPwned, type PwnedResult } from "@/lib/pwned";
 import {
   calculatePasswordEntropy,
@@ -158,7 +159,9 @@ export default function PasswordPage() {
 
   return (
     <FeatureShell label="3://CRACK">
+      <RevealBlocks>
       <div className="mx-auto max-w-3xl">
+          <div data-article-reveal>
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">{t("pg.label")}</span>
           <h1 className="mt-2 font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2rem,5vw,3.5rem)]">
             {t("pg.title")}
@@ -166,8 +169,9 @@ export default function PasswordPage() {
           <p className="mt-3 text-sm text-cream/70 md:text-base">
             {t("pg.desc")}
           </p>
+          </div>
 
-          <form onSubmit={handleGenerate} className="mt-8 space-y-6">
+          <form onSubmit={handleGenerate} className="mt-8 space-y-6" data-article-reveal>
             <div className={`border-2 ${LINE} bg-cream/5 p-5`}>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="flex flex-col gap-2">
@@ -282,7 +286,7 @@ export default function PasswordPage() {
             </div>
           )}
 
-          <div className={`mt-12 border-2 ${LINE} bg-cream/5 p-5`}>
+          <div className={`mt-12 border-2 ${LINE} bg-cream/5 p-5`} data-article-reveal>
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] uppercase tracking-widest text-cream/50">
                 {t("pg.checkTitle")}
@@ -335,6 +339,7 @@ export default function PasswordPage() {
             )}
           </div>
         </div>
+      </RevealBlocks>
     </FeatureShell>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FeatureShell } from "@/components/layout/FeatureShell";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 import {
   generatePeople,
   toCSV,
@@ -90,7 +91,9 @@ export default function DummyDataPage() {
 
   return (
     <FeatureShell label="5://MASK">
+      <RevealBlocks>
       <div className="mx-auto max-w-4xl">
+          <div data-article-reveal>
           <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
             {t("dd.label")}
           </span>
@@ -100,8 +103,9 @@ export default function DummyDataPage() {
           <p className="mt-3 text-sm text-cream/70 md:text-base">
             {t("dd.desc")}
           </p>
+          </div>
 
-          <form onSubmit={handleGenerate} className={`mt-6 border-2 ${LINE} bg-cream/5 p-5`}>
+          <form onSubmit={handleGenerate} className={`mt-6 border-2 ${LINE} bg-cream/5 p-5`} data-article-reveal>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div className="flex flex-wrap gap-2">
                 {ALL_FIELDS.map((f) => (
@@ -194,6 +198,7 @@ export default function DummyDataPage() {
             </div>
           )}
         </div>
+      </RevealBlocks>
     </FeatureShell>
   );
 }

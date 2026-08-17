@@ -5,6 +5,7 @@ import Link from "next/link";
 import { checkPasswordPwned } from "@/lib/pwned";
 import { isCommonPassword } from "@/data/commonPasswords";
 import { FeatureShell } from "@/components/layout/FeatureShell";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 import { useLocale } from "@/components/providers/LocaleProvider";
 
 const LINE = "border-cream/25";
@@ -46,7 +47,9 @@ export default function BreachCheckerPage() {
 
   return (
     <FeatureShell label="1://SCAN">
+      <RevealBlocks>
       <div className="flex flex-col items-center justify-center py-10 text-center">
+        <div data-article-reveal>
         <span className="font-mono text-[10px] uppercase tracking-widest text-cream/40 mb-4">
           {t("breach.label")}
         </span>
@@ -56,8 +59,9 @@ export default function BreachCheckerPage() {
         <p className="mt-4 max-w-lg text-center font-body text-cream/70 text-sm md:text-base">
           {t("breach.desc")}
         </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl" noValidate>
+        <form onSubmit={handleSubmit} className="mt-10 w-full max-w-xl" noValidate data-article-reveal>
           <div className={`flex border-2 ${LINE}`}>
             <input
               type={showPw ? "text" : "password"}
@@ -135,10 +139,11 @@ export default function BreachCheckerPage() {
           </div>
         )}
 
-        <p className="mt-8 font-mono text-[10px] text-cream/40">
+        <p className="mt-8 font-mono text-[10px] text-cream/40" data-article-reveal>
           Powered by Have I Been Pwned — Pwned Passwords (data kebocoran password terbesar di dunia)
         </p>
       </div>
+      </RevealBlocks>
     </FeatureShell>
   );
 }

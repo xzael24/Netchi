@@ -12,6 +12,7 @@ import {
 } from "@/data/privacyQuestions";
 import { FeatureShell } from "@/components/layout/FeatureShell";
 import { HeadingReveal } from "@/components/layout/HeadingReveal";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import type { TranslationKey } from "@/lib/i18n";
 
@@ -140,6 +141,7 @@ export default function PrivacyScorePage() {
 
   return (
     <FeatureShell label="2://SCORE">
+      <RevealBlocks>
       <div className="mx-auto max-w-3xl">
         <span data-article-reveal className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
           {t("ps.label")}
@@ -337,6 +339,7 @@ export default function PrivacyScorePage() {
           </m.div>
         )}
       </div>
+      </RevealBlocks>
     </FeatureShell>
   );
 }
