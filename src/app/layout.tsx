@@ -38,7 +38,23 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Netchi — Privacy Shield",
     description: "Platform edukasi & perlindungan privasi data digital untuk masyarakat Indonesia.",
+    url: "https://netchi.vercel.app",
+    siteName: "Netchi",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Netchi — Privacy Shield",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Netchi — Privacy Shield",
+    description: "Platform edukasi & perlindungan privasi data digital untuk masyarakat Indonesia.",
+    images: ["/og.png"],
   },
 };
 
