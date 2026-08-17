@@ -11,6 +11,7 @@ import { Section4 } from "@/components/home/Section4";
 import { Section5 } from "@/components/home/Section5";
 import { Footer } from "@/components/home/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,8 +76,14 @@ export default function Home() {
     <>
       <Navbar headlineVisible={!headlineInView} buttonVisible={!btnInView} />
       <main>
-        <Hero headlineRef={headlineRef} buttonRef={btnRef} />
-        <Section2 />
+        <RevealBlocks>
+          <div data-article-reveal>
+            <Hero headlineRef={headlineRef} buttonRef={btnRef} />
+          </div>
+          <div data-article-reveal>
+            <Section2 />
+          </div>
+        </RevealBlocks>
         <div ref={pinRef} className="relative h-[170vh] lg:h-[310vh]">
           <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
             <Section3 />
