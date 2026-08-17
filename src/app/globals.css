@@ -109,10 +109,6 @@ html.lenis body {
 /* Skip render/paint work untuk blok di bawah fold sampai mendekati viewport.
    Tidak dipakai di Hero/Section2 (LCP ada di Section2 R1) dan bukan di blok
    pinned (sticky containment). */
-[data-cv] {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 100vh;
-}
 
 @media (max-height: 700px) {
   .cq-hero-text { font-size: clamp(1.5rem, 12cqw, 8rem); }

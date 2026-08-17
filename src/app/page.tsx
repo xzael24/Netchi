@@ -28,9 +28,8 @@ export default function Home() {
 
   useLayoutEffect(() => {
     const parent = pinRef.current;
-    const sticky = stickyRef.current;
     const s4 = s4Ref.current;
-    if (!parent || !sticky || !s4) return;
+    if (!parent || !s4) return;
 
     const ctx = gsap.context(() => {
       gsap.ticker.lagSmoothing(0);
@@ -44,12 +43,9 @@ export default function Home() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: parent,
-          pin: sticky,
           start: "top top",
           end: "bottom bottom",
           scrub: isMobile ? 4 : 2,
-          anticipatePin: 1,
-          pinSpacing: false,
         },
       });
 
@@ -85,20 +81,16 @@ export default function Home() {
           </div>
         </RevealBlocks>
         <div ref={pinRef} className="relative h-[170vh] lg:h-[310vh]">
-          <div ref={stickyRef} className="relative h-screen overflow-hidden z-10">
+          <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden z-10">
             <Section3 />
             <div ref={s4Ref} className="absolute inset-0 z-60">
               <Section4 />
             </div>
           </div>
         </div>
-        <div data-cv>
-          <Section5 />
-        </div>
+        <Section5 />
       </main>
-      <div data-cv>
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }
