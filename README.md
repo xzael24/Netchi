@@ -39,7 +39,7 @@ Melalui Netchi, pengguna dapat memeriksa apakah password mereka pernah bocor, me
 - Identitas visual **pixel-grid editorial** terinspirasi terminal & era 8-bit — merepresentasikan tema "PIXEL" secara konsisten dari wireframe hingga implementasi.
 - Grid 5×5 dengan rasio kolom `2.6% / 30% / 35% / 29.05% / 1fr` dan tipografi fluid berbasis `container query` — teks selalu menyesuaikan lebar kolomnya di semua ukuran layar (1024 → 2560px).
 - **Dual-language (ID/EN)** untuk memperluas jangkauan literasi digital.
-- Desain dimulai dari wireframe manual → iterasi high-fidelity di kode; setiap keputusan layout didokumentasikan di `docs/wireframe.md` dan `docs/ARCHITECTURE.md`.
+- Desain dimulai dari wireframe manual → iterasi high-fidelity di kode; setiap keputusan layout didokumentasikan di `docs/DOKUMENTASI_TEKNIS.md` dan `docs/ARCHITECTURE.md`.
 
 ## Tech Stack
 
@@ -92,8 +92,6 @@ next.config.ts    # security headers + konfigurasi
 | --- | --- |
 | `docs/PRD.md` | Product Requirements (ide → spesifikasi fitur) |
 | `docs/ARCHITECTURE.md` | Arsitektur, alur data, & keputusan ADR (incl. ADR-001) |
-| `docs/API.md` | Dokumentasi API HIBP + fallback lokal |
-| `docs/USERFLOW.md` | User flow seluruh fitur |
+| `docs/DOKUMENTASI_TEKNIS.md` | Dokumentasi pendukung lengkap: API, user flow, wireframe (guidebook §8.C) |
 | `docs/FLOWCHART.md` | Diagram alur sistem |
-| `docs/wireframe.md` | Wireframe awal → keputusan desain |
 | `docs/implementation-plan.md` | Rencana & progres implementasi |
