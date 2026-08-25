@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BREACH_ARTICLES } from "@/data/breachArticles";
 import { FeatureShell } from "@/components/layout/FeatureShell";
 import { HeadingReveal } from "@/components/layout/HeadingReveal";
+import { RevealBlocks } from "@/components/layout/RevealBlocks";
 import { useLocale } from "@/components/providers/LocaleProvider";
 
 const LINE = "border-cream/25";
@@ -15,6 +16,7 @@ export default function BeritaPage() {
   const { t } = useLocale();
   return (
     <FeatureShell label="2://BERITA">
+      <RevealBlocks>
       <div className="mx-auto max-w-4xl">
         <span data-article-reveal className="font-mono text-[10px] uppercase tracking-widest text-cream/40">
           {t("bv.label")}
@@ -50,6 +52,7 @@ export default function BeritaPage() {
           ))}
         </div>
       </div>
+      </RevealBlocks>
     </FeatureShell>
   );
 }

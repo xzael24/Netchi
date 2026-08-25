@@ -56,7 +56,7 @@ export default function BreachCheckerPage() {
         <h1 className="font-display font-bold leading-[0.95] tracking-[-0.03em] text-[clamp(2.2rem,6vw,4.5rem)] text-center">
           {t("breach.title")}
         </h1>
-        <p className="mt-4 max-w-lg text-center font-body text-cream/70 text-sm md:text-base">
+        <p className="mt-4 mx-auto max-w-lg text-center font-body text-cream/70 text-sm md:text-base">
           {t("breach.desc")}
         </p>
         </div>

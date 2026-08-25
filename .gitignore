@@ -50,6 +50,7 @@ docs/agents/
 .agents/
 opencode.jsonc
 opencode.json
+.omop/
 
 .playwright-mcp/
 graphify-out/cost.json
