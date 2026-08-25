@@ -5,10 +5,11 @@
 > Subtema: *Keamanan Siber dan Perlindungan Informasi Digital*, *Privasi Data dan Perlindungan Identitas Digital*
 
 **Website live:** https://netchi.vercel.app
+**Status kompetisi:** Lolos ke Grand Final (5 Besar), presentasi 28 Agustus 2026
 
 ---
 
-## Ringkasan
+## Ringkasan untuk Juri
 
 Netchi adalah situs literasi dan perlindungan data pribadi yang bekerja 100% di perangkat pengguna (client-side). Semua fitur berjalan di browser: tidak ada akun, tidak ada server penyimpan data, dan data sensitif pengguna tidak pernah dikirim ke mana pun.
 
@@ -33,6 +34,7 @@ Melalui Netchi, pengguna dapat memeriksa apakah password mereka pernah bocor, me
 - **Security headers** di produksi: `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`.
 - Validasi form di semua fitur, dengan fallback SHA-1 murni JavaScript dan fallback clipboard agar tetap berfungsi di lingkungan terbatas.
 - Tidak ada dependensi pihak ketiga pada runtime selain HIBP Pwned Passwords (API publik gratis).
+- **Performa:** First Contentful Paint di bawah 2 detik, shared bundle sekitar 103kB, halaman statis di-pre-render.
 
 ## Desain dan Keputusan Desain
 
@@ -95,3 +97,4 @@ next.config.ts    # security headers dan konfigurasi
 | `docs/DOKUMENTASI_TEKNIS.md` | Dokumentasi pendukung lengkap: API, user flow, wireframe (guidebook, bagian 8.C) |
 | `docs/FLOWCHART.md` | Diagram alur sistem |
 | `docs/implementation-plan.md` | Rencana dan progres implementasi |
+| `docs/DAFTAR_PENGEMBANGAN.md` | Catatan revisi Hard Minor Changes pasca Technical Meeting Grand Final (bagian yang diperbaiki, perubahan kode, dan alasan) |
